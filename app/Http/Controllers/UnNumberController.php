@@ -28,7 +28,7 @@ class UnNumberController extends Controller
         //入力された場合、un_numbersテーブルから完全に一致するIdを$queryに代入
         if (isset($searchId)) {
             $query->where('tenant_id',self::escapeLike($searchId));
-            $UnNumbers = $query->orderBy('created_at', 'desc')->paginate(10);//$queryをupdated_atの新しい順に並び替え（最近更新したのが上にくる）
+            $UnNumbers = $query->orderBy('created_at', 'desc')->paginate(5);//$queryをupdated_atの新しい順に並び替え（最近更新したのが上にくる）
      
             $tenantName = $UnNumbers->first();//会社名と施設名を表示させるために１件だけ取得
 

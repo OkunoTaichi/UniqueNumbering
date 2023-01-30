@@ -23,7 +23,11 @@ class DivEdit extends Model
         'updated_at',
     ];
 
-    public function UnNumbers(){
-        return $this->belongsTo(UnNumber::class);
+    public function TNumberInformations(){
+        return $this->belongsTo(TNumberInformation::class, 'edit_id','edit_id');
     }
+    
+    // public function UnNumbers(){
+    //     return $this->belongsTo(UnNumber::class);
+    // }
 }

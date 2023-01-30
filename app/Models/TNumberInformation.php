@@ -11,7 +11,7 @@ class TNumberInformation extends Model
 {
     use HasFactory;
 
-    //テーブル名
+    //テーブル名リレーション関係
     protected $table = 't_number_informations';
 
     //可変項目
@@ -34,6 +34,20 @@ class TNumberInformation extends Model
         'updated_at',
 
     ];
+
+    // リレーション関係
+    Public function DivEdits()
+    {
+        return $this->hasOne(DivEdit::class, 'edit_id','edit_id');
+    }
+    Public function DivDates()
+    {
+        return $this->hasOne(DivDate::class, 'date_id','date_id');
+    }
+    Public function NumberDivs()
+    {
+        return $this->hasOne(NumberDiv::class, 'number_id','number_id');
+    }
 
 
 
@@ -227,6 +241,7 @@ class TNumberInformation extends Model
             }
         }
 
+       
         return $reserve_id;
 
     }
