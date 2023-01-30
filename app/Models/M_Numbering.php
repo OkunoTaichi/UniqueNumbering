@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 use DB;
 
-class TNumberInformation extends Model
+class M_Numbering extends Model    // 一覧検索のみ
 {
     use HasFactory;
 
-    //テーブル名リレーション関係
-    protected $table = 't_number_informations';
+    //テーブル名
+    protected $table = 'M_Numbering';
 
     //可変項目
     protected $fillable = 
@@ -20,16 +20,12 @@ class TNumberInformation extends Model
         'tenant_id',
         'tenant_name',
         'tenantBranch_name',
-        'number_id',
-        'number_name',
-        'edit_id',
-        'edit_name',
-        'edit_length',
-        'date_id',
-        'date_name',
-        'symbol',
-        'count_id',
-        'newest_id',
+
+        'numberdiv',
+        'editdiv',
+        'datediv',// 'date_id',
+        'countNumber',
+        'initNumber',
         
         'updated_at',
 
@@ -38,17 +34,21 @@ class TNumberInformation extends Model
     // リレーション関係
     Public function DivEdits()
     {
-        return $this->hasOne(DivEdit::class, 'edit_id','edit_id');
+        return $this->hasOne(DivEdit::class, 'edit_id','editdiv');
     }
     Public function DivDates()
     {
-        return $this->hasOne(DivDate::class, 'date_id','date_id');
+        // DivDateの'date_id'とこの't_number_information'の'datediv'を連結
+        return $this->hasOne(DivDate::class, 'date_id','datediv');
     }
     Public function NumberDivs()
     {
-        return $this->hasOne(NumberDiv::class, 'number_id','number_id');
+        return $this->hasOne(NumberDiv::class, 'number_id','numberdiv');
     }
 
+
+
+// ***************** この下は別プログラム*********************:
 
 
     // 予約番号を発行するまでの処理 --------------------

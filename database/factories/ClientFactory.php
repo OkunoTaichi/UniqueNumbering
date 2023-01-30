@@ -27,10 +27,6 @@ class ClientFactory extends Factory
             'client_id' => $this->faker->unique()->numberBetween(1, 10000000),
             'tenant_id' => $tenant,
 
-            //日付区分の為に簡易で作成
-            'registed_at'=> now(),
-            'reserved_at'=> now()->addDays(15),
-            'checked_at'=> now()->addDays(30),
         ];
     }
 }

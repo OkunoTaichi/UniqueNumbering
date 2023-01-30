@@ -13,7 +13,7 @@ class CreateDivEditsTable extends Migration
      */
     public function up()
     {
-        Schema::create('div_edits', function (Blueprint $table) {
+        Schema::create('EditDiv', function (Blueprint $table) {
             $table->id();
             $table->integer('edit_id')->unique();
             $table->char('edit_name');
@@ -30,6 +30,6 @@ class CreateDivEditsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('div_edits');
+        Schema::dropIfExists('EditDiv');
     }
 }

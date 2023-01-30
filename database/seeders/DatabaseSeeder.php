@@ -17,12 +17,15 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeeder::class);
         $this->call(TenantsSeeder::class);
 
-        $this->call(TNumberInfomationsSeeder::class);
+        $this->call(M_NumberingsSeeder::class);
 
         $this->call(DivEditsSeeder::class);
         $this->call(DivDatesSeeder::class);
         $this->call(DivNumberSeeder::class);
         
+        $this->call(M_TenantSeeder::class);
+        $this->call(M_TenantBranchSeeder::class);
+
         $this->call(CliantSeeder::class);
     }
 }

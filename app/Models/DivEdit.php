@@ -11,7 +11,7 @@ class DivEdit extends Model
     use HasFactory;
 
     //テーブル名
-    protected $table = 'div_edits';
+    protected $table = 'EditDiv';
 
     //可変項目
     protected $fillable = 
@@ -23,11 +23,9 @@ class DivEdit extends Model
         'updated_at',
     ];
 
-    public function TNumberInformations(){
-        return $this->belongsTo(TNumberInformation::class, 'edit_id','edit_id');
+    public function M_Numberings(){
+        return $this->belongsTo(M_Numbering::class, 'edit_id','edit_id');
     }
     
-    // public function UnNumbers(){
-    //     return $this->belongsTo(UnNumber::class);
-    // }
+
 }

@@ -13,7 +13,7 @@ class CreateDivDatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('div_dates', function (Blueprint $table) {
+        Schema::create('DateDiv', function (Blueprint $table) {
             $table->id();
             $table->integer('date_id')->constrained();
             $table->char('date_name');
@@ -30,6 +30,6 @@ class CreateDivDatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('div_dates');
+        Schema::dropIfExists('DateDiv');
     }
 }

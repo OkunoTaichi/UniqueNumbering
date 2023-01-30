@@ -11,7 +11,8 @@ class DivDate extends Model
     use HasFactory;
 
     //テーブル名
-    protected $table = 'div_dates';
+    // protected $table = 'div_dates';
+    protected $table = 'DateDiv';
 
     //可変項目
     protected $fillable = 
@@ -22,8 +23,8 @@ class DivDate extends Model
         'updated_at',
     ];
 
-    public function TNumberInformations(){
-        return $this->belongsTo(TNumberInformation::class, 'date_id','date_id');
+    public function M_Numberings(){
+        return $this->belongsTo(M_Numbering::class, 'date_id','date_id');
     }
 
 
