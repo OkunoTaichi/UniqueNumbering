@@ -17,8 +17,9 @@ class System extends Model
     //  ➁ 採番するIDの処理 * $change_number 最後DBに更新
     public function numberSearch($edits)
     {
-        $count_id = $edits->count_id;// 採番基準となる連番を代入
+        $count_id = $edits->countNumber;// 採番基準となる連番を代入
 
+        
         if($count_id != null){
             $change_number = $count_id + 1;
         }else{
@@ -32,14 +33,17 @@ class System extends Model
     // ➃ 編集区分によって採番するパターンを変更する処理
     public function division($edits, $change_number, $dateTime)
     {
-        $edit_id = $edits->edit_id;
+        $edit_id = $edits->editdiv;
         $edit_length = $edits->Divedits->edit_length;// 有効桁数
         $number_count = mb_strlen($change_number);//初期値を桁数に変換
         //ここから記号関連
-        $symbol = $edits->DivEdits->symbol;// 記号
+        $symbol = $edits->symbol;// 記号
         $symbol_count = mb_strlen($symbol);//記号を文字数に変換
         $length = intval($edit_length);//文字列を数値に変換
         $total_count = $symbol_count + $number_count;//記号と初期値の合計値
+     
+
+        // dd($symbol);
    
         // 予約番号 のみ
         if($edit_id == 1)
@@ -121,6 +125,7 @@ class System extends Model
            {
                $reserve_id = $symbol. $change_number;
            }
+      
        }
 
        //記号＋日付＋連番
@@ -152,9 +157,9 @@ class System extends Model
         DB::beginTransaction();
         try{
             // 予約確定する前にcount_idを更新するだけの処理
-            $update = TNumberInformation::find($edits->id);
+            $update = M_Numbering::find($edits->id);
             $update->update([
-                "count_id" => $change_number,
+                "countNumber" => $change_number,
             ]);
             DB::commit();
 
@@ -170,11 +175,12 @@ class System extends Model
     // ➄ 予約確定 バージョン
     public function update_create($edits, $reserve_id, $change_number, $client)
     {
+        // dd($reserve_id);
         // 予約確定する前にcount_idを更新するだけの処理
-        $update = TNumberInformation::find($edits->id);
+        $update = M_Numbering::find($edits->id);
         $update->update([
-            "count_id" => $change_number,
-            "newest_id" => $reserve_id,
+            "countNumber" => $change_number,
+            "initNumber" => $reserve_id,
         ]);
 
         DB::beginTransaction();

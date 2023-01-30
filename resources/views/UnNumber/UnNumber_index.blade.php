@@ -56,7 +56,7 @@
         @foreach($UnNumbers as $UnNumber)
         <tr>
           <td>{{ $UnNumber->NumberDivs->number_name }}</td>
-          <td>{{ $UnNumber->newest_id }}</td>
+          <td>{{ $UnNumber->initNumber }}</td>
           <td>{{ $UnNumber->symbol }}</td>
           <td>{{ $UnNumber->DivEdits->edit_length }}</td>
           <td>{{ $UnNumber->DivEdits->edit_name }}</td>

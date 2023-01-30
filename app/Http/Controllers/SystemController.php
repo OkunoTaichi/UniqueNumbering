@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\SystemRequest;
 use App\Models\System;
-use App\Models\TNumberInformation;
+use App\Models\M_Numbering;
 
 use DB;
 
@@ -26,11 +26,12 @@ class SystemController extends Controller
         // $client は前後の流れが不明なので暫定でこの形
         $client = DB::table('clients')->where('id', $inputs['SignIn'])->orderBy('updated_at', 'desc')->first();
 
-        $edits = TNumberInformation::with(['DivEdits'])
+        $edits = M_Numbering::with(['DivEdits'])
             ->where('tenant_id',$client->tenant_id)// ログインしたユーザーのテナントIDで絞り込む
-            ->where('number_id',$inputs['number_id'])// 各種登録ボタンに仕込んでいるナンバーIDを基に採番処理の内容を確定させる。
+            ->where('numberdiv',$inputs['number_id'])// 各種登録ボタンに仕込んでいるナンバーIDを基に採番処理の内容を確定させる。
             ->first();// ナンバーIDは同じテナントID内では被らないものとする
 
+        
         $dateTime = date('Ymd', strtotime($inputs['date']));
             
 

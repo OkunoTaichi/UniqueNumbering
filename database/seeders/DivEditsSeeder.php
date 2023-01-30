@@ -14,7 +14,7 @@ class DivEditsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('div_edits')->insert([
+        DB::table('EditDiv')->insert([
             'id' => 1,
             'edit_id' => '1',
             'edit_name' => '予約番号のみ',
@@ -23,7 +23,7 @@ class DivEditsSeeder extends Seeder
             'created_at'=>'2033-01-16 14:26:37',
             'updated_at'=>'2033-01-16 14:26:37',
         ]);
-        DB::table('div_edits')->insert([
+        DB::table('EditDiv')->insert([
             'id' => 2,
             'edit_id' => '2',
             'edit_name' => '日付＋予約番号',
@@ -32,7 +32,7 @@ class DivEditsSeeder extends Seeder
             'created_at'=>'2033-01-16 14:26:37',
             'updated_at'=>'2033-01-16 14:26:37',
         ]);
-        DB::table('div_edits')->insert([
+        DB::table('EditDiv')->insert([
             'id' => 3,
             'edit_id' => '3',
             'edit_name' => '日付＋"-"＋予約番号',
@@ -41,7 +41,7 @@ class DivEditsSeeder extends Seeder
             'created_at'=>'2033-01-16 14:26:37',
             'updated_at'=>'2033-01-16 14:26:37',
         ]);
-        DB::table('div_edits')->insert([
+        DB::table('EditDiv')->insert([
             'id' => 4,
             'edit_id' => '4',
             'edit_name' => '記号＋予約番号',
@@ -50,7 +50,7 @@ class DivEditsSeeder extends Seeder
             'created_at'=>'2033-01-16 14:26:37',
             'updated_at'=>'2033-01-16 14:26:37',
         ]);
-        DB::table('div_edits')->insert([
+        DB::table('EditDiv')->insert([
             'id' => 5,
             'edit_id' => '5',
             'edit_name' => '記号＋日付＋予約番号',

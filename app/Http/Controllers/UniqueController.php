@@ -21,7 +21,7 @@ class UniqueController extends Controller
     {
         $inputs = $request->all();
         $client = DB::table('clients')->where('id', $inputs['SignIn'])->first();
-        $edits = DB::table('t_number_informations')->where('tenant_id',[$client->tenant_id])->get();
+        $edits = DB::table('M_Numbering')->where('tenant_id',[$client->tenant_id])->get();
         dd($inputs);
      
 
