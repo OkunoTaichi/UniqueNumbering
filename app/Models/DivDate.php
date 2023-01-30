@@ -22,9 +22,12 @@ class DivDate extends Model
         'updated_at',
     ];
 
-
-
-    public function UnNumbers(){
-        return $this->belongsTo(UnNumber::class, 'DateDiv', 'date_code');
+    public function TNumberInformations(){
+        return $this->belongsTo(TNumberInformation::class, 'date_id','date_id');
     }
+
+
+    // public function UnNumbers(){
+    //     return $this->belongsTo(UnNumber::class, 'DateDiv', 'date_code');
+    // }
 }

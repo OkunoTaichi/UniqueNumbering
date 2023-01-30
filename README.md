@@ -1,2 +1,2 @@
-新規登録画面仮で一旦終わり
-次に一覧画面に取り掛かる
+https://1-notes.com/javascript-date-set-event/
+カレンダー使って見る

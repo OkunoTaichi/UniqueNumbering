@@ -15,8 +15,8 @@
                     <div class="main">
                         <div class="d-flex align-items-center">
                             <label for="number_name" class="form-label">予約項目</label>
-                            <input type="hidden" name="number_name" class="form-control" id="number_name" value="{{ $edits -> number_name }}">
-                            <p class="form-control">{{ $edits -> number_name }}</p>
+                            <input type="hidden" name="number_name" class="form-control" id="number_name" value="{{ $edits -> NumberDivs -> number_name }}">
+                            <p class="form-control">{{ $edits -> NumberDivs -> number_name }}</p>
                         </div>
                         <div class="d-flex align-items-center">
                             <label for="reserve_id" class="form-label">採番後の番号</label>

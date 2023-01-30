@@ -55,12 +55,12 @@
         
         @foreach($UnNumbers as $UnNumber)
         <tr>
-          <td>{{ $UnNumber->number_name }}</td>
+          <td>{{ $UnNumber->NumberDivs->number_name }}</td>
           <td>{{ $UnNumber->newest_id }}</td>
           <td>{{ $UnNumber->symbol }}</td>
-          <td>{{ $UnNumber->edit_length }}</td>
-          <td>{{ $UnNumber->edit_name }}</td>
-          <td>{{ $UnNumber->date_name }}</td>
+          <td>{{ $UnNumber->DivEdits->edit_length }}</td>
+          <td>{{ $UnNumber->DivEdits->edit_name }}</td>
+          <td>{{ $UnNumber->DivDates->date_name }}</td>
         </tr>
         @endforeach
       </table>
