@@ -26,6 +26,7 @@ class M_Numbering extends Model    // 一覧検索のみ
         'datediv',// 'date_id',
         'countNumber',
         'initNumber',
+        'symbol',
         
         'updated_at',
 
