@@ -13,7 +13,7 @@ class CreateMTenantBranchtable extends Migration
      */
     public function up()
     {
-        Schema::create('M_TenantBranchtable', function (Blueprint $table) {
+        Schema::create('M_TenantBranch', function (Blueprint $table) {
             $table->id();
             $table->char('TenantCode');
             $table->char('TenantBranch');

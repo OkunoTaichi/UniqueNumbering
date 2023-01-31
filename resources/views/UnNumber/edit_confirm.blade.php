@@ -22,13 +22,39 @@
                 <input type="hidden" name="tenant_name" class="form-control" id="tenant_name" value="JTB">
                 <input type="hidden" name="tenantBranch_name" class="form-control" id="tenantBranch_name" value="東京本社">
 
-                <input type="hidden" name="date_id" class="form-control" id="date_id" value="1">
-               
+       
                 <div class="d-flex align-items-center">
-                    <label for="number_name" class="form-label">登録名称</label>
-                    <input type="hidden" name="number_id" class="form-control" id="number_id" value="1">
-                    <input type="hidden" name="number_name" class="form-control" id="number_name" value="{{ $inputs['number_name'] }}">
-                    <p class="form-control">{{ $inputs['number_name'] }}</p>
+
+                    <div class="d-flex align-items-center">
+                        <label for="" class="form-label">テナントCD</label>
+                        <p class="form-control">{{ $inputs['TenantCode'] }} - {{ $inputs['TenantBranch'] }}</p>
+                    </div>
+    
+                    <div class="">
+                        <div class="d-flex align-items-center">
+                            <label for="TenantCode" class="form-label" style="padding-left:100px">テナント会社名</label>
+                            <input type="hidden" name="TenantCode" class="form-control" id="TenantCode" value="{{ $inputs['TenantCode'] }}">
+                            <p class="" style="margin-bottom: 0.5rem;">{{ $t_tenant->CompanyName }}</p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <label for="TenantBranch" class="form-label" style="padding-left:100px">テナント施設名</label>
+                            <input type="hidden" name="TenantBranch" class="form-control" id="TenantBranch" value="{{ $inputs['TenantBranch'] }}">
+                            <p class="" style="margin-bottom: 0.5rem;">{{ $t_tenantBranch->TenantBranchName }}</p>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+
+                <div class="d-flex align-items-center">
+                    <label for="numberdiv" class="form-label">登録名称</label>
+                    <input type="hidden" name="numberdiv" class="form-control" id="numberdiv" value="{{ $inputs['numberdiv'] }}">
+                    <p class="form-control">{{ $t_number->number_name }}</p>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <label for="initNumber" class="form-label">初期値</label>
+                    <input type="hidden" name="initNumber" class="form-control" id="initNumber" value="{{ $inputs['initNumber'] }}">
+                    <p class="form-control">{{ $inputs['initNumber'] }}</p>
                 </div>
 
                 <div class="d-flex align-items-center">
@@ -38,28 +64,14 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <label for="edit_id" class="form-label">編集区分</label>
-                    <input type="hidden" name="edit_id" class="form-control" id="edit_id" value="{{ $inputs['edit_id'] }}">
-                    <input type="hidden" name="edit_name" class="form-control" id="edit_name" value="{{ $t_edit->edit_name }}">
+                    <label for="editdiv" class="form-label">編集区分</label>
+                    <input type="hidden" name="editdiv" class="form-control" id="editdiv" value="{{ $inputs['editdiv'] }}">
                     <p class="form-control">{{ $t_edit->edit_name }}</p>
-                </div>
-
-                <div class="d-flex align-items-center">
-                    <label for="edit_length" class="form-label">有効桁数</label>
-                    <input type="hidden" name="edit_length" class="form-control" id="edit_length" value="{{ $t_edit->edit_length }}">
-                    <p class="form-control">{{ $t_edit->edit_length }}</p>
-                </div>
-
-                <div class="d-flex align-items-center">
-                    <label for="count_id" class="form-label">初期値イメージ</label>
-                    <input type="hidden" name="count_id" class="form-control" id="count_id" value="1">
-                    <p class="form-control">{{ $t_edit->memo }}</p>
                 </div>
                 
                 <div class="d-flex align-items-center">
-                    <label for="date_id" class="form-label">日付区分</label>
-                    <input type="hidden" name="date_id" class="form-control" id="date_id" value="{{ $inputs['date_id'] }}">
-                    <input type="hidden" name="date_name" class="form-control" id="date_name" value="{{ $t_date->date_name }}">
+                    <label for="datediv" class="form-label">日付区分</label>
+                    <input type="hidden" name="datediv" class="form-control" id="datediv" value="{{ $inputs['datediv'] }}">
                     <p class="form-control">{{ $t_date->date_name }}</p>
                 </div>
                 
