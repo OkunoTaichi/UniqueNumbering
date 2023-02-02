@@ -13,13 +13,13 @@ class CreateTenantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tenants', function (Blueprint $table) {
-            $table->id();
-            $table->integer('tenant_id')->unique();
-            $table->char('tenant_name');
-            $table->char('tenantBranch_name');
-            $table->timestamps();
-        });
+        // Schema::create('tenants', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->integer('tenant_id')->unique();
+        //     $table->char('tenant_name');
+        //     $table->char('tenantBranch_name');
+        //     $table->timestamps();
+        // });
     }
 
     /**

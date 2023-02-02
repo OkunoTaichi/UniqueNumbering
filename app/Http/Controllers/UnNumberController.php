@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UnNumberRequest;
 use App\Http\Requests\SearchRequest;
 use App\Models\M_Numbering;
-use App\Models\UnNumber;
-use App\Models\DivDate;
-use App\Models\DivEdit;
 use DB;
 
 class UnNumberController extends Controller
@@ -21,27 +17,38 @@ class UnNumberController extends Controller
     public function index(SearchRequest $request)
     {
         $searchId = $request->input('searchId');
+        $searchId_2 = $request->input('searchId_2');
         $query = M_Numbering::query();
+      
+        $s_tenantbranchs = DB::table('m_tenantbranch')->get();
+        $s_tenants = DB::table('m_tenant')->get();
 
         
 
         //入力された場合、un_numbersテーブルから完全に一致するIdを$queryに代入
-        if (isset($searchId)) {
-            $query->where('tenant_id',self::escapeLike($searchId));
-            $UnNumbers = $query->orderBy('created_at', 'desc')->paginate(5);//$queryをupdated_atの新しい順に並び替え（最近更新したのが上にくる）
-     
-            // dd($UnNumbers);
-
+        if (isset($searchId , $searchId_2)) {
+            $query->with(['Tenants','TenantBranchs'])->where('TenantCode',self::escapeLike($searchId))->where('TenantBranch',self::escapeLike($searchId_2));
+           
+            $UnNumbers = $query->orderBy('updated_at', 'desc')->paginate(7);//$queryをupdated_atの新しい順に並び替え（最近更新したのが上にくる）
+            
             $tenantName = $UnNumbers->first();//会社名と施設名を表示させるために１件だけ取得
+            // dd($tenantName);
 
             return view('UnNumber.UnNumber_index', [
                 'UnNumbers' => $UnNumbers,
                 'searchId' => $searchId,
+                'searchId_2' => $searchId_2,
                 'tenantName' => $tenantName,
+                's_tenantbranchs' => $s_tenantbranchs,
+                's_tenants' => $s_tenants,
             ]);
         }
+
+        // homeから1発目の表示
         return view('UnNumber.UnNumber_index', [
             'searchId' => $searchId,
+            's_tenantbranchs' => $s_tenantbranchs,
+            's_tenants' => $s_tenants,
         ]);
     }
     

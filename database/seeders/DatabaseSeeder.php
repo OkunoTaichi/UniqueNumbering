@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(UsersSeeder::class);
-        $this->call(TenantsSeeder::class);
+        // $this->call(TenantsSeeder::class);
 
         $this->call(M_NumberingsSeeder::class);
 
@@ -23,9 +23,11 @@ class DatabaseSeeder extends Seeder
         $this->call(DivDatesSeeder::class);
         $this->call(DivNumberSeeder::class);
         
+        $this->call(DivisonSeeder::class);
+        
         $this->call(M_TenantSeeder::class);
         $this->call(M_TenantBranchSeeder::class);
 
-        $this->call(CliantSeeder::class);
+        // $this->call(CliantSeeder::class);
     }
 }

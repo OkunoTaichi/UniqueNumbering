@@ -24,7 +24,12 @@ class SystemRequest extends FormRequest
     public function rules()
     {
         return [
-            'SignIn' => 'required | numeric | max:100000000 | exists:clients,id',
+            "TenantCode" => 'max:3 ',
+            "TenantBranch" => 'numeric | max:4 ',
+            "NumberDiv" => 'numeric | max:100 ',
+            "DateDiv" => 'numeric | max:100',
+            "No" => 'max:1000000000000000 ',
+            "CountNumber" => 'numeric | max:1000000000000000',
         ];
     }
 }

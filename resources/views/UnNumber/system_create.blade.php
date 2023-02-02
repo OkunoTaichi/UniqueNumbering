@@ -10,31 +10,31 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="wrap d-flex align-items-center">
-
                 <div class="main">
+                    <div class="d-flex">
+                        <div class="d-flex align-items-center">
+                            <label for="number_name" class="form-label" style="width:140px">テナントコード</label>
+                            <p class="form-control" style="width:100px">{{ $edit->TenantCode }}</p>
+                        </div>
+                        <div class="d-flex align-items-center" style="padding-left:20px">
+                            <label for="number_name" class="form-label" style="width:140px">テナントブランチ</label>
+                            <p class="form-control" style="width:100px">{{ $edit->TenantBranch }}</p>
+                        </div>
+                    </div>
+                    <br/>
                     <div class="d-flex align-items-center">
-                        <label for="number_name" class="form-label">予約項目</label>
-                        <p class="form-control">{{ $edits -> NumberDivs -> number_name }}</p>
+                        <label for="number_name" class="form-label" style="width:140px">予約項目</label>
+                        <p class="form-control">{{ $edit -> NumberDivs -> number_name }}</p>
                     </div>
                     <div class="d-flex align-items-center">
-                        <label for="reserve_id" class="form-label">採番後の番号</label>
+                        <label for="reserve_id" class="form-label" style="width:140px">日付区分</label>
+                        <p class="form-control">{{ $edit->DivDates->date_name }}</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <label for="reserve_id" class="form-label" style="width:140px">採番後の番号</label>
                         <p class="form-control">{{ $reserve_id }}</p>
-                    </div>
-                    
-                    <div class="d-flex align-items-center">
-                        <label for="client_id" class="form-label">ユーザーの名前</label>
-                        <p class="form-control">{{ $client -> client_name }}</p>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <label for="client_name" class="form-label">ユーザーID</label>
-                        <p class="form-control">{{ $client -> client_id }}</p>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <label for="tenant_id" class="form-label">会社＋施設コード</label>
-                        <p class="form-control">{{ $client -> tenant_id }}</p>
-                    </div>
+                    </div>  
                 </div>
-
             </div>
             
             <div class="mt-5 d-inline-block">

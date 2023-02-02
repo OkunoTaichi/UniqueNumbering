@@ -17,19 +17,13 @@ class M_Numbering extends Model    // 一覧検索のみ
     //可変項目
     protected $fillable = 
     [
-        'tenant_id',
-        'tenant_name',
-        'tenantBranch_name',
-
+        'TenantCode',
+        'TenantBranch',
         'numberdiv',
-        'editdiv',
-        'datediv',// 'date_id',
-        'countNumber',
         'initNumber',
         'symbol',
-        
-        'updated_at',
-
+        'editdiv',
+        'datediv',
     ];
 
     // リレーション関係
@@ -45,6 +39,15 @@ class M_Numbering extends Model    // 一覧検索のみ
     Public function NumberDivs()
     {
         return $this->hasOne(NumberDiv::class, 'number_id','numberdiv');
+    }
+
+    Public function Tenants()
+    {
+        return $this->hasOne(Tenant::class, 'TenantCode','TenantCode');
+    }
+    Public function TenantBranchs()
+    {
+        return $this->hasOne(TenantBranch::class, 'TenantBranch','TenantBranch');
     }
 
 

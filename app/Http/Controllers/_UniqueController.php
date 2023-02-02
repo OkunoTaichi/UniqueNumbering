@@ -22,7 +22,7 @@ class UniqueController extends Controller
         $inputs = $request->all();
         $client = DB::table('clients')->where('id', $inputs['SignIn'])->first();
         $edits = DB::table('M_Numbering')->where('tenant_id',[$client->tenant_id])->get();
-        dd($inputs);
+  
      
 
         return view(

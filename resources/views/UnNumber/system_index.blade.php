@@ -5,8 +5,10 @@
 <div class="container">
 <h1>採番処理画面</h1>
 
-    @if ($errors->has('SignIn')) 
-        <div class="text-danger err_m">{{ $errors->first('SignIn') }}</div>
+    @if(session('err_msg'))
+        <p class="text-danger">
+            {{ session('err_msg') }}
+        </p>
     @endif
 
 
@@ -15,12 +17,32 @@
             <form method="POST" action="{{ route('UnNumber.system_create') }}" onSubmit="return inputSubmit()">
                 @csrf
 
-                <div class="d-flex align-items-center">
-                    <label for="SignIn" class="form-label">ユーザー登録</label>
-                    <input type="text" name="SignIn" class="form-control" id="SignIn" value="{{ old('SignIn') }}">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" style="width:140px">テナントコード： </label>
+                    <div class="col-sm-5 d-flex">
+                        <select class="form-select" id="searchId" name="searchId" style="width:140px">
+                            @foreach ($s_tenants as $s_tenant)
+                                <option value="{{ $s_tenant->TenantCode }}" 
+                                @if(old('TenantCode') == $s_tenant->TenantCode)
+                                    selected
+                                @endif
+                                >{{ $s_tenant->TenantCode }}</option>
+                            @endforeach
+                        </select>
+                        <select class="form-select" id="searchId_2" name="searchId_2" style="width:150px">
+                            @foreach ($s_tenantbranchs as $s_tenantbranch)
+                                <option value="{{ $s_tenantbranch->TenantBranch }}" 
+                                @if(old('TenantBranch') == $s_tenantbranch->TenantBranch)
+                                    selected
+                                @endif
+                                >{{ $s_tenantbranch->TenantBranch }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
+
                 <div class="d-flex align-items-center">
-                    <label for="date" class="form-label">日時を入力</label>
+                    <label for="date" class="form-label" style="width:140px">日時を入力</label>
                     <input type="date" class="form-control" id="date" name="date">
                 </div>
 
