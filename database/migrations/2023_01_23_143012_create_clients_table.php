@@ -13,16 +13,16 @@ class CreateClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->id();
-            $table->string('client_name');
-            $table->integer('client_id');//採番前の番号
-            $table->integer('tenant_id');//テナントコード
+        // Schema::create('clients', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('client_name');
+        //     $table->integer('client_id');//採番前の番号
+        //     $table->integer('tenant_id');//テナントコード
         
 
-            $table->timestamps();
+        //     $table->timestamps();
             
-        });
+        // });
     }
 
     /**

@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UnNumberRequest;
-use App\Http\Requests\SearchRequest;
+use App\Http\Requests\EditRequest;
 use App\Models\M_Numbering;
+
 
 use DB;
 
@@ -27,10 +27,23 @@ class EditController extends Controller
         );
     }
 
-    public function edit_confirm(Request $request)
+    public function edit_confirm(EditRequest $request)
     {
         $inputs = $request->all();
-        
+     
+
+        // コード＋ブランチ->採番区分が使われているかのチェックの処理(DB:t_number_info)
+        $M_NumberInfo = M_Numbering::where('TenantCode',$inputs['TenantCode'])
+        ->where('TenantBranch',$inputs['TenantBranch'])
+        ->where('NumberDiv',$inputs['numberdiv'])
+        ->first();
+
+        // dd($M_NumberInfo);
+
+        if($M_NumberInfo != null ){
+            \Session::flash('err_msg' , '採番区分が既に使用されています。');
+            return back()->withInput(); 
+        }
 
         //入力された値から紐づいている行を取得し、nameカラムを格納する。
         $t_edit = DB::table('EditDiv')->where('edit_id', $inputs['editdiv'])->first();
@@ -46,7 +59,7 @@ class EditController extends Controller
         ); 
     }
 
-    public function edit_store(Request $request)
+    public function edit_store(EditRequest $request)
     {
         $UnNumberInputs = $request->all();
         // dd($UnNumberInputs);

@@ -36,7 +36,7 @@
                     <select class="form-select" id="TenantBranch" name="TenantBranch">
                         @foreach ($s_tenantBranchs as $s_tenantBranch)
                             <option value="{{ $s_tenantBranch->TenantBranch }}" 
-                            @if(old('TenantBranch') == $s_tenantBranch->TenantBranchName)
+                            @if(old('TenantBranch') == $s_tenantBranch->TenantBranch)
                                 selected
                             @endif
                             >{{ $s_tenantBranch->TenantBranchName }}</option>
@@ -50,44 +50,47 @@
 
                 
                 <div class="d-flex align-items-center">
-                    <label for="numberdiv" class="form-label">登録名称</label>
+                    <label for="numberdiv" class="form-label">採番区分</label>
                     <select class="form-select" id="numberdiv" name="numberdiv">
                         @foreach ($s_numbers as $s_number)
                             <option value="{{ $s_number->number_id }}" 
-                            @if(old('number_id') == $s_number->number_name)
+                            @if(old('numberdiv') == $s_number->number_id)
                                 selected
                             @endif
                             >{{ $s_number->number_name }}</option>
                         @endforeach
                     </select>
-                    @if ($errors->has('number_id')) 
-                        <div class="text-danger err_m">{{ $errors->first('number_id') }}</div>
+                    @if ($errors->has('numberdiv')) 
+                        <div class="text-danger err_m">{{ $errors->first('numberdiv') }}</div>
                     @endif
                 </div>
                 <div class="d-flex align-items-center">
                     <label for="initNumber" class="form-label">初期値</label>
                     <input type="text" name="initNumber" class="form-control" id="initNumber" value="{{ old('initNumber') }}">
-                </div>
-
-                <div class="d-flex align-items-center">
-                    <label for="symbol" class="form-label">記号</label>
-                    <input type="text" name="symbol" class="form-control" id="symbol" value="{{ old('symbol') }}">
+                    @if ($errors->has('initNumber')) 
+                        <div class="text-danger err_m">{{ $errors->first('initNumber') }}</div>
+                    @endif
                 </div>
 
                 <div class="d-flex align-items-center">
                     <label for="editdiv" class="form-label">編集区分</label>
-                    <select class="form-select" id="editdiv" name="editdiv">
+                    <select class="form-select" id="editdiv" name="editdiv" onchange="inputSymbol(this)">
+                        <option hidden>選択してください</option><!-- javascriptとの兼ね合いでバリデートNGの場合は再選択にしてます。 -->
                         @foreach ($s_edits as $s_edit)
-                            <option value="{{ $s_edit->edit_id }}" 
-                            @if(old('edit_id') == $s_edit->edit_name)
-                                selected
-                            @endif
-                            >{{ $s_edit->edit_name }}</option>
+                            <option value="{{ $s_edit->edit_id }}" >{{ $s_edit->edit_name }}</option>
                         @endforeach
                     </select>
-                    @if ($errors->has('edit_id')) 
-                        <div class="text-danger err_m">{{ $errors->first('edit_id') }}</div>
+                    @if ($errors->has('editdiv')) 
+                        <div class="text-danger err_m">{{ $errors->first('editdiv') }}</div>
                     @endif
+                    @if ($errors->has('symbol')) 
+                        <div class="text-danger err_m">{{ $errors->first('symbol') }}</div>
+                    @endif
+                </div>
+
+                <div class="align-items-center" style="display: none;" id="symbol_wrap">
+                    <label for="symbol" class="form-label">記号</label>
+                    <input type="text" name="symbol" class="form-control" id="symbol" value="{{ old('symbol') }}" maxlength="3">
                 </div>
 
                 <div class="d-flex align-items-center">
@@ -95,14 +98,14 @@
                     <select class="form-select" id="datediv" name="datediv">
                         @foreach ($s_dates as $s_date)
                             <option value="{{ $s_date->date_id }}" 
-                            @if(old('date_id') == $s_date -> date_name)
+                            @if(old('datediv') == $s_date -> date_id)
                                 selected
                             @endif
                             >{{ $s_date->date_name }}</option>
                         @endforeach
                     </select>
-                    @if ($errors->has('edit_id')) 
-                        <div class="text-danger err_m">{{ $errors->first('date_id') }}</div>
+                    @if ($errors->has('datediv')) 
+                        <div class="text-danger err_m">{{ $errors->first('datediv') }}</div>
                     @endif
                 </div>
 
@@ -118,6 +121,26 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    // function GetSelectedTextValue(language) {
+    //     let sleTex = language.options[language.selectedIndex].innerHTML;
+    //     let selVal = language.value;
+    //     alert("Selected Text: " + sleTex + " Value: " + selVal);
+    // }
+    function inputSymbol(editdiv) {
+        let selVal = editdiv.value;
+        let target = document.getElementById("symbol_wrap");
+        if(selVal ==  4 || selVal ==  5 ){
+            target.style.display="flex";
+        }else{
+            target.style.display="none";
+            symbol.value ="";
+        } 
+    }
+
+</script>
 
 @endsection
 

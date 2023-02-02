@@ -23,3 +23,7 @@ class Client extends Model
         'checked_at',
     ];
 }
+
+
+
+

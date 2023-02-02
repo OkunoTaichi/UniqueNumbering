@@ -23,8 +23,10 @@ class SearchRequest extends FormRequest
      */
     public function rules()
     {
+        // 検索フォームは必須にするとエラーが出ます
         return [
-            'searchId' => 'numeric|exists:M_Numbering,tenant_id|max:100000000',
+            'searchId' => 'max:100000000 | exists:M_Numbering,TenantCode',
+            'searchId_2' => 'max:100000000 | numeric | exists:M_Numbering,TenantBranch',
         ];
     }
 }

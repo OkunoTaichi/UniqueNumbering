@@ -17,14 +17,7 @@
         <div class="col-md-12">
             <form method="POST" action="{{ route('UnNumber.edit_store') }}">
                 @csrf
-
-                <input type="hidden" name="tenant_id" class="form-control" id="tenant_id" value="11111111">
-                <input type="hidden" name="tenant_name" class="form-control" id="tenant_name" value="JTB">
-                <input type="hidden" name="tenantBranch_name" class="form-control" id="tenantBranch_name" value="東京本社">
-
-       
                 <div class="d-flex align-items-center">
-
                     <div class="d-flex align-items-center">
                         <label for="" class="form-label">テナントCD</label>
                         <p class="form-control">{{ $inputs['TenantCode'] }} - {{ $inputs['TenantBranch'] }}</p>
@@ -54,13 +47,25 @@
                 <div class="d-flex align-items-center">
                     <label for="initNumber" class="form-label">初期値</label>
                     <input type="hidden" name="initNumber" class="form-control" id="initNumber" value="{{ $inputs['initNumber'] }}">
-                    <p class="form-control">{{ $inputs['initNumber'] }}</p>
+                    <p class="form-control">
+                        @if($inputs['initNumber'] == null)
+                            なし
+                        @else
+                            {{ $inputs['initNumber'] }}
+                        @endif
+                    </p>
                 </div>
 
                 <div class="d-flex align-items-center">
                     <label for="symbol" class="form-label">記号</label>
                     <input type="hidden" name="symbol" class="form-control" id="symbol" value="{{ $inputs['symbol'] }}">
-                    <p class="form-control">{{ $inputs['symbol'] }}</p>
+                    <p class="form-control">
+                    @if($inputs['symbol'] == null)
+                        なし
+                    @else
+                        {{ $inputs['symbol'] }}        
+                    @endif
+                    </p>
                 </div>
 
                 <div class="d-flex align-items-center">

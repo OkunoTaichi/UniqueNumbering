@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMNumberingTable extends Migration
+class CreateTNumberInfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreateMNumberingTable extends Migration
      */
     public function up()
     {
-        Schema::create('M_Numbering', function (Blueprint $table) {
+        Schema::create('t_number_info', function (Blueprint $table) {
             $table->id();
 
             $table->char('TenantCode');
             $table->integer('TenantBranch');
 
-            $table->integer('numberdiv');
-            $table->char('initNumber')->nullable();// 最新の採番後の番号（カウントIDとリング）
-            $table->char('symbol', 3)->nullable();
-            $table->integer('editdiv');
-            $table->integer('datediv');
-            
+            $table->integer('NumberDiv');
+            $table->integer('DateDiv');
+
+            $table->char('No');// 最新の採番後の番号（カウントIDとリング）
+            $table->integer('CountNumber');
+
             $table->timestamps();
         });
     }
@@ -36,6 +36,6 @@ class CreateMNumberingTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('M_Numbering');
+        Schema::dropIfExists('t_number_info');
     }
 }
