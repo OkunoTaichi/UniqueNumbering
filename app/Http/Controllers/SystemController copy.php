@@ -14,7 +14,6 @@ class SystemController extends Controller
 {
     public function system_index()
     {
-
         $s_tenantbranchs = DB::table('m_tenantbranch')->get();
         $s_tenants = DB::table('m_tenant')->get();
         return view(
@@ -26,7 +25,7 @@ class SystemController extends Controller
     {
         // ➀ 採番区分特定の処理 
         $inputs = $request->all();
-
+  
         $searchId = $request->input('searchId');
         $searchId_2 = $request->input('searchId_2');
         $searchId_3 = intval($request->input('number_id'));

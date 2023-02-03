@@ -81,7 +81,25 @@
         </thead>
         
         @foreach($UnNumbers as $UnNumber)
+
         <tr>
+          <td>
+            @php 
+            if($UnNumber->numberdiv == 1 ){
+              echo "予約No";
+            }elseif($UnNumber->numberdiv == 2 ){
+              echo "利用No";
+            }elseif($UnNumber->numberdiv == 3 ){
+              echo "利用個別No";
+            }elseif($UnNumber->numberdiv == 4 ){
+              echo "利用部屋No";
+            }elseif($UnNumber->numberdiv == 5 ){
+              echo "伝票No";
+            }else{
+              echo "予約金No";
+            }
+            @endphp
+          </td>
           <td>{{ $UnNumber->NumberDivs->number_name }}</td>
           <td>{{ $UnNumber->initNumber }}</td>
           <td>{{ $UnNumber->symbol }}</td>

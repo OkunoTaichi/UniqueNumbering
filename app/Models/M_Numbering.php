@@ -40,6 +40,26 @@ class M_Numbering extends Model    // 一覧検索のみ
     {
         return $this->hasOne(NumberDiv::class, 'number_id','numberdiv');
     }
+    
+
+
+
+    // 全てが詰まったテーブル とりあえずゴールが数値なのでこの形
+    Public function division_Numbers()
+    {
+        return $this->hasOne(M_Division::class, 'DivNo','numberdiv');
+    }
+    Public function division_edits()
+    {
+        return $this->hasOne(M_Division::class, 'DivNo','editdiv');
+    }
+    Public function division_dates()
+    {
+        return $this->hasOne(M_Division::class, 'DivNo','datediv');
+    }
+
+
+    
 
     Public function Tenants()
     {
@@ -52,7 +72,7 @@ class M_Numbering extends Model    // 一覧検索のみ
 
 
 
-// ***************** この下は別プログラム*********************:
+// ***************** この下は別プログラム不要品*********************:
 
 
     // 予約番号を発行するまでの処理 --------------------
