@@ -13,12 +13,12 @@ class CreateDivNumbersTable extends Migration
      */
     public function up()
     {
-        Schema::create('NumberDiv', function (Blueprint $table) {
-            $table->id();
-            $table->integer('number_id')->constrained();
-            $table->char('number_name');
-            $table->timestamps();
-        });
+        // Schema::create('NumberDiv', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->integer('number_id')->constrained();
+        //     $table->char('number_name');
+        //     $table->timestamps();
+        // });
     }
 
     /**

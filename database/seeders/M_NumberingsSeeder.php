@@ -21,6 +21,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '1',
             'initNumber' => '100000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
@@ -30,6 +31,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '2',
             'initNumber' => '200000',
             'editdiv' => '2',
+            'lengs' => '7',
             'datediv' => '2',
         ]);
         DB::table('M_Numbering')->insert([
@@ -39,6 +41,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '3',
             'initNumber' => '300000',
             'editdiv' => '3',
+            'lengs' => '6',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -48,6 +51,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '4',
             'initNumber' => '400000',
             'editdiv' => '4',
+            'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'JTB',
         ]);
@@ -58,6 +62,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '5',
             'initNumber' => '500000',
             'editdiv' => '5',
+            'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
         ]);
@@ -68,6 +73,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '6',
             'initNumber' => '60000',
             'editdiv' => '5',
+            'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
         ]);
@@ -80,6 +86,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '1',
             'initNumber' => '10000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -89,6 +96,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '2',
             'initNumber' => '20000',
             'editdiv' => '2',
+            'lengs' => '7',
             'datediv' => '2',
         ]);
         DB::table('M_Numbering')->insert([
@@ -98,6 +106,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '3',
             'initNumber' => '30000',
             'editdiv' => '3',
+            'lengs' => '6',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -107,6 +116,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '4',
             'initNumber' => '40000',
             'editdiv' => '4',
+            'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'JTB',
         ]);
@@ -117,6 +127,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '5',
             'initNumber' => '50000',
             'editdiv' => '5',
+            'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
         ]);
@@ -127,6 +138,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '6',
             'initNumber' => '60000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '3',
         ]);
 
@@ -137,6 +149,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '1',
             'initNumber' => '10000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -146,6 +159,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '2',
             'initNumber' => '20000',
             'editdiv' => '2',
+            'lengs' => '7',
             'datediv' => '2',
         ]);
         DB::table('M_Numbering')->insert([
@@ -155,6 +169,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '3',
             'initNumber' => '30000',
             'editdiv' => '3',
+            'lengs' => '6',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -164,6 +179,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '4',
             'initNumber' => '40000',
             'editdiv' => '4',
+            'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'JTB',
         ]);
@@ -174,6 +190,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '5',
             'initNumber' => '50000',
             'editdiv' => '5',
+            'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
         ]);
@@ -184,6 +201,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '6',
             'initNumber' => '60000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '3',
         ]);
 
@@ -194,6 +212,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '1',
             'initNumber' => '10000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -203,6 +222,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '2',
             'initNumber' => '20000',
             'editdiv' => '2',
+            'lengs' => '7',
             'datediv' => '2',
         ]);
         DB::table('M_Numbering')->insert([
@@ -212,6 +232,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '3',
             'initNumber' => '30000',
             'editdiv' => '3',
+            'lengs' => '6',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -221,6 +242,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '4',
             'initNumber' => '40000',
             'editdiv' => '4',
+            'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'JTB',
         ]);
@@ -231,6 +253,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '5',
             'initNumber' => '50000',
             'editdiv' => '5',
+            'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
         ]);
@@ -241,6 +264,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '6',
             'initNumber' => '60000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '3',
         ]);
 
@@ -251,6 +275,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '1',
             'initNumber' => '1000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
@@ -260,6 +285,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '2',
             'initNumber' => '2000',
             'editdiv' => '2',
+            'lengs' => '7',
             'datediv' => '2',
         ]);
         DB::table('M_Numbering')->insert([
@@ -269,6 +295,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '3',
             'initNumber' => '3000',
             'editdiv' => '3',
+            'lengs' => '6',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -278,6 +305,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '4',
             'initNumber' => '4000',
             'editdiv' => '4',
+            'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'Ra',
         ]);
@@ -288,6 +316,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '5',
             'initNumber' => '5000',
             'editdiv' => '5',
+            'lengs' => '7',
             'datediv' => '1',
             'symbol' => 'Ra',
         ]);
@@ -298,6 +327,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '1',
             'initNumber' => '1000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
@@ -307,6 +337,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '2',
             'initNumber' => '2000',
             'editdiv' => '2',
+            'lengs' => '7',
             'datediv' => '2',
         ]);
         DB::table('M_Numbering')->insert([
@@ -316,6 +347,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '3',
             'initNumber' => '3000',
             'editdiv' => '3',
+            'lengs' => '6',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -325,6 +357,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '4',
             'initNumber' => '4000',
             'editdiv' => '4',
+            'lengs' => '15',
             'datediv' => '3',
             'symbol' => 'Ra',
         ]);
@@ -335,6 +368,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '5',
             'initNumber' => '5000',
             'editdiv' => '5',
+            'lengs' => '7',
             'datediv' => '3',
             'symbol' => 'Ra',
         ]);
@@ -345,6 +379,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '1',
             'initNumber' => '1000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -354,6 +389,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '2',
             'initNumber' => '2000',
             'editdiv' => '2',
+            'lengs' => '7',
             'datediv' => '2',
         ]);
         DB::table('M_Numbering')->insert([
@@ -363,6 +399,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '3',
             'initNumber' => '3000',
             'editdiv' => '3',
+            'lengs' => '6',
             'datediv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
@@ -372,6 +409,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '4',
             'initNumber' => '4000',
             'editdiv' => '4',
+            'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'Ra',
         ]);
@@ -382,6 +420,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '5',
             'initNumber' => '5000',
             'editdiv' => '5',
+            'lengs' => '7',
             'datediv' => '3',
             'symbol' => 'Ra',
         ]);
@@ -392,6 +431,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '1',
             'initNumber' => '41000',
             'editdiv' => '1',
+            'lengs' => '15',
             'datediv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
@@ -401,6 +441,7 @@ class M_NumberingsSeeder extends Seeder
             'numberdiv' => '2',
             'initNumber' => '2000',
             'editdiv' => '2',
+            'lengs' => '7',
             'datediv' => '2',
         ]);
     }

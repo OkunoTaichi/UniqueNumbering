@@ -23,12 +23,12 @@
                     </div>
                     <br/>
                     <div class="d-flex align-items-center">
-                        <label for="number_name" class="form-label" style="width:140px">予約項目</label>
-                        <p class="form-control">{{ $edit -> NumberDivs -> number_name }}</p>
+                        <label for="number_name" class="form-label" style="width:140px">採番区分</label>
+                        <p class="form-control">{{ $edit->numberdiv }}</p>
                     </div>
                     <div class="d-flex align-items-center">
-                        <label for="reserve_id" class="form-label" style="width:140px">日付区分</label>
-                        <p class="form-control">{{ $edit->DivDates->date_name }}</p>
+                        <label for="reserve_id" class="form-label" style="width:140px">採番日付</label>
+                        <p class="form-control">{{ $dateTime }}</p>
                     </div>
                     <div class="d-flex align-items-center">
                         <label for="reserve_id" class="form-label" style="width:140px">採番後の番号</label>
@@ -39,7 +39,6 @@
             
             <div class="mt-5 d-inline-block">
                 <a href="{{ route('UnNumber.system_index') }}" class="btn btn-primary me-4">採番処理画面へ戻る</a>
-              
             </div>
        
         </div>

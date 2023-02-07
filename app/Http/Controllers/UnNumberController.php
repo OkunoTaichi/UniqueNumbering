@@ -27,7 +27,22 @@ class UnNumberController extends Controller
 
         //入力された場合、un_numbersテーブルから完全に一致するIdを$queryに代入
         if (isset($searchId , $searchId_2)) {
-            $query->with(['Tenants','TenantBranchs'])->where('TenantCode',self::escapeLike($searchId))->where('TenantBranch',self::escapeLike($searchId_2));
+            $query->with(['Tenants','TenantBranchs'])
+            ->where('TenantCode',self::escapeLike($searchId))
+            ->where('TenantBranch',self::escapeLike($searchId_2))
+            ->with(['division_numbers' => function($query)
+            {
+                $query->where('DivCode','NumberDiv');
+            }])
+            ->with(['division_edits' => function($query)
+            {
+                $query->where('DivCode','EditDiv');
+            }])
+            ->with(['division_dates' => function($query)
+            {
+                $query->where('DivCode','DateDiv');
+            }])
+            ->get();
            
             $UnNumbers = $query->orderBy('updated_at', 'desc')->paginate(7);//$queryをupdated_atの新しい順に並び替え（最近更新したのが上にくる）
             
@@ -61,8 +76,8 @@ class UnNumberController extends Controller
 
     public function create()
     {
-        $s_edits = DB::table('EditDiv')->get();
-        $s_dates = DB::table('NumberDiv')->get();
+        // $s_edits = DB::table('EditDiv')->get();
+        // $s_dates = DB::table('NumberDiv')->get();
 
         return view(
             'UnNumber.UnNumber_create',compact('s_dates', 's_edits')
@@ -79,8 +94,8 @@ class UnNumberController extends Controller
         $inputs = $request->all();
       
         //入力された値から紐づいている行を取得し、nameカラムを格納する。
-        $t_edit = DB::table('EditDiv')->where('edit_id', $inputs['edit_id'])->first()->edit_name;
-        $t_date = DB::table('NumberDiv')->where('date_id', $inputs['date_id'])->first()->date_name;
+        // $t_edit = DB::table('EditDiv')->where('edit_id', $inputs['edit_id'])->first()->edit_name;
+        // $t_date = DB::table('NumberDiv')->where('date_id', $inputs['date_id'])->first()->date_name;
         
         return view(
             'UnNumber.UnNumber_confirm',compact('inputs','t_date', 't_edit', )

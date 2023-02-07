@@ -27,11 +27,11 @@ class EditRequest extends FormRequest
         return [
             'TenantCode' => 'required | max:100000000 | exists:m_tenant,TenantCode',
             'TenantBranch' => 'required |  max:100000000 | exists:m_tenantbranch,TenantBranch',
-            'numberdiv' => 'required | max:100000000 | exists:numberdiv,number_id',
+            'numberdiv' => 'required | max:100000000',
             'initNumber' => 'required | nullable | numeric | max:100000000',
             'symbol' => 'nullable | max:3',
-            'editdiv' => 'required |  max:100000000 | exists:editdiv,edit_id',
-            'datediv' => 'required | max:100000000 | exists:datediv,date_id',
+            'editdiv' => 'required |  max:100000000 ',
+            'datediv' => 'required | max:100000000 ',
         ];
     }
 }
