@@ -72,12 +72,24 @@
         }
     
         function checkDestroy(){
+            var flag = false; 
+            for(var i=0; i<document.url.id.length;i++){
+                if(document.url.id[i].checked){ 
+                    flag = true; 
+                }
+            }
+            if(!flag){ 
+                alert("項目が選択されていません。");
+                return false;
+            }
             if(window.confirm('削除してよろしいですか？')){
                 return true;
             } else {
                 return false;
             }
         }
+
+        
     </script>
     <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script>
 </body>

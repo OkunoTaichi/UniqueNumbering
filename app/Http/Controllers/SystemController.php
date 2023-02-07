@@ -7,6 +7,7 @@ use App\Http\Requests\SystemRequest;
 use App\Models\System;
 use App\Models\T_NumberInfo;
 use App\Models\M_Numbering;
+use App\Models\M_Division;
 
 use DB;
 
@@ -17,6 +18,7 @@ class SystemController extends Controller
 
         $s_tenantbranchs = DB::table('m_tenantbranch')->get();
         $s_tenants = DB::table('m_tenant')->get();
+        
         return view(
             'UnNumber.system_index', compact('s_tenants', 's_tenantbranchs')
         );
@@ -51,14 +53,18 @@ class SystemController extends Controller
         $countNumbers = T_NumberInfo::where('TenantCode',$searchId)
             ->where('TenantBranch',$searchId_2)
             ->where('NumberDiv',$searchId_3)
+            ->where('NumberDate',$dateTime)
             ->first();
   
         if($countNumbers != null){
             $update_id = $countNumbers->id;// DB登録のID
+            $countNumber = $countNumbers->CountNumber + 1;// DB登録のID
         }else{
             $update_id = null;
+            $countNumber = 1;
         }
         
+    
         
         // 使用するモデル
         $System = new System;
@@ -66,18 +72,23 @@ class SystemController extends Controller
         // ➀ セレクトボックスで選択されたテナントコードとテナントブランチを元にm_numberingテーブルから該当のデータを絞込み
         $edit = $System->editSearch($searchId,$searchId_2,$searchId_3);
 
-        // ➁ 採番するIDの処理 * $change_number 最後DBに更新
-        $change_number = $System->numberSearch($countNumbers,$edit);
-        
-        // ➂ 編集区分によって採番するパターンを変更する処理
-        $reserve_id = $System->division($edit, $change_number, $dateTime);
+        // ➁ 採番する連番の処理
+        $initNumber = $edit->initNumber;
+        $initNumber = intval($initNumber);
+        $countNumber = intval($countNumber);
+        $change_number = $System->numberSearch($countNumbers, $countNumber,$initNumber);
+
+        // ➂ 編集区分によって採番するパターンを変更する処理(01処理)
+        $reserve_id = $System->divisions($edit, $change_number, $dateTime);
+        // ➂ 編集区分によって採番するパターンを変更する処理--ボツ
+        // $reserve_id = $System->division($edit, $change_number, $dateTime);
         
         // ➃ 予約確定 バージョン 予約完了画面に移動
-        $System->update_create($edit, $reserve_id, $change_number,$update_id);
+        $System->update_create($edit, $reserve_id, $countNumber,$update_id,$dateTime);
         // $request->session()->regenerateToken();
 
         return view(
-            'UnNumber.system_create',  compact('edit','reserve_id')
+            'UnNumber.system_create',  compact('edit','reserve_id','dateTime')
         );
 
         

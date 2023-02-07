@@ -13,14 +13,14 @@ class CreateDivDatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('DateDiv', function (Blueprint $table) {
-            $table->id();
-            $table->integer('date_id')->constrained();
-            $table->char('date_name');
+        // Schema::create('DateDiv', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->integer('date_id')->constrained();
+        //     $table->char('date_name');
     
-            $table->text('memo');
-            $table->timestamps();
-        });
+        //     $table->text('memo');
+        //     $table->timestamps();
+        // });
     }
 
     /**

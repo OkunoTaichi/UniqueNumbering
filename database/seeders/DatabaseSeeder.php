@@ -19,9 +19,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(M_NumberingsSeeder::class);
 
-        $this->call(DivEditsSeeder::class);
-        $this->call(DivDatesSeeder::class);
-        $this->call(DivNumberSeeder::class);
+        // $this->call(DivEditsSeeder::class);
+        // $this->call(DivDatesSeeder::class);
+        // $this->call(DivNumberSeeder::class);
         
         $this->call(M_DivisonSeeder::class);
         

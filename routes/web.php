@@ -35,12 +35,10 @@ Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
     Route::get('edit_create', [EditController::class, 'edit_create'])->name('edit_create');
     Route::post('edit_confirm', [EditController::class, 'edit_confirm'])->name('edit_confirm');
     Route::post('edit_store', [EditController::class, 'edit_store'])->name('edit_store');
+    Route::get('edit_edit/{id}', [EditController::class, 'edit_edit'])->name('edit_edit');
+    Route::post('edit_update', [EditController::class, 'edit_update'])->name('edit_update');
+    Route::post('edit_delete', [EditController::class, 'edit_delete'])->name('edit_delete');
 
-    //予約時の採番処理
-    // Route::get('unique_index', [UniqueController::class, 'unique_index'])->name('unique_index');
-    // Route::post('unique_create', [UniqueController::class, 'unique_create'])->name('unique_create');
-    // Route::post('unique_confirm', [UniqueController::class, 'unique_confirm'])->name('unique_confirm');
-    // Route::post('unique_store', [UniqueController::class, 'unique_store'])->name('unique_store');
 
     // 採番処理のみ
     Route::get('system_index', [SystemController::class, 'system_index'])->name('system_index');

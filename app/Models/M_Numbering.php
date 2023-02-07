@@ -22,24 +22,25 @@ class M_Numbering extends Model    // 一覧検索のみ
         'numberdiv',
         'initNumber',
         'symbol',
+        'lengs',
         'editdiv',
         'datediv',
     ];
 
     // リレーション関係
-    Public function DivEdits()
-    {
-        return $this->hasOne(DivEdit::class, 'edit_id','editdiv');
-    }
-    Public function DivDates()
-    {
-        // DivDateの'date_id'とこの't_number_information'の'datediv'を連結
-        return $this->hasOne(DivDate::class, 'date_id','datediv');
-    }
-    Public function NumberDivs()
-    {
-        return $this->hasOne(NumberDiv::class, 'number_id','numberdiv');
-    }
+    // Public function DivEdits()
+    // {
+    //     return $this->hasOne(DivEdit::class, 'edit_id','editdiv');
+    // }
+    // Public function DivDates()
+    // {
+    //     // DivDateの'date_id'とこの't_number_information'の'datediv'を連結
+    //     return $this->hasOne(DivDate::class, 'date_id','datediv');
+    // }
+    // Public function NumberDivs()
+    // {
+    //     return $this->hasOne(NumberDiv::class, 'number_id','numberdiv');
+    // }
     
 
 
@@ -47,15 +48,15 @@ class M_Numbering extends Model    // 一覧検索のみ
     // 全てが詰まったテーブル とりあえずゴールが数値なのでこの形
     Public function division_Numbers()
     {
-        return $this->hasOne(M_Division::class, 'DivNo','numberdiv');
+        return $this->hasMany(M_Division::class, 'DivNo','numberdiv');
     }
     Public function division_edits()
     {
-        return $this->hasOne(M_Division::class, 'DivNo','editdiv');
+        return $this->hasMany(M_Division::class, 'DivNo','editdiv');
     }
     Public function division_dates()
     {
-        return $this->hasOne(M_Division::class, 'DivNo','datediv');
+        return $this->hasMany(M_Division::class, 'DivNo','datediv');
     }
 
 

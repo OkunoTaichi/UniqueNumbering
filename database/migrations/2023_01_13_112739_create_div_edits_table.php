@@ -13,14 +13,14 @@ class CreateDivEditsTable extends Migration
      */
     public function up()
     {
-        Schema::create('EditDiv', function (Blueprint $table) {
-            $table->id();
-            $table->integer('edit_id')->unique();
-            $table->char('edit_name');
-            $table->integer('edit_length');
-            $table->text('memo');
-            $table->timestamps();
-        });
+        // Schema::create('EditDiv', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->integer('edit_id')->unique();
+        //     $table->char('edit_name');
+        //     $table->integer('edit_length');
+        //     $table->text('memo');
+        //     $table->timestamps();
+        // });
     }
 
     /**

@@ -18,25 +18,12 @@ class T_NumberInfo extends Model
         'TenantCode',
         'TenantBranch',
         'NumberDiv',
-        'DateDiv',
+        'NumberDate',
         'No',
         'CountNumber',
     ];
 
     // リレーション関係
-    Public function DivEdits()
-    {
-        return $this->hasOne(DivEdit::class, 'edit_id','editdiv');
-    }
-    Public function DivDates()
-    {
-        // DivDateの'date_id'とこの't_number_information'の'datediv'を連結
-        return $this->hasOne(DivDate::class, 'date_id','datediv');
-    }
-    Public function NumberDivs()
-    {
-        return $this->hasOne(NumberDiv::class, 'number_id','numberdiv');
-    }
 
     Public function Tenants()
     {

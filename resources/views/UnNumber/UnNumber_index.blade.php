@@ -58,60 +58,67 @@
     
     <!--検索結果テーブル 検索されたテナントコードがあった時のみ表示する-->
     @if (!empty($tenantName))
-    <div class="productTable">
-      <div class="d-flex">
-        <div class="">
-          <p class="">テナント会社名：{{ $tenantName->Tenants->CompanyName }}</p>
-          <p class="">テナント施設名：{{ $tenantName->TenantBranchs->TenantBranchName}}</p>
-        </div> 
-      </div>
-      <p>{{ $UnNumbers->count() }} 件表示</p>
 
-      <table class="table table-hover">
-        <thead style="background-color: #ffd900">
-          <tr>
-            <th>採番区分</th>
-            <th>初期値</th>
-            <th>記号</th>
-            <th>有効桁数</th>
-            <th>編集区分</th>
-            <th>日付区分</th>
-           
-          </tr>
-        </thead>
+    <form method="post" action="/UnNumber/edit_delete" name="url">
+      @csrf
+      <div class="productTable">
+        <div class="d-flex">
+          <div class="">
+            <p class="">テナント会社名：{{ $tenantName->Tenants->CompanyName }}</p>
+            <p class="">テナント施設名：{{ $tenantName->TenantBranchs->TenantBranchName}}</p>
+          </div> 
+        </div>
+        <p>{{ $UnNumbers->count() }} 件表示</p>
+        <br/>
+
+        <div class="d-flex" style="display:flex;">
+          <button type="button" class="btn btn-primary me-4"><a style="color:#fff;" href="{{ route('UnNumber.edit_create') }}">新規作成</a></button>
+          <button type="button" class="btn btn-primary me-4" onclick="editTransition()">編 集</button>
+          <button type="submit" class="btn btn-primary" onclick="return checkDestroy()">削 除</button>
+        </div>
+        <br/>
+
+          <table class="table table-hover">
+            <thead style="background-color: #ffd900">
+              <tr>
+                <th></th>
+                <th>採番区分</th>
+                <th>初期値</th>
+                <th>記号</th>
+                <th>有効桁数</th>
+                <th>編集区分</th>
+                <th>日付区分</th>
+              
+              </tr>
+            </thead>
+            
+            @foreach($UnNumbers as $UnNumber)
+
+            <tr>
+              <!-- javaScriptでURL変更 -->
+              <td><input class="custom-control-input check" id="radio" name="id" type="radio" value="{{ $UnNumber->id }}"></td>
+            
+              <td>{{ $UnNumber->division_numbers[0]->DivName }}</td>
+              <td>{{ $UnNumber->initNumber }}</td>
+              <td>{{ $UnNumber->symbol }}</td>
+              <td>{{ $UnNumber->lengs }}</td>
+              <td>{{ $UnNumber->division_edits[0]->DivName }}</td>
+              <td>{{ $UnNumber->division_dates[0]->DivName }}</td>
+            </tr>
+            @endforeach
+          </table>
+          <!-- ダミーのラジオボタン（ラジオボタンが１つだけだとＪＳが反応しない）要修正か所 -->
+          <input class=""style="display:none;" id="radio" name="id" type="radio" value="">
         
-        @foreach($UnNumbers as $UnNumber)
+      </div><!--テーブルここまで-->
 
-        <tr>
-          <td>
-            @php 
-            if($UnNumber->numberdiv == 1 ){
-              echo "予約No";
-            }elseif($UnNumber->numberdiv == 2 ){
-              echo "利用No";
-            }elseif($UnNumber->numberdiv == 3 ){
-              echo "利用個別No";
-            }elseif($UnNumber->numberdiv == 4 ){
-              echo "利用部屋No";
-            }elseif($UnNumber->numberdiv == 5 ){
-              echo "伝票No";
-            }else{
-              echo "予約金No";
-            }
-            @endphp
-          </td>
-          <td>{{ $UnNumber->NumberDivs->number_name }}</td>
-          <td>{{ $UnNumber->initNumber }}</td>
-          <td>{{ $UnNumber->symbol }}</td>
-          <td>{{ $UnNumber->DivEdits->edit_length }}</td>
-          <td>{{ $UnNumber->DivEdits->edit_name }}</td>
-          <td>{{ $UnNumber->DivDates->date_name }}</td>
-        </tr>
-        @endforeach
-      </table>
-
-    </div><!--テーブルここまで-->
+    </form>
+  
     
+
+
+
+
     <!--ページネーション-->
     <div class="d-flex justify-content-center">
       {{-- appendsでカテゴリを選択したまま遷移 --}}
@@ -125,7 +132,54 @@
       @endif
     @endif
     
-       
   </div>
+
+
+
+
+  <script>
+    function editTransition(){
+      let flag = false; // 選択されているか否かを判定するフラグ
+      let $url = "/UnNumber/edit_edit/";
+      // ラジオボタンの数だけ判定を繰り返す（ボタンを表すインプットタグがあるので１引く）
+      for(var i=0; i<document.url.id.length;i++){
+          // i番目のラジオボタンがチェックされているかを判定
+          if(document.url.id[i].checked){ 
+              flag = true;
+              // alert($url + document.url.edit[i].value + "が選択されました。");
+              window.location.href = $url + document.url.id[i].value; 
+          }
+      }
+      // 何も選択されていない場合の処理
+      if(!flag){ 
+          alert("項目が選択されていません。");
+      }
+    }
+
+    // ラジオボタンを選択後に直で削除
+    function checkDestroy(){
+      var flag = false; 
+      for(var i=0; i<document.url.id.length;i++){
+          if(document.url.id[i].checked){ 
+              flag = true; 
+          }
+      }
+      if(!flag){ 
+          alert("項目が選択されていません。");
+          return false;
+      }
+      if(window.confirm('削除してよろしいですか？')){
+          return true;
+      } else {
+          return false;
+      }
+    }
+
+
+  </script>
+
+
+
+  
 </div>
 @endsection

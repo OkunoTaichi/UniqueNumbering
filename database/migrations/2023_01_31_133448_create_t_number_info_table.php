@@ -20,7 +20,7 @@ class CreateTNumberInfoTable extends Migration
             $table->integer('TenantBranch');
 
             $table->integer('NumberDiv');
-            $table->integer('DateDiv');
+            $table->integer('NumberDate');
 
             $table->char('No');// 最新の採番後の番号（カウントIDとリング）
             $table->integer('CountNumber');

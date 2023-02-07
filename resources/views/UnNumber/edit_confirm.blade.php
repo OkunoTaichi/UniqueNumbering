@@ -41,7 +41,7 @@
                 <div class="d-flex align-items-center">
                     <label for="numberdiv" class="form-label">登録名称</label>
                     <input type="hidden" name="numberdiv" class="form-control" id="numberdiv" value="{{ $inputs['numberdiv'] }}">
-                    <p class="form-control">{{ $t_number->number_name }}</p>
+                    <p class="form-control">{{ $t_number->DivName }}</p>
                 </div>
 
                 <div class="d-flex align-items-center">
@@ -69,15 +69,21 @@
                 </div>
 
                 <div class="d-flex align-items-center">
+                    <label for="lengs" class="form-label">有効桁数</label>
+                    <input type="hidden" name="lengs" class="form-control" id="lengs" value="{{ $lengs }}">
+                    <p class="form-control">{{ $lengs }}</p>
+                </div>
+
+                <div class="d-flex align-items-center">
                     <label for="editdiv" class="form-label">編集区分</label>
                     <input type="hidden" name="editdiv" class="form-control" id="editdiv" value="{{ $inputs['editdiv'] }}">
-                    <p class="form-control">{{ $t_edit->edit_name }}</p>
+                    <p class="form-control">{{ $t_edit->DivName }}</p>
                 </div>
                 
                 <div class="d-flex align-items-center">
                     <label for="datediv" class="form-label">日付区分</label>
                     <input type="hidden" name="datediv" class="form-control" id="datediv" value="{{ $inputs['datediv'] }}">
-                    <p class="form-control">{{ $t_date->date_name }}</p>
+                    <p class="form-control">{{ $t_date->DivName }}</p>
                 </div>
                 
 

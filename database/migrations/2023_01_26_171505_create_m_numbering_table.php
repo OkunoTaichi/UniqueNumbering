@@ -20,8 +20,9 @@ class CreateMNumberingTable extends Migration
             $table->integer('TenantBranch');
 
             $table->integer('numberdiv');
-            $table->char('initNumber')->nullable();// 最新の採番後の番号（カウントIDとリング）
+            $table->char('initNumber');// 最新の採番後の番号（カウントIDとリング）
             $table->char('symbol', 3)->nullable();
+            $table->integer('lengs');
             $table->integer('editdiv');
             $table->integer('datediv');
             
