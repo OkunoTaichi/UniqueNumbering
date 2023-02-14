@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditRequest extends FormRequest
+class EditEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,7 +21,7 @@ class EditRequest extends FormRequest
      *
      * @return array
      */
-    protected $redirect =  '/UnNumber/edit_create' ;// 確認画面でバリデートNGの場合（意地悪チェック）通常のリダイレクトだとlaravelでルートエラーが起こるので入力画面に戻す
+    // protected $redirect =  '/UnNumber/edit_edit' ;// 確認画面でバリデートNGの場合（意地悪チェック）通常のリダイレクトだとlaravelでルートエラーが起こるので入力画面に戻す
     public function rules()
     {
         return [

@@ -3,7 +3,8 @@
 
 @section('UnNumber.content')
 <div class="container">
-<h1>採番処理画面</h1>
+<h1>採番処理画面</h1></br>
+
 
     @if(session('err_msg'))
         <p class="text-danger">
@@ -17,57 +18,30 @@
             <form method="POST" action="{{ route('UnNumber.system_create') }}" onSubmit="return inputSubmit()">
                 @csrf
 
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" style="width:140px">テナントコード： </label>
-                    <div class="col-sm-5 d-flex">
-                        <select class="form-select" id="searchId" name="searchId" style="width:140px">
-                            @foreach ($s_tenants as $s_tenant)
-                                <option value="{{ $s_tenant->TenantCode }}" 
-                                @if(old('TenantCode') == $s_tenant->TenantCode)
-                                    selected
-                                @endif
-                                >{{ $s_tenant->TenantCode }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-select" id="searchId_2" name="searchId_2" style="width:150px">
-                            @foreach ($s_tenantbranchs as $s_tenantbranch)
-                                <option value="{{ $s_tenantbranch->TenantBranch }}" 
-                                @if(old('TenantBranch') == $s_tenantbranch->TenantBranch)
-                                    selected
-                                @endif
-                                >{{ $s_tenantbranch->TenantBranch }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
+                <input type="hidden" id="TenantCode" name="TenantCode" value="{{ $tenantCode }}">
+                <input type="hidden" id="TenantBranch" name="TenantBranch" value="{{ $tenantBranch }}">
 
                 <div class="d-flex align-items-center">
                     <label for="date" class="form-label" style="width:140px">日時を入力</label>
                     <input type="date" class="form-control" id="date" name="date">
-                </div>
+                </div></br>
 
                 <!-- 採番区分ごとにボタン配置 -->
-            
-                <div class="mt-5 d-inline-block">
-                    <button type="submit" class="btn btn-primary ms-4" name="number_id" id="1" value="1">
-                        予約No
-                    </button>
-                    <button type="submit" class="btn btn-primary ms-4" name="number_id" id="2" value="2">
-                        利用No
-                    </button>
-                    <button type="submit" class="btn btn-primary ms-4" name="number_id" id="3" value="3">
-                        利用個別No
-                    </button>
-                    <button type="submit" class="btn btn-primary ms-4" name="number_id" id="4" value="4">
-                        利用部屋No
-                    </button>
-                    <button type="submit" class="btn btn-primary ms-4" name="number_id" id="5" value="5">
-                        伝票No
-                    </button>
-                    <button type="submit" class="btn btn-primary ms-4" name="number_id" id="6" value="6">
-                        予約金No
-                    </button>
+                <div class="d-flex align-items-center">
+                    <label for="number_id" class="form-label" style="width:140px">採番区分選択</label>
+                    <select class="form-select" id="number_id" name="number_id">
+                        @foreach ($M_Divisions as $M_Division)
+                            <option value="{{ $M_Division->DivNo }}">{{ $M_Division->DivNo }} : {{ $M_Division->DivName }}</option>
+                        @endforeach
+                    </select>
+                   
                 </div>
+                </br>
+                <div class="col-sm-auto">
+                    <button type="submit" class="btn btn-primary ">採番実行</button>
+                </div>
+            
+              
             </form>
         
         </div>

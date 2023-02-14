@@ -38,6 +38,8 @@ Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
     Route::get('edit_edit/{id}', [EditController::class, 'edit_edit'])->name('edit_edit');
     Route::post('edit_update', [EditController::class, 'edit_update'])->name('edit_update');
     Route::post('edit_delete', [EditController::class, 'edit_delete'])->name('edit_delete');
+    Route::get('edit_copy/{id}', [EditController::class, 'edit_copy'])->name('edit_copy');
+    Route::get('edit_paste', [EditController::class, 'edit_paste'])->name('edit_paste');
 
 
     // 採番処理のみ

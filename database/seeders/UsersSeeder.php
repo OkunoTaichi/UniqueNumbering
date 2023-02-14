@@ -16,9 +16,16 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->insert([
             'id' => 1,
-            'name' => 'test',
+            'tenantCode' => 'ナバック',
+            'tenantBranch' => '1111',
             'email' => 'test@test.com',
             'password'=> \Hash::make('password'),
         ]);
+        // DB::table('users')->insert([
+        //     'id' => 1,
+        //     'name' => 'test',
+        //     'email' => 'test@test.com',
+        //     'password'=> \Hash::make('password'),
+        // ]);
     }
 }
