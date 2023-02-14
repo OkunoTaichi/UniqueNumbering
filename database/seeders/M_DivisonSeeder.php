@@ -181,6 +181,32 @@ class M_DivisonSeeder extends Seeder
             'Value4'=> 1 ,
         ]);
 
+        // 採番クリア区分
+        DB::table('m_division')->insert([        
+            'DivCode' => 'NumberClearDiv',
+            'DivNo' => '1',
+            'DivName'=>'無し',
+            'Value1'=> 1 ,
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'NumberClearDiv',
+            'DivNo' => '2',
+            'DivName'=>'日時',
+            'Value2'=> 1 ,
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'NumberClearDiv',
+            'DivNo' => '3',
+            'DivName'=>'月次',
+            'Value3'=> 1 ,
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'NumberClearDiv',
+            'DivNo' => '4',
+            'DivName'=>'年次',
+            'Value4'=> 1 ,
+        ]);
+
         
         
 

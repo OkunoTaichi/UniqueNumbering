@@ -16,33 +16,36 @@ class M_NumberingsSeeder extends Seeder
     {
         DB::table('M_Numbering')->insert([
             'id' => 1,
-            'TenantCode' => 'JTB',
+            'TenantCode' => 'ナバック',
             'TenantBranch' => '1111',
             'numberdiv' => '1',
             'initNumber' => '100000',
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '1',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 2,
-            'TenantCode' => 'JTB',
+            'TenantCode' => 'ナバック',
             'TenantBranch' => '1111',
             'numberdiv' => '2',
             'initNumber' => '200000',
             'editdiv' => '2',
             'lengs' => '7',
             'datediv' => '2',
+            'numbercleardiv' => '2',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 3,
-            'TenantCode' => 'JTB',
+            'TenantCode' => 'ナバック',
             'TenantBranch' => '1111',
             'numberdiv' => '3',
             'initNumber' => '300000',
             'editdiv' => '3',
             'lengs' => '6',
             'datediv' => '3',
+            'numbercleardiv' => '3',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 4,
@@ -54,6 +57,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'JTB',
+            'numbercleardiv' => '4',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 5,
@@ -65,10 +69,11 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 6,
-            'TenantCode' => 'JTB',
+            'TenantCode' => 'ナバック',
             'TenantBranch' => '1111',
             'numberdiv' => '6',
             'initNumber' => '60000',
@@ -76,6 +81,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
+            'numbercleardiv' => '1',
         ]);
 
 
@@ -88,6 +94,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 8,
@@ -98,6 +105,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '2',
             'lengs' => '7',
             'datediv' => '2',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 9,
@@ -108,6 +116,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '3',
             'lengs' => '6',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 10,
@@ -119,6 +128,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'JTB',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 11,
@@ -130,6 +140,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 12,
@@ -140,17 +151,19 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
 
         DB::table('M_Numbering')->insert([
             'id' => 13,
-            'TenantCode' => 'JTB',
+            'TenantCode' => 'ナバック',
             'TenantBranch' => '3333',
             'numberdiv' => '1',
             'initNumber' => '10000',
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 14,
@@ -161,6 +174,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '2',
             'lengs' => '7',
             'datediv' => '2',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 15,
@@ -171,6 +185,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '3',
             'lengs' => '6',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 16,
@@ -182,6 +197,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'JTB',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 17,
@@ -193,6 +209,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 18,
@@ -203,37 +220,41 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
 
         DB::table('M_Numbering')->insert([
             'id' => 19,
-            'TenantCode' => 'JTB',
+            'TenantCode' => 'ナバック',
             'TenantBranch' => '4444',
             'numberdiv' => '1',
             'initNumber' => '10000',
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 20,
-            'TenantCode' => 'JTB',
+            'TenantCode' => 'ナバック',
             'TenantBranch' => '4444',
             'numberdiv' => '2',
             'initNumber' => '20000',
             'editdiv' => '2',
             'lengs' => '7',
             'datediv' => '2',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 21,
-            'TenantCode' => 'JTB',
+            'TenantCode' => 'ナバック',
             'TenantBranch' => '4444',
             'numberdiv' => '3',
             'initNumber' => '30000',
             'editdiv' => '3',
             'lengs' => '6',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 22,
@@ -245,6 +266,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'JTB',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 23,
@@ -256,6 +278,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '7',
             'datediv' => '2',
             'symbol' => 'JTB',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 24,
@@ -266,6 +289,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
 
         DB::table('M_Numbering')->insert([
@@ -277,6 +301,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '1',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 26,
@@ -287,6 +312,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '2',
             'lengs' => '7',
             'datediv' => '2',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 27,
@@ -297,6 +323,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '3',
             'lengs' => '6',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 28,
@@ -308,6 +335,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'Ra',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 29,
@@ -319,6 +347,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '7',
             'datediv' => '1',
             'symbol' => 'Ra',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 30,
@@ -329,6 +358,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '1',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 31,
@@ -339,6 +369,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '2',
             'lengs' => '7',
             'datediv' => '2',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 32,
@@ -349,6 +380,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '3',
             'lengs' => '6',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 33,
@@ -360,6 +392,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '15',
             'datediv' => '3',
             'symbol' => 'Ra',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 34,
@@ -371,6 +404,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '7',
             'datediv' => '3',
             'symbol' => 'Ra',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 35,
@@ -381,6 +415,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 36,
@@ -391,6 +426,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '2',
             'lengs' => '7',
             'datediv' => '2',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 37,
@@ -401,6 +437,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '3',
             'lengs' => '6',
             'datediv' => '3',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 38,
@@ -412,6 +449,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '15',
             'datediv' => '1',
             'symbol' => 'Ra',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 39,
@@ -423,6 +461,7 @@ class M_NumberingsSeeder extends Seeder
             'lengs' => '7',
             'datediv' => '3',
             'symbol' => 'Ra',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 40,
@@ -433,6 +472,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '1',
             'lengs' => '15',
             'datediv' => '1',
+            'numbercleardiv' => '1',
         ]);
         DB::table('M_Numbering')->insert([
             'id' => 41,
@@ -443,6 +483,7 @@ class M_NumberingsSeeder extends Seeder
             'editdiv' => '2',
             'lengs' => '7',
             'datediv' => '2',
+            'numbercleardiv' => '1',
         ]);
     }
 }

@@ -34,5 +34,10 @@ class M_TenantSeeder extends Seeder
             'TenantCode' => 'HAN9',
             'CompanyName' => '阪急交通社',
         ]);
+        DB::table('M_Tenant')->insert([
+            'id' => 5,
+            'TenantCode' => 'ナバック',
+            'CompanyName' => 'ナバック',
+        ]);
     }
 }

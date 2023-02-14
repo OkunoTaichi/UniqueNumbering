@@ -11,9 +11,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <li class="nav_item {{ (url()->current() == route('UnNumber.index'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.index') }}">一覧表示</a></li>
-                <li class="nav_item {{ (url()->current() == route('UnNumber.edit_create'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.edit_create') }}">編集区分作成</a></li>
-                <li class="nav_item {{ (url()->current() == route('UnNumber.system_index'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.system_index') }}">採番機能</a></li>
+                <li class="nav_item {{ (url()->current() == route('UnNumber.index'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.index') }}">採番区分作成</a></li>
+                <!-- <li class="nav_item {{ (url()->current() == route('UnNumber.edit_create'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.edit_create') }}">編集区分作成</a></li> -->
+                <li class="nav_item {{ (url()->current() == route('UnNumber.system_index'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.system_index') }}">採番処理
+                    機能</a></li>
             </ul>
 
 
@@ -35,7 +36,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->tenantCode }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

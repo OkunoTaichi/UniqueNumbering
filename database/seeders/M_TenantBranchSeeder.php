@@ -38,5 +38,11 @@ class M_TenantBranchSeeder extends Seeder
             'TenantBranch' => '4444',
             'TenantBranchName' => '東北支店',
         ]);
+        DB::table('M_TenantBranch')->insert([
+            'id' => 5,
+            'TenantCode' => 'ナバック',
+            'TenantBranch' => '1111',
+            'TenantBranchName' => '大阪支店',
+        ]);
     }
 }

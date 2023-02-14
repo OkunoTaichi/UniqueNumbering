@@ -3,8 +3,8 @@
 
 @section('UnNumber.content')
 <div class="container">
-<h2>テスト確認画面</h2>
-<br/>
+
+<!-- <br/> -->
 
     @if(session('err_msg'))
         <p class="text-danger">
@@ -17,43 +17,27 @@
         <div class="col-md-12">
             <form method="POST" action="{{ route('UnNumber.edit_store') }}">
                 @csrf
-                <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center">
-                        <label for="" class="form-label">テナントCD</label>
-                        <p class="form-control">{{ $inputs['TenantCode'] }} - {{ $inputs['TenantBranch'] }}</p>
-                    </div>
-    
-                    <div class="">
-                        <div class="d-flex align-items-center">
-                            <label for="TenantCode" class="form-label" style="padding-left:100px">テナント会社名</label>
-                            <input type="hidden" name="TenantCode" class="form-control" id="TenantCode" value="{{ $inputs['TenantCode'] }}">
-                            <p class="" style="margin-bottom: 0.5rem;">{{ $t_tenant->CompanyName }}</p>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <label for="TenantBranch" class="form-label" style="padding-left:100px">テナント施設名</label>
-                            <input type="hidden" name="TenantBranch" class="form-control" id="TenantBranch" value="{{ $inputs['TenantBranch'] }}">
-                            <p class="" style="margin-bottom: 0.5rem;">{{ $t_tenantBranch->TenantBranchName }}</p>
-                        </div>
-                    </div>
-                </div>
+          
+                <!-- <div class="d-flex align-items-center">
+                    <h2 class="me-5">テスト確認画面</h2>
+                    <p for="" class="me-4">テナントCD</p>
+                    <p class="">{{ $inputs['TenantCode'] }} - {{ $inputs['TenantBranch'] }}</p>
+                </div> -->
+               
                 <br/>
+                <input type="hidden" id="TenantCode" name="TenantCode" value="{{ $inputs['TenantCode'] }}">
+                <input type="hidden" id="TenantBranch" name="TenantBranch" value="{{ $inputs['TenantBranch'] }}">
 
                 <div class="d-flex align-items-center">
-                    <label for="numberdiv" class="form-label">登録名称</label>
+                    <label for="numberdiv" class="form-label">採番区分</label>
                     <input type="hidden" name="numberdiv" class="form-control" id="numberdiv" value="{{ $inputs['numberdiv'] }}">
                     <p class="form-control">{{ $t_number->DivName }}</p>
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <label for="initNumber" class="form-label">初期値</label>
-                    <input type="hidden" name="initNumber" class="form-control" id="initNumber" value="{{ $inputs['initNumber'] }}">
-                    <p class="form-control">
-                        @if($inputs['initNumber'] == null)
-                            なし
-                        @else
-                            {{ $inputs['initNumber'] }}
-                        @endif
-                    </p>
+                    <label for="editdiv" class="form-label">編集区分</label>
+                    <input type="hidden" name="editdiv" class="form-control" id="editdiv" value="{{ $inputs['editdiv'] }}">
+                    <p class="form-control">{{ $t_edit->DivName }}</p>
                 </div>
 
                 <div class="d-flex align-items-center">
@@ -75,9 +59,9 @@
                 </div>
 
                 <div class="d-flex align-items-center">
-                    <label for="editdiv" class="form-label">編集区分</label>
-                    <input type="hidden" name="editdiv" class="form-control" id="editdiv" value="{{ $inputs['editdiv'] }}">
-                    <p class="form-control">{{ $t_edit->DivName }}</p>
+                    <label for="initNumber" class="form-label">初期値</label>
+                    <input type="hidden" name="initNumber" class="form-control" id="initNumber" value="{{ $inputs['initNumber'] }}">
+                    <p class="form-control">{{ $inputs['initNumber'] }}</p>
                 </div>
                 
                 <div class="d-flex align-items-center">
@@ -85,15 +69,26 @@
                     <input type="hidden" name="datediv" class="form-control" id="datediv" value="{{ $inputs['datediv'] }}">
                     <p class="form-control">{{ $t_date->DivName }}</p>
                 </div>
-                
 
-                
+                <div class="d-flex align-items-center">
+                    <label for="numbercleardiv" class="form-label">クリア区分</label>
+                    <input type="hidden" name="numbercleardiv" class="form-control" id="numbercleardiv" value="{{ $inputs['numbercleardiv'] }}">
+                    <p class="form-control">{{ $t_numberclear->DivName }}</p>
+                </div>
 
-                <div class="mt-5 d-inline-block">
+                <div class="align-items-center d-flex" id="symbol_wrap">
+                    <label for="" class="form-label">採番後の番号目安</label>
+                    <div class="">
+                        <input type="text" name="check" class="form-control" id="check" value="{{ $inputs['check'] }}" disabled>
+                        <!-- <div id="check" class="form-control" style="color:#999">採番後の番号が表示されます。</div> -->
+                        <div id="err" class="ms-3" style="color:red"></div>
+                    </div>
+                </div>
                 
-                    <button type="submit" class="btn btn-primary ms-4">
-                        確 認
-                    </button>
+                <div id="check" class="ms-4 p-2"></div>
+                <div class="mt-5 d-flex">
+                    <button type="button" onclick="history.back()" class="btn btn-primary me-4">戻 る</button>
+                    <button type="submit" class="btn btn-primary" onclick="return checkSubmit()">確 定</button>
                 </div>
             </form>
         

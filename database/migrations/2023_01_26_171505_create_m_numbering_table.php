@@ -25,6 +25,7 @@ class CreateMNumberingTable extends Migration
             $table->integer('lengs');
             $table->integer('editdiv');
             $table->integer('datediv');
+            $table->integer('numbercleardiv');
             
             $table->timestamps();
         });

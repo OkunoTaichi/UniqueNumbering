@@ -40,6 +40,9 @@ class M_Division extends Model
     public function M_Dates(){
         return $this->belongsTo(M_Numbering::class, 'datediv','DivNo');
     }
+    public function M_NumberClears(){
+        return $this->belongsTo(M_Numbering::class, 'numbercleardiv','DivNo');
+    }
 
     
 

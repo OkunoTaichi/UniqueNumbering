@@ -16,36 +16,53 @@ class SystemController extends Controller
     public function system_index()
     {
 
-        $s_tenantbranchs = DB::table('m_tenantbranch')->get();
-        $s_tenants = DB::table('m_tenant')->get();
+        $user = \Auth::user();
+        $tenantCode = $user->tenantCode;
+        $tenantBranch = $user->tenantBranch;
+
+        // M_Numberingに設定があるかの処理
+        $M_Divisions = M_Division::where('DivCode','NumberDiv')
+            ->select('DivCode','DivNo','DivName')
+            ->get();
+            // dd($M_Division);
+        // dd($tenantCode,$tenantBranch);
+        // $s_tenantbranchs = DB::table('m_tenantbranch')->get();
+        // $s_tenants = DB::table('m_tenant')->get();
         
         return view(
-            'UnNumber.system_index', compact('s_tenants', 's_tenantbranchs')
+            'UnNumber.system_index', compact('tenantCode','tenantBranch','M_Divisions')
         );
     }
 
-    public function system_create(SystemRequest $request)
+    public function system_create(Request $request)
     {
+        $user = \Auth::user();
+        $tenantCode = $user->tenantCode;
+        $tenantBranch = $user->tenantBranch;
+
+
+
         // ➀ 採番区分特定の処理 
         $inputs = $request->all();
-
-        $searchId = $request->input('searchId');
-        $searchId_2 = $request->input('searchId_2');
+        
+        $searchId = $request->input('TenantCode');
+        $searchId_2 = $request->input('TenantBranch');
         $searchId_3 = intval($request->input('number_id'));
         $dateTime = date('Ymd', strtotime($inputs['date']));
-
+        
         // M_Numberingに設定があるかの処理
         $M_NumberingInfo = M_Numbering::where('TenantCode',$searchId)
-            ->where('TenantBranch',$searchId_2)
-            ->where('NumberDiv',$searchId_3)
-            ->first();
-            
+        ->where('TenantBranch',$searchId_2)
+        ->where('NumberDiv',$searchId_3)
+        ->first();
+       
+        
         if($M_NumberingInfo == null ){
             $s_tenantbranchs = DB::table('m_tenantbranch')->get();
             $s_tenants = DB::table('m_tenant')->get();
             \Session::flash('err_msg' , '設定がありません');
-            return view(
-                'UnNumber.system_index', compact('s_tenants', 's_tenantbranchs')
+            return back(
+               
             );
         }
       

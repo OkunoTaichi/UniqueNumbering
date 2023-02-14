@@ -57,22 +57,29 @@ class System extends Model
         $symbol = $edit->symbol;// 記号
 
         if($symbol != null){
-        $symbol_count = mb_strlen($symbol);//記号を文字数に変換
+            $symbol_count = mb_strlen($symbol);//記号を文字数に変換
         }else{
             $symbol_count = 0;
         }
-        $total_count = $symbol_count + $number_count;//記号と初期値の合計値
-        
-        // 表示する連番を初期値と有効桁数で編集する。
-        if($total_count > $length)//初期値の合計が有効桁数より大きい場合
-        {
-            $d_length = $total_count - $length;//初期値と有効桁数の差分を代入する
-            $replace = substr( $change_number , $d_length, strlen($change_number) - $d_length );//指定の文字数まで先頭を除外する
-            $reserve_id = $replace;
+
+        if($edit['editdiv'] == 2 || $edit['editdiv'] == 5){
+            $dateCount = 8;
+        }elseif($edit['editdiv'] == 3){
+            $dateCount = 9;
+        }else{
+            $dateCount = 0;
         }
-        elseif($length > $total_count)
+
+        
+        $total_count = $symbol_count + $number_count + $dateCount;//記号と初期値と日付の合計桁数
+
+
+        // 表示する連番を初期値と有効桁数で編集する。
+        if($length > $total_count)
         {
-            $reserve_id = $change_number;// 0埋めなし
+            $up_length = $length - ( $symbol_count + $dateCount );
+            $reserve_id = str_pad($change_number,$up_length,'0', STR_PAD_LEFT);//有効桁数まで０で埋める
+
         }
         elseif($length = $total_count)
         {
@@ -265,6 +272,34 @@ class System extends Model
 
        
     }
+
+    // 送信時の桁数オーバーチェック
+    public function lengthCheck($inputs,$lengs,$initNumber,$symbol,$symbolNo){
+        $errLength = 0;
+        if($inputs['editdiv'] == "1" || $inputs['editdiv'] == "4"){
+            if(($initNumber + $symbol) > $lengs){
+                $errLength = 1;
+            }
+ 
+        }elseif($inputs['editdiv'] == "2" || $inputs['editdiv'] == "5"){
+            if(($initNumber + 8 + $symbol)> $lengs){
+                $errLength = 1;
+            }
+  
+        }elseif($inputs['editdiv'] == "3"){
+            if(($initNumber + 9) > $lengs ){
+                $errLength = 1;
+            }
+        };
+
+        return $errLength;
+
+
+    }
+
+   
+       
+    
 
     
 

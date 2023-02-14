@@ -5,6 +5,7 @@
 <div class="container">
 <h2>採番登録：確認画面</h2><br/>
 
+
 <h3 class="text-danger">以下の内容で登録しました。</h3><br/>
 
     <div class="row justify-content-center">
@@ -31,6 +32,10 @@
                         <p class="form-control">{{ $dateTime }}</p>
                     </div>
                     <div class="d-flex align-items-center">
+                        <label for="reserve_id" class="form-label" style="width:140px">有効桁数</label>
+                        <p class="form-control">{{ $edit->lengs }}</p>
+                    </div>
+                    <div class="d-flex align-items-center">
                         <label for="reserve_id" class="form-label" style="width:140px">採番後の番号</label>
                         <p class="form-control">{{ $reserve_id }}</p>
                     </div>  
@@ -38,7 +43,7 @@
             </div>
             
             <div class="mt-5 d-inline-block">
-                <a href="{{ route('UnNumber.system_index') }}" class="btn btn-primary me-4">採番処理画面へ戻る</a>
+                <a href="{{ route('home') }}" class="btn btn-primary me-4">採番処理画面へ戻る</a>
             </div>
        
         </div>

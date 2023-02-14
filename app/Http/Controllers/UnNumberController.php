@@ -13,8 +13,45 @@ class UnNumberController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function index(){
+        $user = \Auth::user();
+        $tenantCode = $user->tenantCode;
+        $tenantBranch = $user->tenantBranch;
+        // dd($searchId);
+
+        $query = M_Numbering::query();
+        $query->where('TenantCode',$tenantCode)
+        ->where('TenantBranch',$tenantBranch,)
+        ->with(['Tenants','TenantBranchs'])
+        ->with(['division_numbers' => function($query)
+            {
+                $query->where('DivCode','NumberDiv');
+            }])
+            ->with(['division_edits' => function($query)
+            {
+                $query->where('DivCode','EditDiv');
+            }])
+            ->with(['division_dates' => function($query)
+            {
+                $query->where('DivCode','DateDiv');
+            }])
+            ->with(['division_numberclears' => function($query)
+            {
+                $query->where('DivCode','numbercleardiv');
+            }])
+        ->get();
+        $m_numberings = $query->orderBy('updated_at', 'desc')->paginate(7);
+        // $m_numberings = $m_numberings->orderBy('updated_at', 'desc')->paginate(7);
+     
+
+        // dd($m_numberings);
+        // homeから1発目の表示
+        return view('UnNumber.UnNumber_index',compact('m_numberings'));
+
+    }
    
-    public function index(SearchRequest $request)
+    public function index_2(SearchRequest $request)
     {
         $searchId = $request->input('searchId');
         $searchId_2 = $request->input('searchId_2');
@@ -42,6 +79,10 @@ class UnNumberController extends Controller
             {
                 $query->where('DivCode','DateDiv');
             }])
+            ->with(['division_numberclears' => function($query)
+            {
+                $query->where('DivCode','numbercleardiv');
+            }])
             ->get();
            
             $UnNumbers = $query->orderBy('updated_at', 'desc')->paginate(7);//$queryをupdated_atの新しい順に並び替え（最近更新したのが上にくる）
@@ -58,6 +99,7 @@ class UnNumberController extends Controller
                 's_tenants' => $s_tenants,
             ]);
         }
+        
 
         // homeから1発目の表示
         return view('UnNumber.UnNumber_index', [
