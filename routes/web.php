@@ -6,6 +6,7 @@ use App\Http\Controllers\UnNumberController;
 use App\Http\Controllers\UniqueController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\SystemController;
+use App\Http\Controllers\Authority\AuthorityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,29 +42,31 @@ Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
     Route::get('edit_copy/{id}', [EditController::class, 'edit_copy'])->name('edit_copy');
     Route::get('edit_paste', [EditController::class, 'edit_paste'])->name('edit_paste');
 
-
     // 採番処理のみ
     Route::get('system_index', [SystemController::class, 'system_index'])->name('system_index');
     Route::post('system_create', [SystemController::class, 'system_create'])->name('system_create');
     Route::post('system_confirm', [SystemController::class, 'system_confirm'])->name('system_confirm');
     Route::post('system_store', [SystemController::class, 'system_store'])->name('system_store');
 
-
-
     // 検索結果を表示
     Route::get('UnNumber_index', [UnNumberController::class, 'index'])->name('index');
-    
-    // 登録画面表示
     Route::get('UnNumber_create', [UnNumberController::class, 'create'])->name('create');
-    // 登録確認画面表示
     Route::post('UnNumber_confirm', [UnNumberController::class, 'confirm'])->name('confirm');
-    // 登録
     Route::post('UnNumber_store', [UnNumberController::class, 'store'])->name('store');
-    // 詳細表示
     Route::get('UnNumber_detail/{id}', [UnNumberController::class, 'detail'])->name('detail');
-    // 編集表示
     Route::get('UnNumber_edit/{id}', [UnNumberController::class, 'edit'])->name('edit');
     Route::post('UnNumber_update', [UnNumberController::class, 'update'])->name('update');
-    // 削除
     Route::post('UnNumber_delete', [UnNumberController::class, 'delete'])->name('delete');
+});
+
+
+/**
+ * 権限マスタ
+ */
+Route::prefix('Authority')->name('Authority.')->group(function() {
+    Route::get('Authority_index', [AuthorityController::class, 'Authority_index'])->name('Authority_index'); 
+    Route::post('Authority_store', [AuthorityController::class, 'Authority_store'])->name('Authority_store');
+
+
+    
 });

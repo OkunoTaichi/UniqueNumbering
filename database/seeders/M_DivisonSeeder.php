@@ -207,7 +207,75 @@ class M_DivisonSeeder extends Seeder
             'Value4'=> 1 ,
         ]);
 
+        // 権限区分
+        DB::table('m_division')->insert([        
+            'DivCode' => 'AuthorityDiv',
+            'DivNo' => '1',
+            'DivName'=>'更新',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'AuthorityDiv',
+            'DivNo' => '2',
+            'DivName'=>'参照',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'AuthorityDiv',
+            'DivNo' => '3',
+            'DivName'=>'不可',
+        ]);
         
+        // 権限区分
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '01',
+            'DivName'=>'システムマスタ',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '02',
+            'DivName'=>'予約管理',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '03',
+            'DivName'=>'客室管理',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '04',
+            'DivName'=>'会計管理',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '05',
+            'DivName'=>'集計',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '06',
+            'DivName'=>'分析',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '07',
+            'DivName'=>'顧客管理',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '08',
+            'DivName'=>'テナント管理',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '09',
+            'DivName'=>'お知らせ管理',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'ProgramDiv',
+            'DivNo' => '10',
+            'DivName'=>'サイトコントローラー',
+        ]);
+      
         
 
 

@@ -15,7 +15,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <form method="POST" action="{{ route('UnNumber.edit_store') }}">
+            <form method="POST" action="{{ route('UnNumber.edit_store') }}" name="form">
                 @csrf
           
                 <!-- <div class="d-flex align-items-center">
@@ -88,7 +88,7 @@
                 <div id="check" class="ms-4 p-2"></div>
                 <div class="mt-5 d-flex">
                     <button type="button" onclick="history.back()" class="btn btn-primary me-4">戻 る</button>
-                    <button type="submit" class="btn btn-primary" onclick="return checkSubmit()">確 定</button>
+                    <button type="submit" class="btn btn-primary" onclick="return checkSubmit()" id="enter" autofocus>確 定</button>
                 </div>
             </form>
         

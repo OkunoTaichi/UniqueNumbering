@@ -14,7 +14,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-        <form method="POST" action="{{ route('UnNumber.edit_update') }}" onsubmit="return false;">
+        <form method="POST" action="{{ route('UnNumber.edit_update') }}" onsubmit="return false;" name="form">
                 @csrf
           
                 </br>
@@ -107,7 +107,7 @@
                 <div class="align-items-center d-flex" id="symbol_wrap">
                     <label for="" class="form-label">採番後の番号目安</label>
                     <div class="">
-                        <input type="text" name="check" class="form-control" id="check" value="" readonly>
+                        <input type="text" name="check" class="form-control" id="check" value="" tabindex="-1" readonly>
                         <!-- <div id="check" class="form-control" style="color:#999">採番後の番号が表示されます。</div> -->
                         <div id="err" class="ms-3" style="color:red"></div>
                     </div>
@@ -118,7 +118,7 @@
 
                 <div class="mt-5 d-flex">
                     <button type="button" onclick="history.back()" class="btn btn-primary me-4">戻 る</button>
-                    <button type="button" class="btn btn-primary enterTab" tabindex="" onclick="submit();">確 定</button>
+                    <button type="button" class="btn btn-primary enterTab" tabindex="" onclick="submit()" id="enter">確 定</button>
                     <!-- <button type="submit" class="btn btn-primary enterTab" onclick="checkSubmit()">確 定</button> -->
                     <div id="check" class="ms-4 p-2"></div>
                 </div>
