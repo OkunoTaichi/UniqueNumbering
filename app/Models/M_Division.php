@@ -44,6 +44,10 @@ class M_Division extends Model
         return $this->belongsTo(M_Numbering::class, 'numbercleardiv','DivNo');
     }
 
+    // public function M_Programs(){
+    //     return $this->belongsTo(Authority\M_Program::class, 'Programdiv','DivNo');
+    // }
+
     
 
    

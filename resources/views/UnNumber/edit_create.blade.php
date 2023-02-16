@@ -15,7 +15,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <form method="POST" action="{{ route('UnNumber.edit_confirm') }}" onsubmit="return false;">
+            <form method="POST" action="{{ route('UnNumber.edit_confirm') }}" onsubmit="return false;" name="form">
                 @csrf
 
                 <input type="hidden" id="TenantCode" name="TenantCode" value="{{ $tenantCode }}">
@@ -109,7 +109,7 @@
                 <div class="align-items-center d-flex" id="symbol_wrap">
                     <label for="" class="form-label">採番後の番号目安</label>
                     <div class="">
-                        <input type="text" name="check" class="form-control enterTab" tabindex="" id="check" value="" readonly>
+                        <input type="text" name="check" class="form-control enterTab" tabindex="-1" id="check" value="" readonly>
                         <!-- <div id="check" class="form-control" style="color:#999">採番後の番号が表示されます。</div> -->
                         <div id="err" class="ms-3" style="color:red"></div>
                     </div>
@@ -117,7 +117,7 @@
                 
                 <div class="mt-5 d-flex">
                     <button type="button" onclick="history.back()" class="btn btn-primary me-4">キャンセル</button>
-                    <button type="button" class="btn btn-primary enterTab" tabindex="" onclick="submit();">確 認</button>
+                    <button type="button" class="btn btn-primary enterTab" tabindex="" onclick="submit()" id="enter">確 認</button>
                 </div>
             </form>
         

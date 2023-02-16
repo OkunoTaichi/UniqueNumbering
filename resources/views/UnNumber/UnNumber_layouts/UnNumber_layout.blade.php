@@ -272,15 +272,17 @@
             } 
         }
 
-        // 入力したらエンターで次にフォーカス
-        // function symbolNext(symbol) {
-        //     let symVal = symbol.value;
-        //     let target = document.getElementById("symbol");
-        //     if(symVal != null){
-        //         document.getElementById("lengs").focus();
-        //     }
-        // }
-     
+    
+        var btn = document.getElementById('enter');
+        if( btn != null ){
+            btn.onkeydown = function(e){
+                if (e.keyCode === 13) {
+                    document.form.submit();
+                }
+            }
+        }
+        
+            
 
 
     </script>
