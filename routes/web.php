@@ -66,7 +66,6 @@ Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
 Route::prefix('Authority')->name('Authority.')->group(function() {
     Route::get('Authority_index', [AuthorityController::class, 'Authority_index'])->name('Authority_index'); 
     Route::post('Authority_store', [AuthorityController::class, 'Authority_store'])->name('Authority_store');
-
-
-    
+    Route::post('Authority_edit', [AuthorityController::class, 'Authority_edit'])->name('Authority_edit'); 
+    Route::post('Authority_destroy', [AuthorityController::class, 'Authority_destroy'])->name('Authority_destroy');
 });
