@@ -8,25 +8,64 @@
       <div class="authority_wrap">
 
         <div class="btn_wrap d-flex" style="display:flex;">
-          <button type="button" class="btn me-4 {{ $routeFlg == 1 ? 'btn-primary' : 'btn-secondary' }}"><a style="color:#fff; text-decoration:none;" href="{{ route('Authority.Authority_index') }}">新規作成</a></button>
+          <button type="button" class="btn me-4 btn-primary"><a style="color:#fff; text-decoration:none;" href="{{ route('Authority.Authority_index') }}">新規作成</a></button>
           
           <form action="{{ route('Authority.Authority_edit') }}" method="post">
             @csrf
             <input type="hidden" name="editSearch" id="editAuthority" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}">
-            <button type="submit" class="btn me-4 {{ $routeFlg == 2 ? 'btn-primary' : 'btn-secondary' }}" onclick=" return editAlert()">編 集</button>
+            <input type="hidden" name="editFlag" id="editFlag" value="3">
+            <button type="submit" class="btn me-4 btn-primary" onclick=" return editAlert()">編 集</button>
           </form>
 
           <form action="{{ route('Authority.Authority_destroy') }}" method="post">
             @csrf
-            <input type="hidden" name="deleteSearch" id="deleteAuthority" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}"></input>   
-            <button type="submit" class="btn me-4 {{ $routeFlg == 2 ? 'btn-primary' : 'btn-secondary' }}" onclick=" return destroy()">削 除</button>
+            <input type="hidden" name="deleteSearch" id="deleteAuthority" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}"></input> 
+            <button type="submit" class="btn me-4 btn-primary" onclick=" return destroy()">削 除</button>
           </form>
      
+          <form action="{{ route('Authority.Authority_edit') }}" method="post">
+            @csrf
+            <input type="hidden" name="editSearch" id="copyAuthority" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}">
+            <input type="hidden" name="copyFlag" id="copyFlag" value="4">  
+            <button type="submit" class="btn me-4 btn-primary" onclick=" return copyAlert()">コピー</button>
+          </form>
+          <button type="button" class="btn btn-secondary me-4" disabled>貼付け</button>
+        </div>
 
+        <div class="err-wrap">
+          @if(session('err_msg'))<!-- 登録確認、存在チェックの表示 -->
+            <h1 class="text-danger error fadeIn">
+                {{ session('err_msg') }}
+            </h1>
+          @endif
 
+          @if(session('err_msg_index'))<!-- 登録確認、存在チェックの表示 -->
+            <h1 class="text-danger error fadeIn">
+                {{ session('err_msg') }}
+            </h1>
+          @endif
+     
 
-          <button type="button" class="btn btn-secondary me-4">コピー</button>
-          <button type="button" class="btn btn-secondary me-4">貼付け</button>
+          @if($routeFlg == 3)
+            <h1 class="text-danger error">編集中</h1>
+          @endif
+
+          <div class="err-1"><!-- バリデーションチェックの表示 -->
+            @if ($errors->has('AuthorityCode')) 
+                <div class="text-danger err_m">&lowast; {{ $errors->first('AuthorityCode') }}</div>
+            @endif
+            @if ($errors->has('AuthorityName')) 
+                <div class="text-danger err_m">&lowast; {{ $errors->first('AuthorityName') }}</div>
+            @endif
+
+            @if ($errors->has('AdminFlg')) 
+                <div class="text-danger err_m">&lowast; {{ $errors->first('AdminFlg') }}</div>
+            @endif
+
+            @if ($errors->has('AuthorityDiv.*')) 
+                <div class="text-danger err_m">&lowast; {{ $errors->first('AuthorityDiv.*') }}</div>
+            @endif
+          </div>
         </div>
 
         <div class="form_container d-flex">
@@ -74,17 +113,26 @@
           <div class="form_input">
             <div class="input_wrap d-flex">
               <label for="AuthorityCode" class="form-label2" style="background-color: #ffff9f">権限CD</label>
-              <input type="text" name="AuthorityCode" class="form-control2 enterTab" id="AuthorityCode" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}" autofocus  oninput="inputCode();">
-              <input type="text" name="AuthorityName" class="form-control2 enterTab" id="AuthorityName" value="{{ isset($Authority['AuthorityName']) ? $Authority['AuthorityName'] : '' }}">
+
+              @if( $routeFlg == 4)
+              <input type="text" name="AuthorityCode" class="form-control2 enterTab" id="AuthorityCode" value="" oninput="inputCode();" {{ $routeFlg == 2 ? 'disabled' : 'autofocus' }}>
+              @elseif( $routeFlg == 3)
+              <input type="text" name="AuthorityCode" class="form-control2 enterTab noLine" id="AuthorityCode" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}" oninput="inputCode();" readonly>
+              @else
+              <input type="text" name="AuthorityCode" class="form-control2 enterTab" id="AuthorityCode" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}" oninput="inputCode();" {{ $routeFlg == 2 ? 'disabled' : 'autofocus' }}>
+              @endif
+
+              <input type="text" name="AuthorityName" class="form-control2 enterTab" id="AuthorityName" value="{{ isset($Authority['AuthorityName']) ? $Authority['AuthorityName'] : '' }}" {{ $routeFlg == 2 ? 'disabled' : '' }}>
               </br>
               <label for="AdminFlg" class="form-label2" style="background-color: #ffff9f">システム管理者</label>
-              <input type="hidden" name="AdminFlg">
-              @if(isset($AdminFlg) || $AdminFlg === 1 )
-              <input type="checkbox" name="AdminFlg" class="form-control3 enterTab" id="AdminFlg" value="1" checked>
-              @else
-
-              <input type="checkbox" name="AdminFlg" class="form-control3 enterTab" id="AdminFlg" value="1">
-              @endif
+              <div class="check-wrap {{ $routeFlg == 2 ? 'disabled' : '' }}">
+                <input type="hidden" name="AdminFlg">
+                @if(isset($AdminFlg) || $AdminFlg === 1 )
+                <input type="checkbox" name="AdminFlg" class="form-control3 enterTab" id="AdminFlg" value="1" checked {{ $routeFlg == 2 ? 'disabled' : '' }}>
+                @else
+                <input type="checkbox" name="AdminFlg" class="form-control3 enterTab" id="AdminFlg" value="1" {{ $routeFlg == 2 ? 'disabled' : '' }}>
+                @endif
+              </div>
             </div>
 
             <div class="program_wrap scroll_wrap">
@@ -103,30 +151,30 @@
                   @foreach ($programs as $i => $program)
            
                   <tr>
-                 
                     <td><input type="hidden" name="ProgramID[{{ $i }}]" class="form-control2" id="ProgramID" value="{{ $program->ProgramID }}">{{ $program->ProgramID }}</td>
                     <td class="t_start" style="padding-left: 30px"><input type="hidden" name="" class="form-control2" id="ProgramName" value="">{{ $program->ProgramName }}</td>
-                    
                   
-                    <td><label><input class="enterTab radioAll_1" type="radio" value="1" name="AuthorityDiv[{{ $i }}]" 
+                    <td><label class="{{ $routeFlg == 2 ? 'disabled' : '' }}"><input class="radioAll_1" type="radio" value="1" name="AuthorityDiv[{{ $i }}]" 
                     @if(isset($AuthorityDetail))
                       @if( $AuthorityDetail[$i]['AuthorityDiv'] == 1 ) checked @endif
                     @endif
-                    ></label></td>
+                    {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td>
 
-                    <td><label><input class="enterTab radioAll_2" type="radio" value="2" name="AuthorityDiv[{{ $i }}]" 
+                    <td><label class="{{ $routeFlg == 2 ? 'disabled' : '' }}"><input class="radioAll_2" type="radio" value="2" name="AuthorityDiv[{{ $i }}]" 
                     @if(isset($AuthorityDetail))
                       @if( $AuthorityDetail[$i]['AuthorityDiv'] == 2 ) checked @endif
                     @endif
-                    ></label></td>
+                    {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td>
 
-                    <td><label><input class="enterTab radioAll_3" type="radio" value="3" name="AuthorityDiv[{{ $i }}]" 
+                    <td><label class="{{ $routeFlg == 2 ? 'disabled' : '' }}"><input class="radioAll_3" type="radio" value="3" name="AuthorityDiv[{{ $i }}]" 
                     @if(isset($AuthorityDetail))
                       @if( $AuthorityDetail[$i]['AuthorityDiv'] == 3 ) checked @endif
                     @endif
-                    ></label></td>
 
-                    
+                    @if(!isset($AuthorityDetail))
+                       checked
+                    @endif
+                    {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td><!-- から送信対策。 --> 
                   </tr> 
                   @endforeach
                   
@@ -190,6 +238,7 @@
     AuthorityCode =document.getElementById('AuthorityCode').value;
     document.getElementById( 'deleteAuthority' ).value = AuthorityCode ;
     document.getElementById( 'editAuthority' ).value = AuthorityCode ;
+    document.getElementById( 'copyAuthority' ).value = AuthorityCode ;
   }
 
   function createEdit(){
@@ -224,7 +273,20 @@
       alert( '編集する権限CDを入力するか選択して下さい。' );
       return false;
     }
-
   }
+
+  function copyAlert(){
+    editAuthority = document.getElementById('copyAuthority').value;
+
+    if(editAuthority == ''){
+      alert( 'コピーする権限CDを入力するか選択して下さい。' );
+      return false;
+    }
+  }
+
+
+
+  
+
 </script>
 @endsection
