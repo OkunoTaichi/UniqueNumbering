@@ -1,4 +1,6 @@
-
+.authority_wrap{
+    position: relative;
+}
 .nav_item{
     padding-left: 20px;
 }
@@ -48,6 +50,7 @@
 }
 
 .noScroll{
+    z-index: 100;
     position: sticky;
     top: 0;
     left: 0;
@@ -59,4 +62,94 @@
 }
 .t_start{
     text-align: start;
+}
+
+.err-wrap{
+    width: 50%;
+    padding-right: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.disabled>input[type="radio"]:checked{
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: white;
+    border: solid 1px red;
+    position: relative;
+}
+.disabled>input[type="radio"]:checked::before{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background-color: red;
+    transform: translate(-50%, -50%);
+}
+
+.check-wrap{
+    align-items: center;
+}
+.disabled>input[type="checkbox"]:checked{
+    appearance: none;
+    width: 36px;
+    height: 36px;
+    background-color: red;
+    border-radius: 2px;
+    position: relative;
+  
+}
+.disabled>input[type=checkbox]:checked:disabled::after {
+
+    content: '';
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    display: block;
+    width: 26px;
+    height: 13px;
+    border: 6px solid white;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    transform: translate(-50%, -50%) rotate(-50deg);
+    font-size: 20px;
+
+}
+
+.noLine{
+    border-radius: 2px;
+    border: 1px solid #ddd;
+}
+
+.fadeIn {
+    opacity: 0;
+    animation-name: fadeInAnime;
+    animation-fill-mode:backwards;
+    animation-duration:5s;
+    animation-iteration-count:1;
+    animation-timing-function:ease;
+    animation-delay: 0.5s;
+    animation-direction:normal;
+}
+
+/*1で解説*/
+@keyframes fadeInAnime{
+    0% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.9;
+    }
+    100% {
+        opacity: 0;
+    }
 }

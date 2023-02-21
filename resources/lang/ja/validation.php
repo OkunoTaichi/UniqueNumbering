@@ -157,6 +157,11 @@ return [
     'attributes' => [
         'searchId' => 'テナントコード',
         'searchId_2' => 'テナントコード',
+
+        'AuthorityCode' => '権限コード',
+        'AuthorityName' => '権限名称',
+        'AdminFlg' => 'システム管理者',
+        'AuthorityDiv.*' => 'プログラムは更新.参照.不可のどれか1つ',
     ],
 
 ];
