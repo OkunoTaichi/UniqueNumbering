@@ -8,10 +8,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
-    <title>@yield('UnNumber.UnNumber_layouts.UnNumber_layout.title')</title>
+    <title>担当者マスタ</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/Person.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/Person.css') }}" rel="stylesheet">
 
     <!-- Bootstrap Table -->
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.css">
@@ -27,24 +29,19 @@
 </head>
 <body>
     <header>
-       @include('UnNumber.UnNumber_layouts.UnNumber_header')
+       @include('Person.Person_layouts.Person_header')
     </header>
     <main class="py-4">
-        @yield('UnNumber.content')
+        @yield('Person.content')
     </main>
     <footer class="footer bg-dark  fixed-bottom">
 
     </footer>
-    <style>
 
-        
-
-    </style>
     <script>
-        
 
 
     </script>
-    <!-- <script src="https://unpkg.com/bootstrap-table@1.21.2/dist/bootstrap-table.min.js"></script> -->
+
 </body>
 </html>
