@@ -1,0 +1,58 @@
+.form_parson{
+    padding-top: 40px;
+    width: 70%;
+}
+
+.noScroll{
+    z-index: 100;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.scroll_wrap{
+    height: 450px;
+    overflow-y: scroll;
+}
+
+.input_parson_wrap{
+    margin-bottom: 10px;
+}
+
+.input_parson_wrap>.form-label{
+    width: 100px;
+}
+
+/* 非表示ボタン */
+.disabled>input[type="checkbox"]{
+    width: 24px;
+    height: 24px;
+}
+.disabled>input[type="checkbox"]:checked:disabled{
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background-color: #0d6efd;
+    border-radius: 2px;
+    position: relative;
+}
+.disabled>input[type=checkbox]:checked:disabled::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    display: block;
+    width: 18px;
+    height: 10px;
+    border: 4px solid white;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    transform: translate(-50%, -50%) rotate(-50deg);
+    font-size: 20px;
+}
+
+.back_btn{
+    margin-right: 10px;
+}
+
+

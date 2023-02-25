@@ -10819,3 +10819,70 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+
+
+/* オリジナル */
+
+.form-control,
+.form-select{
+    width: 300px;
+    margin: 0 0.5rem 0.5rem 0;
+}
+.form-label{
+    width: 250px;
+}
+.err_message{
+    width: 200px;
+    padding: 0 20px
+}
+.in_active,.is_active{
+    padding: 0.5rem;
+}
+.navbar-nav{
+    align-items: center;
+}
+
+.link_wrap{
+    position: relative;
+}
+.link_top,.link_sub{
+    margin: 0;
+}
+.link_sub_wrap{
+    padding: 10px 20px;
+    width: 120px;
+    min-height: 50px;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background: #fff;
+    /* opacity: 0; */
+    display: none;
+    align-items: center;
+}
+.link_sub_wrap>.link_sub{
+    padding: 5px;
+}
+
+.fadeInLink {
+    opacity: 0;
+    animation-name: fadeInLink;
+    animation-fill-mode:forwards;
+    animation-duration:0.5s;
+    animation-iteration-count:1;
+    animation-timing-function:ease;
+    /* animation-delay: 0.5s; */
+    animation-direction:normal;
+}
+
+/*1で解説*/
+@keyframes fadeInLink{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        z-index: 100;
+    }
+}

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Database\Seeders\Authority;
+use Database\Seeders\Person;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,6 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(Authority\M_AuthoritySeeder::class);
         $this->call(Authority\M_AuthorityDetailSeeder::class);
         $this->call(Authority\M_ProgramSeeder::class);
+
+        $this->call(Person\M_PersonSeeder::class);
 
  
     }

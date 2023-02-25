@@ -17,7 +17,7 @@ class M_Authority extends Model
 
     // upDateCreateのための記述する
     use HasCompositePrimaryKeyTrait; // 複合キーの使用許可設定
-    protected $primaryKey = ['TenantBranch','AuthorityCode','TenantBranch']; // 複合キーの使用許可設定
+    protected $primaryKey = ['TenantCode','TenantBranch','AuthorityCode']; // 複合キーの使用許可設定
     public $incrementing = false; // 複合キーの使用許可設定
 
     //可変項目

@@ -1,6 +1,6 @@
-.authority_wrap{
+/* .authority_wrap{
     position: relative;
-}
+} */
 .nav_item{
     padding-left: 20px;
 }
@@ -68,7 +68,7 @@
     width: 50%;
     padding-right: 20px;
     position: absolute;
-    top: 0;
+    top: 80px;
     right: 0;
     display: flex;
     justify-content: space-between;
@@ -130,26 +130,3 @@
     border: 1px solid #ddd;
 }
 
-.fadeIn {
-    opacity: 0;
-    animation-name: fadeInAnime;
-    animation-fill-mode:backwards;
-    animation-duration:5s;
-    animation-iteration-count:1;
-    animation-timing-function:ease;
-    animation-delay: 0.5s;
-    animation-direction:normal;
-}
-
-/*1で解説*/
-@keyframes fadeInAnime{
-    0% {
-        opacity: 1;
-    }
-    80% {
-        opacity: 0.9;
-    }
-    100% {
-        opacity: 0;
-    }
-}

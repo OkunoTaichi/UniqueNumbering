@@ -14,7 +14,7 @@
             @csrf
             <input type="hidden" name="editSearch" id="editAuthority" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}">
             <input type="hidden" name="editFlag" id="editFlag" value="3">
-            <button type="submit" class="btn me-4 btn-primary" onclick=" return editAlert()">編 集</button>
+            <button type="submit" class="btn me-4 btn-primary" onclick="return editAlert()">編 集</button>
           </form>
 
           <form action="{{ route('Authority.Authority_destroy') }}" method="post">

@@ -7,6 +7,7 @@ use App\Http\Controllers\UniqueController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\Authority\AuthorityController;
+use App\Http\Controllers\Person\PersonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,7 +60,6 @@ Route::prefix('UnNumber')->name('UnNumber.')->group(function() {
     Route::post('UnNumber_delete', [UnNumberController::class, 'delete'])->name('delete');
 });
 
-
 /**
  * 権限マスタ
  */
@@ -68,4 +68,16 @@ Route::prefix('Authority')->name('Authority.')->group(function() {
     Route::post('Authority_store', [AuthorityController::class, 'Authority_store'])->name('Authority_store');
     Route::post('Authority_edit', [AuthorityController::class, 'Authority_edit'])->name('Authority_edit'); 
     Route::post('Authority_destroy', [AuthorityController::class, 'Authority_destroy'])->name('Authority_destroy');
+});
+
+/**
+ * 担当者マスタ
+ */
+Route::prefix('Person')->name('Person.')->group(function() {
+    Route::get('Person_index', [PersonController::class, 'Person_index'])->name('Person_index');
+    Route::get('Person_create', [PersonController::class, 'Person_create'])->name('Person_create'); 
+    Route::post('Person_store', [PersonController::class, 'Person_store'])->name('Person_store');
+    Route::post('Person_detail', [PersonController::class, 'Person_detail'])->name('Person_detail'); 
+    Route::post('Person_edit', [PersonController::class, 'Person_edit'])->name('Person_edit'); 
+    Route::post('Person_destroy', [PersonController::class, 'Person_destroy'])->name('Person_destroy');
 });

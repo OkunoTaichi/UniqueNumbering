@@ -41,7 +41,7 @@ class AuthorityController extends Controller
     public function authority_store(AuthorityRequest $request)
     {
         $routeFlg = $request->session()->get('routeFlg');
-        // dd($routeFlg);
+
         // 使用するモデル
         $M_Authority = new M_Authority;
 
@@ -58,7 +58,7 @@ class AuthorityController extends Controller
         // $M_Authority->createOnly($tenantCode,$tenantBranch,$authorityInputs);
 
         // 新規作成＋コピーの時は存在チェック
-        if (( $routeFlg === 1 || $routeFlg === 4 )&& M_Authority::where('TenantCode', $tenantCode)
+        if (( $routeFlg === 1 || $routeFlg === 4 ) && M_Authority::where('TenantCode', $tenantCode)
         ->where('TenantBranch', $tenantBranch)
         ->where('AuthorityCode', $authorityInputs['AuthorityCode'])
         ->exists()){
@@ -154,11 +154,6 @@ class AuthorityController extends Controller
             //     'Authority.Authority_index', compact('authoritys','programs','AuthorityDivs','routeFlg','AdminFlg')
             // );
         }
-
-        
-
-        
-
     }
 
     // 削除

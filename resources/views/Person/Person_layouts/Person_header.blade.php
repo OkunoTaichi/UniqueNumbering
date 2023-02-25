@@ -14,11 +14,11 @@
                 <li class="nav_item {{ (url()->current() == route('UnNumber.index'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.index') }}">採番区分作成</a></li>
                 <!-- <li class="nav_item {{ (url()->current() == route('UnNumber.edit_create'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.edit_create') }}">編集区分作成</a></li> -->
                 <li class="nav_item {{ (url()->current() == route('UnNumber.system_index'))?'is_active' : 'in_active' }}"><a href="{{ route('UnNumber.system_index') }}">採番処理機能</a></li>
-                <li class="nav_item {{ (url()->current() == route('UnNumber.system_index'))?'is_active' : 'in_active' }}"><a href="{{ route('Authority.Authority_index') }}">権限マスタ</a></li>
+                <li class="nav_item in_active"><a href="{{ route('Authority.Authority_index') }}">権限マスタ</a></li>
                 <li id="Person_link" class="nav_item in_active link_wrap">
                     <p class="link_top"><a href="{{ route('Person.Person_index') }}">担当者マスタ</a></p>
                     <div id="Person_link_wrap" class="link_sub_wrap">
-                        <p class="link_sub"><a href="{{ route('Person.Person_index') }}">新規作成</a></p>
+                        <p class="link_sub"><a href="{{ route('Person.Person_create') }}">新規作成</a></p>
                         <p class="link_sub"><a href="{{ route('Person.Person_index') }}">一覧</a></p>
                     </div>
                 </li>
