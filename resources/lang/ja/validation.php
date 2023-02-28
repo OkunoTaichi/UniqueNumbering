@@ -162,6 +162,13 @@ return [
         'AuthorityName' => '権限名称',
         'AdminFlg' => 'システム管理者',
         'AuthorityDiv.*' => 'プログラムは更新.参照.不可のどれか1つ',
+ 
+        'PersonCode' => '担当者コード',
+        'PersonName' => '担当者名',
+        'AuthorityCode' => '権限コード',
+        'Password' => 'パスワード',
+        'Hidden' => '設定',
+        'DisplayOrder' => '表示順',
     ],
 
 ];

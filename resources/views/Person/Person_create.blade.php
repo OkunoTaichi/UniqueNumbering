@@ -16,7 +16,7 @@
           <p class="text-danger error fadeIn">{{ session('err_msg') }}</p>
         @endif
 
-          <form name="PersonForm" action="{{ route('Person.Person_store') }}" method="post">
+          <form name="PersonForm" action="{{ route('Person.Person_store') }}" method="post" onsubmit="return false;">
             @csrf
 
             <div class="d-flex input_parson_wrap">
@@ -28,13 +28,17 @@
                 @elseif($routeFlag === 2)<!-- 編集モード -->
                 <input type="text" id="PersonCode" name="PersonCode" value="{{ $person->PersonCode }}" readonly>
                 @elseif($routeFlag === 3)<!-- コピーモード -->
-                <input type="text" id="PersonCode" name="PersonCode" value="" cheked oninput="inputCode();">
+                <input type="text" id="PersonCode" class="enterTab" name="PersonCode" value="" autofocus oninput="inputCode();">
                 @else<!-- 新規作成モード （保険）-->
-                <input type="text" id="PersonCode" name="PersonCode" value="" cheked oninput="inputCode();">
+                <input type="text" id="PersonCode" class="enterTab" name="PersonCode" value="" autofocus oninput="inputCode();">
                 @endif
 
               @else<!-- 新規作成モード -->
-              <input type="text" id="PersonCode" name="PersonCode" value="" cheked oninput="inputCode();">
+              <input type="text" id="PersonCode" class="enterTab" name="PersonCode" value="" autofocus oninput="inputCode();">
+              @endif
+
+              @if ($errors->has('PersonCode')) <!-- バリデーションメッセージ -->
+                <div class="text-danger err_m">&lowast; {{ $errors->first('PersonCode') }}</div>
               @endif
             </div>
 
@@ -45,15 +49,19 @@
                 @if($routeFlag === 1)<!-- 詳細モード -->
                 <input type="text" id="PersonName" name="PersonName" value="{{ $person->PersonName }}" disabled>
                 @elseif($routeFlag === 2)<!-- 編集モード -->
-                <input type="text" id="PersonName" name="PersonName" value="{{ $person->PersonName }}" cheked>
+                <input type="text" id="PersonName" class="enterTab" name="PersonName" value="{{ $person->PersonName }}" autofocus>
                 @elseif($routeFlag === 3)<!-- コピーモード -->
-                <input type="text" id="PersonName" name="PersonName" value="{{ $person->PersonName }}">
+                <input type="text" id="PersonName" class="enterTab" name="PersonName" value="{{ $person->PersonName }}">
                 @else<!-- 新規作成モード （保険）-->
-                <input type="text" id="PersonName" name="PersonName" value="">
+                <input type="text" id="PersonName" class="enterTab" name="PersonName" value="">
                 @endif
 
               @else<!-- 新規作成モード -->
-              <input type="text" id="PersonName" name="PersonName" value="">
+              <input type="text" id="PersonName" class="enterTab" name="PersonName" value="">
+              @endif
+
+              @if ($errors->has('PersonName')) <!-- バリデーションメッセージ -->
+                <div class="text-danger err_m">&lowast; {{ $errors->first('PersonName') }}</div>
               @endif
             </div>
 
@@ -65,7 +73,7 @@
                 <input type="text" id="AuthorityCode" name="AuthorityCode" value="{{ $person->AuthorityCode }}" disabled>
 
                 @elseif($routeFlag === 2 || $routeFlag === 3)<!-- 編集＋コピーモード -->
-                <select class="form-select enterTab" id="AuthorityCode" name="AuthorityCode">
+                <select class="form-select enterTab" id="AuthorityCode" class="enterTab" name="AuthorityCode">
                   <option value="{{ $person->AuthorityCode }}">{{ $person->AuthorityCode }}</option>   
                   @foreach ($authoritys as $authority)
                   <option value="{{ $authority->AuthorityCode }}">{{ $authority->AuthorityCode }} : {{ $authority->AuthorityName }}</option>   
@@ -73,7 +81,7 @@
                 </select>
 
                 @else<!-- 新規作成モード （保険）-->
-                <select class="form-select enterTab" id="AuthorityCode" name="AuthorityCode">
+                <select class="form-select enterTab" id="AuthorityCode" class="enterTab" name="AuthorityCode">
                   @foreach ($authoritys as $authority)
                   <option value="{{ $authority->AuthorityCode }}">{{ $authority->AuthorityCode }} : {{ $authority->AuthorityName }}</option>   
                   @endforeach
@@ -82,11 +90,15 @@
                 
               @else
                 <!-- 新規作成モード -->
-                <select class="form-select enterTab" id="AuthorityCode" name="AuthorityCode">
+                <select class="form-select enterTab" class="enterTab" id="AuthorityCode" name="AuthorityCode">
                   @foreach ($authoritys as $authority)
                   <option value="{{ $authority->AuthorityCode }}">{{ $authority->AuthorityCode }} : {{ $authority->AuthorityName }}</option>   
                   @endforeach
                 </select>
+              @endif
+
+              @if ($errors->has('AuthorityCode')) <!-- バリデーションメッセージ -->
+                <div class="text-danger err_m">&lowast; {{ $errors->first('AuthorityCode') }}</div>
               @endif
             </div>
 
@@ -97,13 +109,17 @@
                   @if($routeFlag === 1)<!-- 詳細モード -->
                   <input type="text" id="Password" name="Password" value="{{ $person->Password }}" disabled>
                   @elseif($routeFlag === 2 || $routeFlag === 3)<!-- 編集＋コピーモード -->
-                  <input type="text" id="Password" name="Password" value="{{ $person->Password }}">
+                  <input type="text" id="Password" class="enterTab" name="Password" value="{{ $person->Password }}">
                   @else<!-- 新規作成モード （保険）-->
-                  <input type="text" id="Password" name="Password" value="">
+                  <input type="text" id="Password" class="enterTab" name="Password" value="">
                   @endif
 
                 @else<!-- 新規作成モード -->
-                <input type="text" id="Password" name="Password" value="">
+                <input type="text" id="Password" class="enterTab" name="Password" value="">
+                @endif
+
+                @if ($errors->has('Password')) <!-- バリデーションメッセージ -->
+                <div class="text-danger err_m">&lowast; {{ $errors->first('Password') }}</div>
                 @endif
             </div>
 
@@ -123,6 +139,10 @@
                 @else<!-- 新規作成モード -->
                 <input type="checkbox" name="Hidden" class="form-control3 enterTab" id="Hidden" value="1"> 
                 @endif
+
+                @if ($errors->has('Hidden')) <!-- バリデーションメッセージ -->
+                <div class="text-danger err_m">&lowast; {{ $errors->first('Hidden') }}</div>
+                @endif
               </div>
             </div>
 
@@ -133,31 +153,35 @@
                 @if($routeFlag === 1)<!-- 詳細モード -->
                 <input type="text" id="DisplayOrder" name="DisplayOrder" value="{{ $person->DisplayOrder }}" disabled>
                 @elseif($routeFlag === 2 || $routeFlag === 3)<!-- 編集＋コピーモード -->
-                <input type="text" id="DisplayOrder" name="DisplayOrder" value="{{ $person->DisplayOrder }}">
+                <input type="text" id="DisplayOrder" class="enterTab" name="DisplayOrder" value="{{ $person->DisplayOrder }}">
                 @else<!-- 新規作成モード （保険）-->
-                <input type="text" id="DisplayOrder" name="DisplayOrder" value="">
+                <input type="text" id="DisplayOrder" class="enterTab" name="DisplayOrder" value="">
                 @endif
 
               @else<!-- 新規作成モード -->  
-              <input type="text" id="DisplayOrder" name="DisplayOrder" value="">
+              <input type="text" id="DisplayOrder" class="enterTab" name="DisplayOrder" value="">
+              @endif
+
+              @if ($errors->has('DisplayOrder')) <!-- バリデーションメッセージ -->
+              <div class="text-danger err_m">&lowast; {{ $errors->first('DisplayOrder') }}</div>
               @endif
             </div>
 
             @if(isset($routeFlag))
 
               @if($routeFlag === 1)<!-- 詳細モードは確定なし -->
-                <button type="button" class="btn btn-primary enterTab" tabindex="" onclick="history.back()" id="enter">戻 る</button>
+                <button type="button" class="btn btn-primary" tabindex="" onclick="history.back()">戻 る</button>
               @else
               <div class="d-flex">
-                <button type="button" class="btn btn-primary enterTab back_btn" tabindex="" onclick="history.back()" id="enter">戻 る</button>
-                <button type="button" class="btn btn-primary enterTab" tabindex="" onclick="submit()" id="enter">確 定</button>
+                <button type="button" class="btn btn-primary back_btn" tabindex="" onclick="history.back()">戻 る</button>
+                <button type="button" id="enter" class="btn btn-primary enterTab" tabindex="" onclick="createPerson()">確 定</button>
               </div>
               @endif
 
             @else
               <div class="d-flex">
-                <button type="button" class="btn btn-primary enterTab back_btn" tabindex="" onclick="history.back()" id="enter">戻 る</button>
-                <button type="button" class="btn btn-primary enterTab" tabindex="" onclick="submit()" id="enter">確 定</button>
+                <button type="button" class="btn btn-primary back_btn" tabindex="" onclick="history.back()">戻 る</button>
+                <button type="button" id="enter" class="btn btn-primary enterTab" tabindex="" onclick="createPerson()">確 定</button>
               </div>
             @endif
             

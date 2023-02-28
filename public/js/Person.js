@@ -1,4 +1,4 @@
-// 編集と削除インプットに権限CDの入力値を入れる
+
   function inputCode(){
     AuthorityCode =document.getElementById('PersonCode').value;
     document.getElementById( 'deletePerson' ).value = AuthorityCode ;
@@ -6,7 +6,7 @@
     document.getElementById( 'copyPerson' ).value = AuthorityCode ;
   }
 
-  function createEdit(){
+  function createPerson(){
     if(window.confirm('登録してよろしいですか？')){
         document.PersonForm.submit();
         return true;
@@ -16,10 +16,10 @@
   }
 
   function destroy(){
-    deleteAuthority = document.getElementById('deleteAuthority').value;
+    deletePerson = document.getElementById('deletePerson').value;
 
-    if(deleteAuthority == ''){
-      alert( '削除する権限CDを入力するか選択して下さい。' );
+    if(deletePerson == ''){
+      alert( '削除する権限CDを選択して下さい。' );
       return false;
     }else{
 
@@ -32,20 +32,24 @@
   }
 
   function editAlert(){
-    editAuthority = document.getElementById('editPerson').value;
+    editPerson = document.getElementById('editPerson').value;
 
-    if(editAuthority == ''){
-      alert( '編集する権限CDを入力するか選択して下さい。' );
+    if(editPerson == ''){
+      alert( '編集する権限CDを選択して下さい。' );
       return false;
     }
   }
 
   function copyAlert(){
-    editAuthority = document.getElementById('copyAuthority').value;
+    editPerson = document.getElementById('copyPerson').value;
 
-    if(editAuthority == ''){
-      alert( 'コピーする権限CDを入力するか選択して下さい。' );
+    if(editPerson == ''){
+      alert( 'コピーする権限CDを選択して下さい。' );
       return false;
     }
   }
+
+
+
+
   

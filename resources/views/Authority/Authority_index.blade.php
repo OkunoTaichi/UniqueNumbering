@@ -74,9 +74,9 @@
             <table class="table table-hover">
               <thead style="background-color: #ffff9f" class="noScroll">
                 
-                <tr>
-                  <th>権限CD</th>
-                  <th>権 限 名 称</th>
+                <tr class="linkWrap">
+                  <th class="linkCode" style="padding-left: 20px;">権限CD</th>
+                  <th class="linkName">権 限 名 称</th>
                 </tr>
               </thead>
 
@@ -84,12 +84,12 @@
                 @csrf
                 <tbody>
                   @foreach ($authoritys as $authority)
-                  <tr>
-                    <td>
-                      <input type="submit" class="text" style="border:none; background-color: inherit;" name="editSearch" value="{{ $authority->AuthorityCode }}"></input>        
+                  <tr class="linkWrap">
+                    <td class="linkCode">
+                      <input type="submit" class="text authorityLinks" style="border:none; background-color: inherit; padding-left: 20px;" name="editSearch" value="{{ $authority->AuthorityCode }}"></input>        
                     </td>
 
-                    <td>{{ $authority->AuthorityName }}</td>
+                    <td class="linkName" style="border:none; background-color: inherit;">{{ $authority->AuthorityName }}</td>
                   </tr>
                   @endforeach
                 
@@ -155,25 +155,23 @@
                     <td class="t_start" style="padding-left: 30px"><input type="hidden" name="" class="form-control2" id="ProgramName" value="">{{ $program->ProgramName }}</td>
                   
                     <td><label class="{{ $routeFlg == 2 ? 'disabled' : '' }}"><input class="radioAll_1" type="radio" value="1" name="AuthorityDiv[{{ $i }}]" 
-                    @if(isset($AuthorityDetail))
+                    @if(isset($AuthorityDetail[$i]))
                       @if( $AuthorityDetail[$i]['AuthorityDiv'] == 1 ) checked @endif
                     @endif
                     {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td>
 
                     <td><label class="{{ $routeFlg == 2 ? 'disabled' : '' }}"><input class="radioAll_2" type="radio" value="2" name="AuthorityDiv[{{ $i }}]" 
-                    @if(isset($AuthorityDetail))
+                    @if(isset($AuthorityDetail[$i]))
                       @if( $AuthorityDetail[$i]['AuthorityDiv'] == 2 ) checked @endif
                     @endif
                     {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td>
 
                     <td><label class="{{ $routeFlg == 2 ? 'disabled' : '' }}"><input class="radioAll_3" type="radio" value="3" name="AuthorityDiv[{{ $i }}]" 
-                    @if(isset($AuthorityDetail))
+                    @if(isset($AuthorityDetail[$i]))
                       @if( $AuthorityDetail[$i]['AuthorityDiv'] == 3 ) checked @endif
                     @endif
 
-                    @if(!isset($AuthorityDetail))
-                       checked
-                    @endif
+                    
                     {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td><!-- から送信対策。 --> 
                   </tr> 
                   @endforeach

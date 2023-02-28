@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Person;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Person\PersonRequest;
 use DB;
 use App\Models\Person\M_Person;
 use App\Models\Authority\M_Authority;
@@ -20,7 +21,7 @@ class PersonController extends Controller
         $tenantCode = $user->tenantCode;
         $tenantBranch = $user->tenantBranch;
 
-        $persons = M_Person::get();
+        $persons = M_Person::orderBy('updated_at', 'desc')->get();
         // dd($person);
        
         return view(
@@ -39,9 +40,9 @@ class PersonController extends Controller
         $tenantBranch = $user->tenantBranch;
 
         // セレクトボックスに登録されている権限を表示する
-        $authoritys = M_Authority::get();
+        $authoritys = M_Authority::orderBy('AuthorityCode', 'asc')->get();
 
-        $persons = M_Person::get();
+        $persons = M_Person::orderBy('updated_at', 'desc')->get();
        
         return view(
             'Person.Person_create' ,compact('persons','authoritys',)
@@ -73,7 +74,7 @@ class PersonController extends Controller
         );
     }
 
-    public function Person_store(Request $request){
+    public function Person_store(PersonRequest $request){
 
         $personInputs = $request->all();
         $routeFlag = $request->session()->get('routeFlag');
@@ -98,7 +99,7 @@ class PersonController extends Controller
             $M_Person->updateCreate($tenantCode,$tenantBranch,$personInputs);
 
             // 更新後の一覧データを取得
-            $persons = M_Person::get();
+            $persons = M_Person::orderBy('updated_at', 'desc')->get();
     
             return view(
                 'Person.Person_index' ,compact('persons')
@@ -154,7 +155,7 @@ class PersonController extends Controller
             ->first();
 
             // セレクトボックスに登録されている権限を表示する
-            $authoritys = M_Authority::get();
+            $authoritys = M_Authority::orderBy('AuthorityCode', 'asc')->get();
     
             return view(
                 'Person.Person_create', compact('person','routeFlag','authoritys')
@@ -199,7 +200,7 @@ class PersonController extends Controller
             $M_Person->PersonDelete($tenantCode,$tenantBranch,$PersonCode);
 
             // 更新後の一覧データを取得
-            $persons = M_Person::get();
+            $persons = M_Person::orderBy('updated_at', 'desc')->get();
             return redirect()->route('Person.Person_index')->with(compact('persons'));
 
         }else{
@@ -210,4 +211,23 @@ class PersonController extends Controller
             return redirect()->route('Person.Person_create');
         }
     }
+
+    public function Person_copy(Request $request){
+
+        // 検索キー
+        $personEdits = $request->all();
+        $personCode = $personEdits['editSearch'];
+
+        // 担当者コードを選択せずに「編集・削除・コピー」を選択した時の処理
+        if($personCode === null){
+            $persons = M_Person::get();
+            \Session::forget('routeFlag');
+            \Session::flash('successe_msg' , '担当者コードを選択してください。');
+            return redirect()->route('Person.Person_index')->with(compact('persons'));
+        }
+
+    }
+
+
+
 }
