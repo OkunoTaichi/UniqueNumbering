@@ -67,6 +67,7 @@ class M_Authority extends Model
         $AuthorityName = $authorityInputs['AuthorityName'];
         $AdminFlg = $authorityInputs['AdminFlg'];
 
+        // dd($count);
         \DB::beginTransaction();
         try{
             M_Authority::updateOrCreate(

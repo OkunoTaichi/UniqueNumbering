@@ -75,7 +75,8 @@ Route::prefix('Authority')->name('Authority.')->group(function() {
  */
 Route::prefix('Person')->name('Person.')->group(function() {
     Route::get('Person_index', [PersonController::class, 'Person_index'])->name('Person_index');
-    Route::get('Person_create', [PersonController::class, 'Person_create'])->name('Person_create'); 
+    Route::get('Person_create', [PersonController::class, 'Person_create'])->name('Person_create');
+    Route::get('Person_copy', [PersonController::class, 'Person_copy'])->name('Person_copy');
     Route::post('Person_store', [PersonController::class, 'Person_store'])->name('Person_store');
     Route::post('Person_detail', [PersonController::class, 'Person_detail'])->name('Person_detail'); 
     Route::post('Person_edit', [PersonController::class, 'Person_edit'])->name('Person_edit'); 

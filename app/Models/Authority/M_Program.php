@@ -20,4 +20,20 @@ class M_Program extends Model
         'ProgramName',
         'UpdatePerson',
     ];
+
+
+    public function M_AuthorityDetails(){
+        return $this->hasMany(M_AuthorityDetail::class, 'ProgramID','ProgramID');
+    }
+
+    // リレーション先のデータも削除 プログラムの削除機能はない為testできない一旦ステイ
+    // public static function boot()
+    // {
+    // parent::boot();
+    //     static::deleted(function ($delete) {
+    //         $delete->M_AuthorityDetails()->delete();
+    //     });
+    // }
+
+
 }

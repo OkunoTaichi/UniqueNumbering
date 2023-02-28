@@ -22,12 +22,23 @@
 .input_parson_wrap>.form-label{
     width: 100px;
 }
+.input_parson_wrap>input[type="text"]{
+    width: 300px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    /* background: #f8fafc; */
+}
+
+
 
 /* 非表示ボタン */
 .disabled>input[type="checkbox"]{
     width: 24px;
     height: 24px;
+    /* border: 1px solid #ced4da; */
 }
+
+
 .disabled>input[type="checkbox"]:checked:disabled{
     appearance: none;
     width: 24px;
@@ -54,5 +65,10 @@
 .back_btn{
     margin-right: 10px;
 }
+
+.err_m{
+    margin-left: 10px;
+}
+
 
 

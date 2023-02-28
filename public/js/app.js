@@ -1198,7 +1198,7 @@ function inputSymbol(editdiv) {
 var btn = document.getElementById('enter');
 if( btn != null ){
   btn.onkeydown = function(e){
-      if (e.keyCode === 13) {
+      if (e.key === "Enter") {
           document.form.submit();
       }
   }

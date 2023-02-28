@@ -28,4 +28,9 @@ class M_AuthorityDetail extends Model
         'AuthorityDiv',
         'UpdatePerson',
     ];
+
+    public function M_Programs(){
+        return $this->belongsTo(M_Program::class, 'ProgramID','ProgramID');
+    }
+    
 }

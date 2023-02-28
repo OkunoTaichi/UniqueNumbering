@@ -19,7 +19,7 @@ class AuthorityController extends Controller
         // セッションデータ初期化
         // \Session::flash('err_msg' , '');
 
-        $authoritys = M_Authority::get();
+        $authoritys = M_Authority::orderBy('AuthorityCode', 'asc')->get();
         $programs = M_Program::get();
         $AuthorityDivs = M_Division::where('DivCode','AuthorityDiv')
         ->select('DivCode','DivNo','DivName')
@@ -50,9 +50,32 @@ class AuthorityController extends Controller
         $tenantBranch = $user->tenantBranch;
 
         $authorityInputs = $request->all();
+
+        // ラジオボタンに1つもチェックなしの処理
+        if(!isset($authorityInputs['AuthorityDiv'])){
+            \Session::flash('err_msg' , 'プログラムの設定は全て必須です。');
+            return redirect( route('Authority.Authority_index') );
+        }else{
+            $countAuthority = count($authorityInputs['AuthorityDiv']);
+        }
         // AuthorityDetailは全てのプログラムを同時にstoreするのでProgramIDの数だけfor文で回す
         $programs = $request->only('ProgramID');
         $count = count($programs['ProgramID']);
+
+        // プログラムが追加されたときにキーを追加する数（プログラムー登録数）
+        $keyAdd = $count-$countAuthority;
+
+        // 登録数よりプログラム数が多い場合は「null」でキーを追加する。
+        if(0<$keyAdd){
+            for ($i=0; $i<$keyAdd; $i++){
+                array_push($authorityInputs['AuthorityDiv'], null);
+            }
+        }
+        if (in_array(null, $authorityInputs['AuthorityDiv'], true)) {
+            \Session::flash('err_msg' , 'プログラムの設定は全て必須です。');
+            return redirect( route('Authority.Authority_index') );
+        } 
+
 
         // クリエイトだけVer
         // $M_Authority->createOnly($tenantCode,$tenantBranch,$authorityInputs);
@@ -78,7 +101,7 @@ class AuthorityController extends Controller
         \Session::flash('err_msg' , '');
 
         // 初期データ（インスタンス化する必要がある）
-        $authoritys = M_Authority::get();
+        $authoritys = M_Authority::orderBy('AuthorityCode', 'asc')->get();
         $programs = M_Program::get();
         $AuthorityDivs = M_Division::where('DivCode','AuthorityDiv')
         ->select('DivCode','DivNo','DivName')
@@ -126,6 +149,7 @@ class AuthorityController extends Controller
             ->where('TenantBranch', $tenantBranch)
             ->where('AuthorityCode', $AuthorityCode)
             ->get();
+            // dd($AuthorityDetail);
 
             // ボタンの色とかの振り分け
             if($editFlag == 3){
@@ -162,7 +186,7 @@ class AuthorityController extends Controller
         // 使用するモデル
         $M_Authority = new M_Authority;
         // 初期データ
-        $authoritys = M_Authority::get();
+        $authoritys = M_Authority::orderBy('AuthorityCode', 'asc')->get();
         $programs = M_Program::get();
         $AuthorityDivs = M_Division::where('DivCode','AuthorityDiv')
         ->select('DivCode','DivNo','DivName')

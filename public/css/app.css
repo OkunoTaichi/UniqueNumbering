@@ -1743,6 +1743,7 @@ progress {
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
   --bs-table-hover-color: var(--bs-body-color);
   --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  --bs-table-hover-bg-none: rgba(0,0,0,0);
   width: 100%;
   margin-bottom: 1rem;
   color: var(--bs-table-color);
@@ -2145,7 +2146,8 @@ textarea.form-control-lg {
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
-  background-color: #f8fafc;
+  /* background-color: #f8fafc; */
+  background: #fff;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
@@ -10876,7 +10878,6 @@ textarea.form-control-lg {
     animation-direction:normal;
 }
 
-/*1で解説*/
 @keyframes fadeInLink{
     0% {
         opacity: 0;
@@ -10885,4 +10886,27 @@ textarea.form-control-lg {
         opacity: 1;
         z-index: 100;
     }
+}
+
+.linkWrap{
+  position: relative;
+}
+.linkWrap>.linkName{
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translateY(-50%);
+  text-decoration: none;
+  border: none;
+}
+.linkWrap>.linkName:hover{
+  background-color: inherit;
+}
+.authorityLinks{
+  width: 100%;
+  text-align: start;
+}
+.table-hover > tbody > tr:hover > .linkName{
+  --bs-table-accent-bg: var(--bs-table-hover-bg-none);
 }

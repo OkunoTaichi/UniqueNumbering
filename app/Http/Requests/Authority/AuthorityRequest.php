@@ -35,6 +35,5 @@ class AuthorityRequest extends FormRequest
             'AuthorityDiv' => 'array',
             'AuthorityDiv.*' => 'required',
         ];
-   
     }
 }
