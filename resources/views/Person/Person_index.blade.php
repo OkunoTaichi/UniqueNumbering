@@ -17,7 +17,7 @@
                 <tr>
                   <th>担当者コード</th>
                   <th>氏       名</th>
-                  <th>権限</th>
+                  <th class="t-center">権限</th>
                   <th>非表示</th>
                   <th>表示順</th>
                 </tr>
@@ -30,7 +30,10 @@
                     <tr>
                         <td><input type="submit" class="text" style="border:none; background-color: inherit;" name="editSearch" value="{{ $person->PersonCode }}"></input></td>
                         <td>{{ $person->PersonName }}</td>
-                        <td>{{ $person->AuthorityCode }}</td>
+
+                        <!-- <td>{{ $person->AuthorityCode }}</td>権限CD -->
+                        <td class="d-flex"><p style="width: 40px; margin-left:40px;">{{ $person->AuthorityCode }}</p><p style="width: 20px;">:</p> {{ $person->M_Authority->AuthorityName }}</td><!-- 権限CD -->
+
                         <td>
                           <div class="disabled">
                             <input type="checkbox" name="" class="form-control3 enterTab" id="" value="1" {{ $person->Hidden === 1 ? 'checked' : '' }} disabled>

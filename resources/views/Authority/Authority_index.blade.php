@@ -23,20 +23,24 @@
             <button type="submit" class="btn me-4 btn-primary" onclick=" return destroy()">削 除</button>
           </form>
      
-          <form action="{{ route('Authority.Authority_edit') }}" method="post">
+          <form action="{{ route('Authority.Authority_copy') }}" method="post">
             @csrf
-            <input type="hidden" name="editSearch" id="copyAuthority" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}">
+            <input type="hidden" name="copySearch" id="copyAuthority" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}">
             <input type="hidden" name="copyFlag" id="copyFlag" value="4">  
             <button type="submit" class="btn me-4 btn-primary" onclick=" return copyAlert()">コピー</button>
           </form>
-          <button type="button" class="btn btn-secondary me-4" disabled>貼付け</button>
+
+          <form action="{{ route('Authority.Authority_paste') }}" method="get">
+            @csrf
+            <button type="submit" class="btn me-4 btn-primary"  onclick=" return copyAlert()">貼付け</button>
+          </form>
         </div>
 
         <div class="err-wrap">
           @if(session('err_msg'))<!-- 登録確認、存在チェックの表示 -->
-            <h1 class="text-danger error fadeIn">
+            <h class="text-danger error fadeIn">
                 {{ session('err_msg') }}
-            </h1>
+            </h>
           @endif
 
           @if(session('err_msg_index'))<!-- 登録確認、存在チェックの表示 -->
@@ -62,8 +66,8 @@
                 <div class="text-danger err_m">&lowast; {{ $errors->first('AdminFlg') }}</div>
             @endif
 
-            @if ($errors->has('AuthorityDiv.*')) 
-                <div class="text-danger err_m">&lowast; {{ $errors->first('AuthorityDiv.*') }}</div>
+            @if ($errors->has('AuthorityDiv')) 
+                <div class="text-danger err_m">&lowast; {{ $errors->first('AuthorityDiv') }}</div>
             @endif
           </div>
         </div>
@@ -115,14 +119,14 @@
               <label for="AuthorityCode" class="form-label2" style="background-color: #ffff9f">権限CD</label>
 
               @if( $routeFlg == 4)
-              <input type="text" name="AuthorityCode" class="form-control2 enterTab" id="AuthorityCode" value="" oninput="inputCode();" {{ $routeFlg == 2 ? 'disabled' : 'autofocus' }}>
+              <input type="text" name="AuthorityCode" class="form-control2 enterTab" id="AuthorityCode" value="" oninput="inputCode();" {{ $routeFlg == 2 ? 'disabled' : 'autofocus' }}  onblur="ztoh(this);">
               @elseif( $routeFlg == 3)
-              <input type="text" name="AuthorityCode" class="form-control2 enterTab noLine" id="AuthorityCode" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}" oninput="inputCode();" readonly>
+              <input type="text" name="AuthorityCode" class="form-control2 enterTab noLine" id="AuthorityCode" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : old('AuthorityCode') }}" oninput="inputCode();" readonly>
               @else
-              <input type="text" name="AuthorityCode" class="form-control2 enterTab" id="AuthorityCode" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : '' }}" oninput="inputCode();" {{ $routeFlg == 2 ? 'disabled' : 'autofocus' }}>
+              <input type="text" name="AuthorityCode" class="form-control2 enterTab" id="AuthorityCode" value="{{ isset($Authority['AuthorityCode']) ? $Authority['AuthorityCode'] : old('AuthorityCode') }}" oninput="inputCode();" {{ $routeFlg == 2 ? 'disabled' : 'autofocus' }}  onblur="ztoh(this);">
               @endif
 
-              <input type="text" name="AuthorityName" class="form-control2 enterTab" id="AuthorityName" value="{{ isset($Authority['AuthorityName']) ? $Authority['AuthorityName'] : '' }}" {{ $routeFlg == 2 ? 'disabled' : '' }}>
+              <input type="text" name="AuthorityName" class="form-control2 enterTab" id="AuthorityName" value="{{ isset($Authority['AuthorityName']) ? $Authority['AuthorityName'] : old('AuthorityName') }}" {{ $routeFlg == 2 ? 'disabled' : '' }}>
               </br>
               <label for="AdminFlg" class="form-label2" style="background-color: #ffff9f">システム管理者</label>
               <div class="check-wrap {{ $routeFlg == 2 ? 'disabled' : '' }}">
@@ -130,7 +134,7 @@
                 @if(isset($AdminFlg) || $AdminFlg === 1 )
                 <input type="checkbox" name="AdminFlg" class="form-control3 enterTab" id="AdminFlg" value="1" checked {{ $routeFlg == 2 ? 'disabled' : '' }}>
                 @else
-                <input type="checkbox" name="AdminFlg" class="form-control3 enterTab" id="AdminFlg" value="1" {{ $routeFlg == 2 ? 'disabled' : '' }}>
+                <input type="checkbox" name="AdminFlg" class="form-control3 enterTab" id="AdminFlg" value="1" {{ $routeFlg == 2 ? 'disabled' : '' }} @if(old("AdminFlg") !== null) checked @endif>
                 @endif
               </div>
             </div>
@@ -158,22 +162,34 @@
                     @if(isset($AuthorityDetail[$i]))
                       @if( $AuthorityDetail[$i]['AuthorityDiv'] == 1 ) checked @endif
                     @endif
+
+                    @if(old("AuthorityDiv.$i") == 1 ) checked @endif
+                  
                     {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td>
 
                     <td><label class="{{ $routeFlg == 2 ? 'disabled' : '' }}"><input class="radioAll_2" type="radio" value="2" name="AuthorityDiv[{{ $i }}]" 
                     @if(isset($AuthorityDetail[$i]))
                       @if( $AuthorityDetail[$i]['AuthorityDiv'] == 2 ) checked @endif
                     @endif
+
+                    @if(old("AuthorityDiv.$i") == 2 ) checked @endif
+             
                     {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td>
 
+
+
                     <td><label class="{{ $routeFlg == 2 ? 'disabled' : '' }}"><input class="radioAll_3" type="radio" value="3" name="AuthorityDiv[{{ $i }}]" 
+
                     @if(isset($AuthorityDetail[$i]))
                       @if( $AuthorityDetail[$i]['AuthorityDiv'] == 3 ) checked @endif
                     @endif
 
+                    @if(old("AuthorityDiv.$i") == 3 ) checked @endif
                     
-                    {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td><!-- から送信対策。 --> 
+                    {{ $routeFlg == 2 ? 'disabled' : '' }}></label></td>
+
                   </tr> 
+
                   @endforeach
                   
 

@@ -26,7 +26,8 @@
     width: 300px;
     border: 1px solid #ced4da;
     border-radius: 5px;
-    /* background: #f8fafc; */
+    padding: 5px 13px;
+    
 }
 
 
@@ -70,5 +71,10 @@
     margin-left: 10px;
 }
 
+.form-select:disabled{
+    background: #efefef4d;
+}
 
-
+.t-center{
+    text-align: center;
+}

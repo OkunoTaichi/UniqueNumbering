@@ -68,6 +68,8 @@ Route::prefix('Authority')->name('Authority.')->group(function() {
     Route::post('Authority_store', [AuthorityController::class, 'Authority_store'])->name('Authority_store');
     Route::post('Authority_edit', [AuthorityController::class, 'Authority_edit'])->name('Authority_edit'); 
     Route::post('Authority_destroy', [AuthorityController::class, 'Authority_destroy'])->name('Authority_destroy');
+    Route::post('Authority_copy', [AuthorityController::class, 'Authority_copy'])->name('Authority_copy');
+    Route::get('Authority_paste', [AuthorityController::class, 'Authority_paste'])->name('Authority_paste');
 });
 
 /**
@@ -76,9 +78,10 @@ Route::prefix('Authority')->name('Authority.')->group(function() {
 Route::prefix('Person')->name('Person.')->group(function() {
     Route::get('Person_index', [PersonController::class, 'Person_index'])->name('Person_index');
     Route::get('Person_create', [PersonController::class, 'Person_create'])->name('Person_create');
-    Route::get('Person_copy', [PersonController::class, 'Person_copy'])->name('Person_copy');
     Route::post('Person_store', [PersonController::class, 'Person_store'])->name('Person_store');
     Route::post('Person_detail', [PersonController::class, 'Person_detail'])->name('Person_detail'); 
     Route::post('Person_edit', [PersonController::class, 'Person_edit'])->name('Person_edit'); 
     Route::post('Person_destroy', [PersonController::class, 'Person_destroy'])->name('Person_destroy');
+    Route::post('Person_copy', [PersonController::class, 'Person_copy'])->name('Person_copy');
+    Route::get('Person_paste', [PersonController::class, 'Person_paste'])->name('Person_paste');
 });

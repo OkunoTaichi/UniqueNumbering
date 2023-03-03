@@ -5,7 +5,6 @@
     document.getElementById( 'editPerson' ).value = AuthorityCode ;
     document.getElementById( 'copyPerson' ).value = AuthorityCode ;
   }
-
   function createPerson(){
     if(window.confirm('登録してよろしいですか？')){
         document.PersonForm.submit();
@@ -14,7 +13,6 @@
         return false;
     }
   }
-
   function destroy(){
     deletePerson = document.getElementById('deletePerson').value;
 
@@ -30,7 +28,6 @@
       }
     }
   }
-
   function editAlert(){
     editPerson = document.getElementById('editPerson').value;
 
@@ -39,7 +36,6 @@
       return false;
     }
   }
-
   function copyAlert(){
     editPerson = document.getElementById('copyPerson').value;
 

@@ -13,13 +13,18 @@
         <button type="submit" class="btn me-4 btn-primary" onclick="return destroy()">削 除</button>
     </form>
 
-    <form action="{{ route('Person.Person_edit') }}" method="post">
+    <form action="{{ route('Person.Person_copy') }}" method="post">
     @csrf
-        <input type="hidden" name="editSearch" id="copyPerson" value="{{ isset($person['PersonCode']) ? $person['PersonCode'] : '' }}">
+        <input type="hidden" name="copySearch" id="copyPerson" value="{{ isset($person['PersonCode']) ? $person['PersonCode'] : '' }}">
         <input type="hidden" name="copyFlag" id="copyFlag" value="1">  
         <button type="submit" class="btn me-4 btn-primary" onclick="return copyAlert()">コピー</button>
     </form>
-    <button type="button" class="btn btn-secondary me-4" disabled>貼付け</button>
+  
+    <form action="{{ route('Person.Person_paste') }}" method="get">
+    @csrf
+        <button type="submit" class="btn me-4 btn-primary" onclick=" return copyAlert()">貼付け</button>
+    </form>
+    <!-- <a href="{{ route('Person.Person_paste') }}">貼付け</a> -->
 </div>
 
 
