@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Authority\M_Authority;
 use App\Models\Authority\M_AuthorityDetail;
 use App\Models\Authority\M_Program;
+use App\Models\Person\M_Person;
+use App\Models\M_Division;
 
 class M_Authority extends Model
 {
@@ -30,6 +32,10 @@ class M_Authority extends Model
         'AdminFlg',
         'UpdatePerson',
     ];
+
+    public function M_Persons(){
+        return $this->hasMany(M_Person::class, 'AuthorityCode','AuthorityCode');
+    }
 
 
 
@@ -117,6 +123,7 @@ class M_Authority extends Model
 
     }
 
+
     // 削除ロジック
     public function authorityDelete($tenantCode,$tenantBranch,$AuthorityCode){
         \DB::beginTransaction();
@@ -139,7 +146,50 @@ class M_Authority extends Model
         \Session::flash('err_msg' , '権限CD '.$AuthorityCode.' を削除しました。');
     }
 
+     // 削除前の権限仕様チェック
+     public function PersonCheck($tenantCode,$tenantBranch,$AuthorityCode){
+        $PersonCheck = M_Person::where('TenantCode', $tenantCode)
+                ->where('TenantBranch', $tenantBranch)
+                ->where('AuthorityCode', $AuthorityCode)
+                ->first();
+        return $PersonCheck;
+    }
 
+    // M_Authorityテーブルの存在チェック あればデータ取得
+    public function AuthorityCheck($tenantCode,$tenantBranch,$AuthorityCode){
+        $AuthorityCheck = M_Authority::where('TenantCode', $tenantCode)
+                ->where('TenantBranch', $tenantBranch)
+                ->where('AuthorityCode', $AuthorityCode)
+                ->first();
+        return $AuthorityCheck;
+    }
+
+    // DBのデータ取得
+    public function AuthorityReload($tenantCode,$tenantBranch){
+        $authoritys = M_Authority::where('TenantCode', $tenantCode)
+            ->where('TenantBranch', $tenantBranch)
+            ->orderBy('AuthorityCode', 'asc')
+            ->get();
+        return $authoritys;
+    }
+
+    // ラジオボタンのデータ取得
+    public function RadioOutput(){
+        $AuthorityDivs = M_Division::where('DivCode','AuthorityDiv')
+            ->select('DivCode','DivNo','DivName')
+            ->get();
+        return $AuthorityDivs;
+    }
+
+    // ラジオボタンのデータ取得
+    public function RadioInput($tenantCode,$tenantBranch,$AuthorityCode){
+        $AuthorityDetail = M_AuthorityDetail::where('TenantCode', $tenantCode)
+            ->where('TenantBranch', $tenantBranch)
+            ->where('AuthorityCode', $AuthorityCode)
+            ->get();
+        return $AuthorityDetail;
+    }
+    
 
 
 

@@ -32,7 +32,7 @@ class AuthorityRequest extends FormRequest
             'AdminFlg' => 'max:1',
             'ProgramID' => 'array',
             'ProgramID.*' => 'required',
-            'AuthorityDiv' => 'array',
+            'AuthorityDiv' => 'array | required',
             'AuthorityDiv.*' => 'required',
         ];
     }

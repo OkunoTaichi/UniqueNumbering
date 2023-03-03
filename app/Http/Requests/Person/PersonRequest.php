@@ -25,10 +25,10 @@ class PersonRequest extends FormRequest
     public function rules()
     {
         return [
-            'PersonCode' => 'required | max:10',
+            'PersonCode' => 'required | max:10 | regex:/^[a-zA-Z0-9 -@\[-~]+$/ ',
             'PersonName' => 'required | max:8',
             'AuthorityCode' => 'required | numeric | max:10000000000',
-            'Password' => 'required | min:8| max:20',
+            'Password' => 'required | min:4| max:20 | regex:/^[a-zA-Z0-9 -@\[-~]+$/ ',
             'Hidden' => 'max:1 | numeric',
             'DisplayOrder' => 'required | numeric | max:10000000000',
         ];
