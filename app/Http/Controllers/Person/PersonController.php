@@ -104,9 +104,11 @@ class PersonController extends Controller
             $M_Person->updateCreate($tenantCode,$tenantBranch,$personInputs);
             // AuthorityCodeとNameを紐づけて表示
             $persons = $M_Person->AuthorityName($tenantCode,$tenantBranch);
-            return view(
-                'Person.Person_index' ,compact('persons')
-            );
+            // return view(
+            //     'Person.Person_index' ,compact('persons')
+            // );
+            \Session::flash('err_msg' , '登録しました。');
+            return redirect( route('Person.Person_create') )->withInput();
         }
     }
     
@@ -185,12 +187,13 @@ class PersonController extends Controller
         }
     }
 
-    // コピー フラグ立ててif文でセッション入れれば良かった。。。
+    // コピー ***フラグ立ててif文でセッション入れれば良かった。。。***
     public function Person_copy(Request $request){
         // 使用するモデル
         $M_Person = new M_Person;
         // 詳細モード
         $routeFlag = 1;// view表示の振り分け
+
         // テナントコードの読み込み
         $user = \Auth::user();
         $tenantCode = $user->tenantCode;
@@ -222,10 +225,15 @@ class PersonController extends Controller
 
             // コピーしたデータをセッションに保存
             $M_Person->CopySession($request,$person);
+            $copyflag = 1;
+            // コピー中のフラグ あんまりよくない数値がかぶるとエラーになるので修正要
+            \Session::put(['pasteFlag' => 0]);
+
+            // dd(session()->get('pasteFlag'));
 
             \Session::flash('err_msg' , 'コピーしました。');
             return view(
-                'Person.Person_create', compact('person','routeFlag','authorityName')
+                'Person.Person_create', compact('person','routeFlag','authorityName','copyflag')
             );
 
         }else{

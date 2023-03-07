@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Database\Seeders\Authority;
 use Database\Seeders\Person;
+use Database\Seeders\RoomType;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,7 +28,10 @@ class DatabaseSeeder extends Seeder
         $this->call(Authority\M_ProgramSeeder::class);
 
         $this->call(Person\M_PersonSeeder::class);
-
+        
+        $this->call(RoomType\M_BuildingSeeder::class);
+        $this->call(RoomType\M_RoomTypeSeeder::class);
+        $this->call(RoomType\M_RoomSeeder::class);
  
     }
 }

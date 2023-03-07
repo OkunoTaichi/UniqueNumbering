@@ -1751,6 +1751,7 @@ progress {
   border-color: var(--bs-table-border-color);
 }
 .table > :not(caption) > * > * {
+  /* padding: 0.5rem 0rem; */
   padding: 0.5rem 0.5rem;
   background-color: var(--bs-table-bg);
   border-bottom-width: 1px;
@@ -10903,10 +10904,16 @@ textarea.form-control-lg {
 .linkWrap>.linkName:hover{
   background-color: inherit;
 }
+.linkCode{
+  width: 100%;
+}
 .authorityLinks{
   width: 100%;
   text-align: start;
 }
 .table-hover > tbody > tr:hover > .linkName{
+  --bs-table-accent-bg: var(--bs-table-hover-bg-none);
+}
+.table-hover > tbody > tr:hover > .links{
   --bs-table-accent-bg: var(--bs-table-hover-bg-none);
 }

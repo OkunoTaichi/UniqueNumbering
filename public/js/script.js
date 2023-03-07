@@ -127,70 +127,70 @@ class FocusOrder {
   }
 
   initOrder() {
-      //初期化
-      //DOMを読み込んだ後に実行してください。
-      
-      if (this.init) {
-          //このコードをは複数回呼ばれるのを想定していません
-          console.log('すでに初期化済みです');
-          return;
-      }
+    //初期化
+    //DOMを読み込んだ後に実行してください。
+    
+    if (this.init) {
+        //このコードをは複数回呼ばれるのを想定していません
+        console.log('すでに初期化済みです');
+        return;
+    }
 
-      this.init = true;
+    this.init = true;
+
+    //ターゲットとなる要素をここに指定してください。 
+    let target = document.querySelectorAll(".enterTab");
+    
+    //tabIndexにマイナスを指定してあったら除外
+    let wk1 = [];
+    for (let i = 0; i < target.length; i++) {
+        if ( 0 <= target[i].tabIndex) {
+            wk1.push(target[i]);
+        }
+    }
+
+    //tabIndex順にソート
+    let wk2=wk1.sort((a,b) => {
+        if (a.tabIndex == b.tabIndex) {
+            return 0;
+        } else if(a.tabIndex > b.tabIndex) {
+            return 1;
+        } else {
+            return -1;
+        }
+    });
+
+    //次にフォーカスするエレメントをMapにセット
+    for (let i =0; i < wk2.length-1; i++) {
+        this.nextElements.set(wk2[i],wk2[i+1]);
+    }
+    this.nextElements.set(wk2[wk2.length-1],wk2[0]);
+    
+    //各エレメントにイベントをセット
+    const keyevent = event => {
+        if (event.key === 'Enter') {
+            event.preventDefault();//eneterキーイベントの他の挙動を止めます。
+            if (event.srcElement) {
+                if (event.srcElement.tagName.toLowerCase().startsWith('textarea')) {
+                    if (event.altKey==true) {
+                        //要素がテキストエリアでALTがついていたら現在の位置に改行(\n)を入れて抜ける
+                        const intPosition = event.srcElement.selectionStart;
+                        const wk = event.srcElement.value;
+                        event.srcElement.value=wk.substring(0,intPosition)+'\n'+wk.substring(intPosition);
+                        //キャレットの位置を修正
+                        event.srcElement.selectionStart=intPosition+1;
+                        event.srcElement.selectionEnd=intPosition+1;
+                        return;
+                    }
+                }
+            }
+            this.nextElements.get(event.target).focus();
+        }
+    };
   
-      //ターゲットとなる要素をここに指定してください。 
-      let target = document.querySelectorAll(".enterTab");
-      
-      //tabIndexにマイナスを指定してあったら除外
-      let wk1 = [];
-      for (let i = 0; i < target.length; i++) {
-          if ( 0 <= target[i].tabIndex) {
-              wk1.push(target[i]);
-          }
-      }
-
-      //tabIndex順にソート
-      let wk2=wk1.sort((a,b) => {
-          if (a.tabIndex == b.tabIndex) {
-              return 0;
-          } else if(a.tabIndex > b.tabIndex) {
-              return 1;
-          } else {
-              return -1;
-          }
-      });
-
-      //次にフォーカスするエレメントをMapにセット
-      for (let i =0; i < wk2.length-1; i++) {
-          this.nextElements.set(wk2[i],wk2[i+1]);
-      }
-      this.nextElements.set(wk2[wk2.length-1],wk2[0]);
-      
-      //各エレメントにイベントをセット
-      const keyevent = event => {
-          if (event.key === 'Enter') {
-              event.preventDefault();//eneterキーイベントの他の挙動を止めます。
-              if (event.srcElement) {
-                  if (event.srcElement.tagName.toLowerCase().startsWith('textarea')) {
-                      if (event.altKey==true) {
-                          //要素がテキストエリアでALTがついていたら現在の位置に改行(\n)を入れて抜ける
-                          const intPosition = event.srcElement.selectionStart;
-                          const wk = event.srcElement.value;
-                          event.srcElement.value=wk.substring(0,intPosition)+'\n'+wk.substring(intPosition);
-                          //キャレットの位置を修正
-                          event.srcElement.selectionStart=intPosition+1;
-                          event.srcElement.selectionEnd=intPosition+1;
-                          return;
-                      }
-                  }
-              }
-              this.nextElements.get(event.target).focus();
-          }
-      };
-  
-      for (let i =0; i < wk2.length; i++) {
-      wk2[i].onkeydown=function(event){keyevent(event)};
-      }
+    for (let i =0; i < wk2.length; i++) {
+        wk2[i].onkeydown=function(event){keyevent(event)};
+    }
   }
 };
 
@@ -203,66 +203,80 @@ f.initOrder();
 
 // 記号関連が選択されたら記号にフォーカス。それ以外はスルー
 function inputSymbol(editdiv) {
-  let selVal = editdiv.value;
-  let target = document.getElementById("symbol_wrap");
-  let route = document.getElementById("editdiv");
-  let route2 = document.getElementById("symbol");
-  if(selVal ==  4 || selVal ==  5 ){
-      target.style.display="flex";
-    
-      route.onkeydown = function(e){
-          if ( e.keyCode === 13) {
-              document.getElementById("symbol").focus();
-          }
-      }
+    let selVal = editdiv.value;
+    let target = document.getElementById("symbol_wrap");
+    let route = document.getElementById("editdiv");
+    let route2 = document.getElementById("symbol");
+    if(selVal ==  4 || selVal ==  5 ){
+        target.style.display="flex";
 
-      route2.onkeydown = function(e){
-          if ( e.keyCode === 13) {
-              document.getElementById("lengs").focus();
-          }
-      }
+        route.onkeydown = function(e){
+            if ( e.keyCode === 13) {
+                document.getElementById("symbol").focus();
+            }
+        }
+
+        route2.onkeydown = function(e){
+            if ( e.keyCode === 13) {
+                document.getElementById("lengs").focus();
+            }
+        }
           
-  }else{
-      target.style.display="none";
+    }else{
+        target.style.display="none";
 
-      route.onkeydown = function(e){
-          if ( e.keyCode === 13) {
-              document.getElementById("lengs").focus();
-          }
-      }
-  } 
+        route.onkeydown = function(e){
+            if ( e.keyCode === 13) {
+                document.getElementById("lengs").focus();
+            }
+        }
+    } 
 }
 
 
 var btn = document.getElementById('enter');
 if( btn != null ){
-  btn.onkeydown = function(e){
-      if (e.key === "Enter") {
-          document.form.submit();
-      }
-  }
+    btn.onkeydown = function(e){
+        if (e.key === "Enter") {
+            document.form.submit();
+        }
+    }
 }
 
 // 全角->半角変換(日本語不可)
 function ztoh(te) {
-  var ts = te.value;
-  // 英数字が全角なら半角に変換
-  ts = ts.replace( /[０-９ Ａ-Ｚ ａ-ｚ ]/g, function(es) {
-      return String.fromCharCode(es.charCodeAt(0) - 65248);
-  });
-  // 半角英数字記号以外は消去
-  // while(ts.match(/[^A-Z^a-z\d\-\!"#$%&'()*+-.,\/:;<=>?@[\]^_`{|}~]/))
-  // {
-  //     ts=ts.replace(/[^A-Z^a-z\d\-\!"#$%&'()*+-.,\/:;<=>?@[\]^_`{|}~]/,"");
-  // }
-  te.value = ts;
+    var ts = te.value;
+    // 英数字が全角なら半角に変換
+    ts = ts.replace( /[０-９ Ａ-Ｚ ａ-ｚ ]/g, function(es) {
+        return String.fromCharCode(es.charCodeAt(0) - 65248);
+    });
+    // 半角英数字記号以外は消去
+    // while(ts.match(/[^A-Z^a-z\d\-\!"#$%&'()*+-.,\/:;<=>?@[\]^_`{|}~]/))
+    // {
+    //     ts=ts.replace(/[^A-Z^a-z\d\-\!"#$%&'()*+-.,\/:;<=>?@[\]^_`{|}~]/,"");
+    // }
+    te.value = ts;
 }
 
 // 半角->全角変換
 function htoz(te) {
- var ts = te.value;
- ts = ts.replace( /[0-9A-Za-z]/g, function(es) {
-    return String.fromCharCode(es.charCodeAt(0) + 65248);
- });
- te.value = ts;
+    var ts = te.value;
+    ts = ts.replace( /[0-9A-Za-z]/g, function(es) {
+        return String.fromCharCode(es.charCodeAt(0) + 65248);
+    });
+    te.value = ts;
 }
+
+
+// function pasteAlert(){
+//     pasteFlag = document.getElementById('pasteFlag').value;
+
+//     if(pasteFlag == ''){
+//         alert( 'コピーしていません。' );
+//         return false;
+//     }
+// }
+
+
+
+

@@ -29,7 +29,7 @@
                 <input type="text" id="PersonCode" name="PersonCode" value="{{ $person->PersonCode }}" readonly>
                 <!-- <input type="text" id="PersonCode" name="PersonCode" value="{{ old('PersonCode', $person->PersonCode ) }}" readonly> -->
                 @elseif($routeFlag === 3)<!-- コピーモード -->
-                <input type="text" id="PersonCode" class="enterTab" name="PersonCode" value="{{ $person['PersonCode'] }}" autofocus oninput="inputCode();" onblur="ztoh(this);">
+                <input type="text" id="PersonCode" class="enterTab" name="PersonCode" value="" autofocus oninput="inputCode();" onblur="ztoh(this);">
                 @else<!-- 新規作成モード （保険）-->
                 <input type="text" id="PersonCode" class="enterTab" name="PersonCode" value="{{ old('PersonCode') }}" autofocus oninput="inputCode();" onblur="ztoh(this);">
                 @endif

@@ -1,0 +1,22 @@
+.linkWrap{
+    position: relative;
+}
+.linkWrap>.linkCode{
+    z-index: 11;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    border: none;
+}
+.linkWrap>.linkName:hover{
+    background-color: inherit;
+}
+.linkCode{
+    width: 100%;
+}
+.authorityLinks{
+    width: 100%;
+    text-align: start;
+}

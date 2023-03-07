@@ -27,13 +27,15 @@
                 @csrf
                 <tbody>
                     @foreach ($persons as $person)
-                    <tr>
+                    <tr class="PersonLinksWrap">
+                      <div class="PersonLinks">
                         <td><input type="submit" class="text" style="border:none; background-color: inherit;" name="editSearch" value="{{ $person->PersonCode }}"></input></td>
+                      </div>
                         <td>{{ $person->PersonName }}</td>
 
-                        <!-- <td>{{ $person->AuthorityCode }}</td>権限CD -->
+                        @if(isset($person->M_Authority->AuthorityName) )<!-- ここ修正要 データないとエラー -->
                         <td class="d-flex"><p style="width: 40px; margin-left:40px;">{{ $person->AuthorityCode }}</p><p style="width: 20px;">:</p> {{ $person->M_Authority->AuthorityName }}</td><!-- 権限CD -->
-
+                        @endif
                         <td>
                           <div class="disabled">
                             <input type="checkbox" name="" class="form-control3 enterTab" id="" value="1" {{ $person->Hidden === 1 ? 'checked' : '' }} disabled>
