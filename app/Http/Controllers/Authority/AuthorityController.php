@@ -17,7 +17,7 @@ class AuthorityController extends Controller
 {
     public function authority_index()
     {
-        session()->forget('formCopy');
+        // session()->forget('formCopy');
         // 使用するモデル
         $M_Authority = new M_Authority;
         $user = \Auth::user();
@@ -71,7 +71,7 @@ class AuthorityController extends Controller
         }
         if (in_array(null, $authorityInputs['AuthorityDiv'], true)) {
             \Session::flash('err_msg' , 'プログラムの設定は全て必須です。');
-            return redirect( route('Authority.Authority_index') )->withInput();;
+            return redirect( route('Authority.Authority_index') )->withInput();
         } 
 
         // 新規作成＋コピーの時は存在チェック
@@ -86,7 +86,7 @@ class AuthorityController extends Controller
             $M_Authority->updateCreate($tenantCode,$tenantBranch,$authorityInputs,$count);
         }
             
-        return redirect( route('Authority.Authority_index') );
+        return redirect( route('Authority.Authority_index') )->withInput();
     }
 
 
@@ -230,6 +230,8 @@ class AuthorityController extends Controller
             ]);
             // コピーモード
             \Session::put(['routeFlg' => 2]);// DB更新時の振り分け
+            // コピー中のフラグ あんまりよくない数値がかぶるとエラーになるので修正要
+            \Session::put(['pasteFlag' => 2]);
             $routeFlg = $request->session()->get('routeFlg');
             \Session::flash('err_msg' , 'コピーしました。');
             return view(

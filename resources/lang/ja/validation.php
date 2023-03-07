@@ -169,6 +169,10 @@ return [
         'Password' => 'パスワード',
         'Hidden' => '設定',
         'DisplayOrder' => '表示順',
+
+        'BuildingCode' => '棟コード',
+        'BuildingName' => '棟名称',
+        'BuildingAbName' => '棟略称',
     ],
 
 ];

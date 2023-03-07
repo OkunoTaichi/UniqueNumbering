@@ -1,9 +1,9 @@
 /* .authority_wrap{
     position: relative;
 } */
-.nav_item{
+/* .nav_item{
     padding-left: 20px;
-}
+} */
 /* .authority_wrap{
     max-width: 1280px;
     margin: 0 auto;
@@ -128,5 +128,19 @@
 .noLine{
     border-radius: 2px;
     border: 1px solid #ddd;
+}
+
+.radio_btn{
+    font-weight: bold;
+    position: relative;
+}
+.radio_btn::before{
+    position: absolute;
+    content: "▼";
+    top: 1px;
+    left: 19px;
+    width: 50px;
+    height: 50px;
+   
 }
 

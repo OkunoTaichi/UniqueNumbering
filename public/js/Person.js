@@ -28,6 +28,7 @@
       }
     }
   }
+
   function editAlert(){
     editPerson = document.getElementById('editPerson').value;
 
@@ -36,11 +37,21 @@
       return false;
     }
   }
+  
   function copyAlert(){
     editPerson = document.getElementById('copyPerson').value;
 
     if(editPerson == ''){
       alert( 'コピーする権限CDを選択して下さい。' );
+      return false;
+    }
+  }
+
+  function pasteAlert(){
+    pasteFlag = document.getElementById('pasteFlag').value;
+
+    if(pasteFlag == ''){
+      alert( 'コピーしていません。' );
       return false;
     }
   }

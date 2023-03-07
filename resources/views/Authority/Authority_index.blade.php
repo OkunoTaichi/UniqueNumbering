@@ -32,7 +32,8 @@
 
           <form action="{{ route('Authority.Authority_paste') }}" method="get">
             @csrf
-            <button type="submit" class="btn me-4 btn-primary"  onclick=" return copyAlert()">貼付け</button>
+            <input type="hidden" name="pasteFlag" id="pasteFlag" value="{{ session()->get('pasteFlag') == 2 ? session()->get('pasteFlag') : '' }}">
+            <button type="submit" class="btn me-4 btn-primary"  onclick=" return pasteAlert()">貼付け</button>
           </form>
         </div>
 
@@ -90,7 +91,7 @@
                   @foreach ($authoritys as $authority)
                   <tr class="linkWrap">
                     <td class="linkCode">
-                      <input type="submit" class="text authorityLinks" style="border:none; background-color: inherit; padding-left: 20px;" name="editSearch" value="{{ $authority->AuthorityCode }}"></input>        
+                      <input type="submit" class="text authorityLinks" style="border:none; background-color: inherit; padding-left: 20px; padding-right: 0px;" name="editSearch" value="{{ $authority->AuthorityCode }}"></input>        
                     </td>
 
                     <td class="linkName" style="border:none; background-color: inherit;">{{ $authority->AuthorityName }}</td>
@@ -144,9 +145,9 @@
                 <thead style="background-color: #ffff9f" class="noScroll">
                   <tr>
                     <th colspan="2">プログラム</th>
-                    <th><button type="button" id="radioA"  style="border:none; background-color: inherit;">更新</button></th>
-                    <th><button type="button" id="radioB"  style="border:none; background-color: inherit;">参照</button></th>
-                    <th><button type="button" id="radioC"  style="border:none; background-color: inherit;">不可</button></th>
+                    <th><button type="button" id="radioA"  style="border:none; background-color: inherit;" class="radio_btn">更新</button></th>
+                    <th><button type="button" id="radioB"  style="border:none; background-color: inherit;" class="radio_btn">参照</button></th>
+                    <th><button type="button" id="radioC"  style="border:none; background-color: inherit;" class="radio_btn">不可</button></th>
                   </tr>
                 </thead>
 

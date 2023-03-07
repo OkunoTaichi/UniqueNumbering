@@ -30,7 +30,7 @@
 </head>
 <body>
     <header>
-       @include('Person.Person_layouts.Person_header')
+        @include('layouts.header_layout')
     </header>
     <main class="py-4">
         @yield('Person.content')

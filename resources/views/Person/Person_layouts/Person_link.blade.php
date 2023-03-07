@@ -1,3 +1,6 @@
+
+
+
 <div class="btn_wrap d-flex" style="display:flex;">
     <button type="button" class="btn me-4 btn-primary"><a style="color:#fff; text-decoration:none;" href="{{ route('Person.Person_create') }}">新規作成</a></button>
     
@@ -22,7 +25,8 @@
   
     <form action="{{ route('Person.Person_paste') }}" method="get">
     @csrf
-        <button type="submit" class="btn me-4 btn-primary" onclick=" return copyAlert()">貼付け</button>
+        <input type="hidden" name="pasteFlag" id="pasteFlag" value="{{ session()->get('pasteFlag') == null ? session()->get('pasteFlag') : '' }}">
+        <button type="submit" class="btn me-4 btn-primary" onclick="return pasteAlert()">貼付け</button>
     </form>
     <!-- <a href="{{ route('Person.Person_paste') }}">貼付け</a> -->
 </div>

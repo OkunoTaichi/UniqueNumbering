@@ -8,6 +8,9 @@ use App\Http\Controllers\EditController;
 use App\Http\Controllers\SystemController;
 use App\Http\Controllers\Authority\AuthorityController;
 use App\Http\Controllers\Person\PersonController;
+use App\Http\Controllers\RoomType\BuildingController;
+use App\Http\Controllers\RoomType\RoomController;
+use App\Http\Controllers\RoomType\RoomTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +29,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [UnNumberController::class, 'index'])->name('home');
+Route::get('/home', [BuildingController::class, 'Building_index'])->name('home');
 
 /**
  * 採番マスタ
@@ -84,4 +87,49 @@ Route::prefix('Person')->name('Person.')->group(function() {
     Route::post('Person_destroy', [PersonController::class, 'Person_destroy'])->name('Person_destroy');
     Route::post('Person_copy', [PersonController::class, 'Person_copy'])->name('Person_copy');
     Route::get('Person_paste', [PersonController::class, 'Person_paste'])->name('Person_paste');
+});
+
+
+
+
+
+
+/**
+ * 部屋タイプマスタ
+ */
+Route::prefix('RoomType')->name('RoomType.')->group(function() {
+    Route::get('RoomType_index', [RoomTypeController::class, 'RoomType_index'])->name('RoomType_index');
+    Route::get('RoomType_create', [RoomTypeController::class, 'RoomType_create'])->name('RoomType_create');
+    Route::post('RoomType_store', [RoomTypeController::class, 'RoomType_store'])->name('RoomType_store');
+    Route::post('RoomType_detail', [RoomTypeController::class, 'RoomType_detail'])->name('RoomType_detail'); 
+    Route::post('RoomType_edit', [RoomTypeController::class, 'RoomType_edit'])->name('RoomType_edit'); 
+    Route::post('RoomType_destroy', [RoomTypeController::class, 'RoomType_destroy'])->name('RoomType_destroy');
+    Route::post('RoomType_copy', [RoomTypeController::class, 'RoomType_copy'])->name('RoomType_copy');
+    Route::get('RoomType_paste', [RoomTypeController::class, 'RoomType_paste'])->name('RoomType_paste');
+});
+/**
+ * 棟マスタ
+ */
+Route::prefix('Building')->name('Building.')->group(function() {
+    Route::get('Building_index', [BuildingController::class, 'Building_index'])->name('Building_index');
+    Route::get('Building_create', [BuildingController::class, 'Building_create'])->name('Building_create');
+    Route::post('Building_store', [BuildingController::class, 'Building_store'])->name('Building_store');
+    Route::post('Building_detail', [BuildingController::class, 'Building_detail'])->name('Building_detail'); 
+    Route::post('Building_edit', [BuildingController::class, 'Building_edit'])->name('Building_edit'); 
+    Route::post('Building_destroy', [BuildingController::class, 'Building_destroy'])->name('Building_destroy');
+    Route::post('Building_copy', [BuildingController::class, 'Building_copy'])->name('Building_copy');
+    Route::get('Building_paste', [BuildingController::class, 'Building_paste'])->name('Building_paste');
+});
+/**
+ * 部屋マスタ
+ */
+Route::prefix('Room')->name('Room.')->group(function() {
+    Route::get('Room_index', [RoomController::class, 'Room_index'])->name('Room_index');
+    Route::get('Room_create', [RoomController::class, 'Room_create'])->name('Room_create');
+    Route::post('Room_store', [RoomController::class, 'Room_store'])->name('Room_store');
+    Route::post('Room_detail', [RoomController::class, 'Room_detail'])->name('Room_detail'); 
+    Route::post('Room_edit', [RoomController::class, 'Room_edit'])->name('Room_edit'); 
+    Route::post('Room_destroy', [RoomController::class, 'Room_destroy'])->name('Room_destroy');
+    Route::post('Room_copy', [RoomController::class, 'Room_copy'])->name('Room_copy');
+    Route::get('Room_paste', [RoomController::class, 'Room_paste'])->name('Room_paste');
 });

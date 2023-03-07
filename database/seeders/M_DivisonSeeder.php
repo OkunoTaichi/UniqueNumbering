@@ -275,7 +275,51 @@ class M_DivisonSeeder extends Seeder
             'DivNo' => '10',
             'DivName'=>'サイトコントローラー',
         ]);
+
+
+
+
+        // 部屋種別区分
+        DB::table('m_division')->insert([        
+            'DivCode' => 'RoomTypeDiv',
+            'DivNo' => '01',
+            'DivName'=>'実部屋',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'RoomTypeDiv',
+            'DivNo' => '02',
+            'DivName'=>'架空部屋',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'RoomTypeDiv',
+            'DivNo' => '03',
+            'DivName'=>'施設',
+        ]);
       
+        // 稼働計上区分
+        DB::table('m_division')->insert([        
+            'DivCode' => 'OperationDiv',
+            'DivNo' => '0',
+            'DivName'=>'対象外',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'OperationDiv',
+            'DivNo' => '01',
+            'DivName'=>'対象',
+        ]);
+
+        // 残室表示区分
+        DB::table('m_division')->insert([        
+            'DivCode' => 'RemainingRoomDiv',
+            'DivNo' => '0',
+            'DivName'=>'対象外',
+        ]);
+        DB::table('m_division')->insert([        
+            'DivCode' => 'RemainingRoomDiv',
+            'DivNo' => '01',
+            'DivName'=>'対象',
+        ]);
+
         
 
 
