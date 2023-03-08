@@ -152,14 +152,14 @@
               @else
               <div class="d-flex">
                 <button type="button" class="btn btn-primary back_btn" tabindex="" onclick="history.back()">戻 る</button>
-                <button type="button" id="enter" class="btn btn-primary enterTab" tabindex="" onclick="createAlert()">確 定</button>
+                <button type="button" id="enter" class="btn btn-primary enterTab" tabindex="" onclick="createAlertBuilding()">確 定</button>
               </div>
               @endif
 
             @else
               <div class="d-flex">
                 <button type="button" class="btn btn-primary back_btn" tabindex="" onclick="history.back()">戻 る</button>
-                <button type="button" id="enter" class="btn btn-primary enterTab" tabindex="" onclick="createAlert()">確 定</button>
+                <button type="button" id="enter" class="btn btn-primary enterTab" tabindex="" onclick="createAlertBuilding()">確 定</button>
               </div>
             @endif
             
