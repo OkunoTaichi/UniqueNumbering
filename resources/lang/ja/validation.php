@@ -170,9 +170,27 @@ return [
         'Hidden' => '設定',
         'DisplayOrder' => '表示順',
 
+        // 棟マスタ
         'BuildingCode' => '棟コード',
         'BuildingName' => '棟名称',
         'BuildingAbName' => '棟略称',
+
+        // 部屋マスタ
+        'RoomNo' => '部屋番号',
+        'RoomName' => '部屋名称',
+        'RoomAbName' => '部屋略称',
+        'CapacityMax' => '定員最小',
+        'CapacityMin' => '定員最大',
+        'Floor' => 'フロア',
+        
+        // 部屋タイプマスタ
+        'RoomTypeCode' => '部屋タイプコード',
+        'RoomTypeName' => '部屋タイプ名称',
+        'RoomTypeAbName' => '部屋タイプ略称',
+        'RoomTypeDiv' => '部屋種別区分',
+        'OperationDiv' => '稼働計上区分',
+        'RemainingRoomDiv' => '残室表示区分',
+        'RealTypeCode' => '実タイプコード',
     ],
 
 ];

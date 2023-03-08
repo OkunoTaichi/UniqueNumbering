@@ -1,3 +1,5 @@
+
+// 棟マスタ
 function inputCode(){
     BuildingCode =document.getElementById('BuildingCode').value;
     document.getElementById( 'edit_search' ).value = BuildingCode ;
@@ -6,7 +8,7 @@ function inputCode(){
     
   }
 
-function createAlert(){
+function createAlertBuilding(){
   if(window.confirm('登録してよろしいですか？')){
       document.BuildingForm.submit();
       return true;
@@ -14,6 +16,7 @@ function createAlert(){
       return false;
   }
 }
+
 
 function destroyAlert(){
   delete_flag = document.getElementById('delete_search').value;
@@ -57,3 +60,20 @@ function copyAlert(){
 //     return false;
 //   }
 // }
+
+// 部屋マスタ
+function inputCode(){
+  RoomNo =document.getElementById('RoomNo').value;
+  document.getElementById( 'edit_search' ).value = RoomNo ;
+  document.getElementById( 'delete_search' ).value = RoomNo ;
+  document.getElementById( 'copy_search' ).value = RoomNo ;
+}
+
+function createAlertRoom(){
+  if(window.confirm('登録してよろしいですか？')){
+      document.RoomForm.submit();
+      return true;
+  } else {
+      return false;
+  }
+}

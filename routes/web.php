@@ -107,6 +107,7 @@ Route::prefix('RoomType')->name('RoomType.')->group(function() {
     Route::post('RoomType_copy', [RoomTypeController::class, 'RoomType_copy'])->name('RoomType_copy');
     Route::get('RoomType_paste', [RoomTypeController::class, 'RoomType_paste'])->name('RoomType_paste');
 });
+
 /**
  * 棟マスタ
  */
@@ -120,6 +121,7 @@ Route::prefix('Building')->name('Building.')->group(function() {
     Route::post('Building_copy', [BuildingController::class, 'Building_copy'])->name('Building_copy');
     Route::get('Building_paste', [BuildingController::class, 'Building_paste'])->name('Building_paste');
 });
+
 /**
  * 部屋マスタ
  */

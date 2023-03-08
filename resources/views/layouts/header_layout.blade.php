@@ -23,6 +23,7 @@
                     </div>
                 </li>
                 <li class="nav_item in_active"><a href="{{ route('Building.Building_index') }}">棟マスタ</a></li>
+                <li class="nav_item in_active"><a href="{{ route('Room.Room_index') }}">部屋マスタ</a></li>
             </ul>
 
 

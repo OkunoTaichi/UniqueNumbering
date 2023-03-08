@@ -194,9 +194,6 @@ class BuildingController extends Controller
         
     }
 
-
-
-
     public function Building_paste(Request $request){
 
         // 使用するモデル

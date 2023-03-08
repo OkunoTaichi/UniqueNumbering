@@ -24,7 +24,7 @@
   
     <form action="{{ route('Building.Building_paste') }}" method="get">
     @csrf
-        <input type="hidden" name="pasteFlag" id="pasteFlag" value="{{ session()->get('pasteFlag') == null ? session()->get('pasteFlag') : '' }}">
+        <input type="hidden" name="paste_flag" id="paste_flag" value="{{ session()->get('paste_flag') == null ? session()->get('paste_flag') : '' }}">
         <button type="submit" class="btn me-4 btn-primary" onclick="return pasteAlert()">貼付け</button>
     </form>
     <!-- <a href="{{ route('Person.Person_paste') }}">貼付け</a> -->
