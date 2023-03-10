@@ -13,7 +13,7 @@ class RoomTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,19 @@ class RoomTypeRequest extends FormRequest
      *
      * @return array
      */
+    protected $redirect = '/RoomType/RoomType_create';
     public function rules()
     {
         return [
-            //
+            'RoomTypeCode' => 'required | max:4 ',
+            'RoomTypeName' => 'required | max:15 ',
+            'RoomTypeAbName' => 'required | max:5',
+            'RoomTypeDiv' => 'required | max:10',
+            'OperationDiv' => 'required | max:5',
+            'RemainingRoomDiv' => 'required | max:5 | numeric ',
+            'RealTypeCode' => 'max:4',
+            'Hidden' => 'max:1 | numeric',
+            'DisplayOrder' => 'required | numeric | max:10000000000',
         ];
     }
 }

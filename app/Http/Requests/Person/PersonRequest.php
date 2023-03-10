@@ -26,7 +26,7 @@ class PersonRequest extends FormRequest
     {
         return [
             'PersonCode' => 'required | max:10 | regex:/^[a-zA-Z0-9 -@\[-~]+$/ ',
-            'PersonName' => 'required | max:8',
+            'PersonName' => 'required | max:20',
             'AuthorityCode' => 'required | numeric | max:10000000000',
             'Password' => 'required | min:4| max:20 | regex:/^[a-zA-Z0-9 -@\[-~]+$/ ',
             'Hidden' => 'max:1 | numeric',

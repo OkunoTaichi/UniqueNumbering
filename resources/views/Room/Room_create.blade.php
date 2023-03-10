@@ -277,17 +277,20 @@
             @if(isset($route_flag))
 
               @if($route_flag === 1)<!-- 詳細モードは確定なし -->
-                <button type="button" class="btn btn-primary" tabindex="" onclick="history.back()">戻 る</button>
+                <!-- <button type="button" class="btn btn-primary" tabindex="" onclick="history.back()">戻 る</button> -->
+                <button type="button" class="btn me-4 btn-primary"><a style="color:#fff; text-decoration:none;" href="{{ route('Room.Room_index') }}">戻 る</a></button>
               @else
               <div class="d-flex">
-                <button type="button" class="btn btn-primary back_btn" tabindex="" onclick="history.back()">戻 る</button>
+                <!-- <button type="button" class="btn btn-primary back_btn" tabindex="" onclick="history.back()">戻 る</button> -->
+                <button type="button" class="btn me-4 btn-primary"><a style="color:#fff; text-decoration:none;" href="{{ route('Room.Room_index') }}">戻 る</a></button>
                 <button type="button" id="enter" class="btn btn-primary enterTab" tabindex="" onclick="createAlertRoom()">確 定</button>
               </div>
               @endif
 
             @else
               <div class="d-flex">
-                <button type="button" class="btn btn-primary back_btn" tabindex="" onclick="history.back()">戻 る</button>
+                <!-- <button type="button" class="btn btn-primary back_btn" tabindex="" onclick="history.back()">戻 る</button> -->
+                <button type="button" class="btn me-4 btn-primary"><a style="color:#fff; text-decoration:none;" href="{{ route('Room.Room_index') }}">戻 る</a></button>
                 <button type="button" id="enter" class="btn btn-primary enterTab" tabindex="" onclick="createAlertRoom()">確 定</button>
               </div>
             @endif
