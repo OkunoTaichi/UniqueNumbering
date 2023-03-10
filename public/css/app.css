@@ -10830,7 +10830,7 @@ textarea.form-control-lg {
 .form-control,
 .form-select{
     width: 300px;
-    margin: 0 0.5rem 0.5rem 0;
+    /* margin: 0 0.5rem 0.5rem 0; */
 }
 .form-label{
     width: 250px;

@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
-    <title>部屋マスタ</title>
+    <title>部屋タイプマスタ</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -34,7 +34,7 @@
        @include('layouts.header_layout')
     </header>
     <main class="py-4">
-        @yield('Room.content')
+        @yield('RoomType.content')
     </main>
     <footer class="footer bg-dark  fixed-bottom">
 

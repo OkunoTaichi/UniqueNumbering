@@ -45,7 +45,7 @@ class UnNumberController extends Controller
         // $m_numberings = $m_numberings->orderBy('updated_at', 'desc')->paginate(7);
      
 
-        // dd($m_numberings);
+        dd($m_numberings);
         // homeから1発目の表示
         return view('UnNumber.UnNumber_index',compact('m_numberings'));
 

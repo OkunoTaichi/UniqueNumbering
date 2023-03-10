@@ -64,28 +64,28 @@ class M_Room extends Model
     // 新規作成・更新のロジック
     public function CreateRoom($tenant_code,$tenant_branch,$inputs,$hidden){
 
-        M_Room::updateOrCreate(
-            [
-                "TenantCode" => $tenant_code,
-                "TenantBranch" => $tenant_branch,
-                "RoomNo" => $inputs['RoomNo']
-            ],
-            [
-                "TenantCode" => $tenant_code,
-                "TenantBranch" => $tenant_branch,
-                "BuildingCode" => $inputs['BuildingCode'],
-                "RoomTypeCode" => $inputs['RoomTypeCode'],
-                "RoomName" => $inputs['RoomName'],
-                "RoomAbName" => $inputs['RoomAbName'],
-                "CapacityMin" => $inputs['CapacityMin'],
-                "CapacityMax" => $inputs['CapacityMax'],
-                "Floor" => $inputs['Floor'],
-                "DisplayOrder" => $inputs['DisplayOrder'],
-                "Hidden" => $hidden,
-            ] 
-        );
         \DB::beginTransaction();
         try{
+            M_Room::updateOrCreate(
+                [
+                    "TenantCode" => $tenant_code,
+                    "TenantBranch" => $tenant_branch,
+                    "RoomNo" => $inputs['RoomNo']
+                ],
+                [
+                    "TenantCode" => $tenant_code,
+                    "TenantBranch" => $tenant_branch,
+                    "BuildingCode" => $inputs['BuildingCode'],
+                    "RoomTypeCode" => $inputs['RoomTypeCode'],
+                    "RoomName" => $inputs['RoomName'],
+                    "RoomAbName" => $inputs['RoomAbName'],
+                    "CapacityMin" => $inputs['CapacityMin'],
+                    "CapacityMax" => $inputs['CapacityMax'],
+                    "Floor" => $inputs['Floor'],
+                    "DisplayOrder" => $inputs['DisplayOrder'],
+                    "Hidden" => $hidden,
+                ] 
+            );
             \DB::commit();
         }catch(\Throwable $e){
             \DB::rollback();
@@ -110,6 +110,8 @@ class M_Room extends Model
         }
         \Session::flash('successe_msg' , $room_code.' を削除しました。');
     }
+
+    
 
     // コピーしたデータをセッションに保存
     public function CopySession($request,$room,$building){
